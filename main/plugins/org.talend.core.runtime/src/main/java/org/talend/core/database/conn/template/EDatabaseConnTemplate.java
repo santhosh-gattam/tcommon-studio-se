@@ -183,8 +183,8 @@ public enum EDatabaseConnTemplate {
     //
     //    HIVE2_STANDALONE(new DbConnStr(EDatabaseTypeName.HIVE, "jdbc:hive2://<host>:<port>/<sid>")), //$NON-NLS-1$
 
-    IMPALA(new DbConnStr(EDatabaseTypeName.IMPALA, //
-            "<host>")), //$NON-NLS-1$  
+    IMPALA(new DbConnStr(EDatabaseTypeName.IMPALA, "127.0.0.1", //
+            "21050")), //$NON-NLS-1$  
 
     HBASE(new DbConnStr(EDatabaseTypeName.HBASE, "127.0.0.1", //$NON-NLS-1$
             "2181")); //$NON-NLS-1$
