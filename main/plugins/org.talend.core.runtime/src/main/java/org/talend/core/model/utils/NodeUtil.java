@@ -927,6 +927,12 @@ public class NodeUtil {
         } else if ("\"\"\\n\"\"".equals(value)) {
             value = "\"\\\\n\"";
         }
+        // ftom 20141008 - patch to fix javajet compilation errors due to hard-coded studio TableEditor mechanism
+        // linked to BUILDIN properties checks, this item is a boolean set to TRUE or FALSE
+        // fix is just transforming into true or false to make logging OK
+        else if ("BUILDIN".equals(ep.getName())) {
+            value = value.toLowerCase();
+        }
         return value;
     }
 
