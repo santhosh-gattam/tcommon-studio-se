@@ -395,6 +395,13 @@ public class RemoteModulesHelper {
                 if (moduleToInstall != null) {
                     List<ModuleNeeded> moduleContext = contextMap.get(moduleName);
                     moduleToInstall.setContext(getContext(moduleContext));
+                    if (moduleContext != null && moduleContext.size() > 0) {
+                        for (ModuleNeeded needed : moduleContext) {
+                            if (moduleToInstall.getName().equals(needed.getModuleName())) {
+                                moduleToInstall.setRequired(needed.isRequired());
+                            }
+                        }
+                    }
                     toInstall.add(moduleToInstall);
                 } else {// else not found in cache
                     notCachedModulesName.add(moduleName);
