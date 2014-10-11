@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import metadata.managment.i18n.Messages;
+
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
@@ -38,7 +40,6 @@ import org.talend.core.repository.ConnectionStatus;
 import org.talend.core.repository.IDBMetadataProvider;
 import org.talend.core.repository.model.ResourceModelUtils;
 import org.talend.metadata.managment.connection.manager.HiveConnectionManager;
-import metadata.managment.i18n.Messages;
 import org.talend.repository.ProjectManager;
 
 /**
@@ -254,7 +255,7 @@ public class ManagerConnection {
             // MOD xqliu 2012-01-05 TDQ-4162
             // get the real schema name
             String schemaName = schemaOracle;
-            if (EDatabaseTypeName.TERADATA.equals(type)) {
+            if (EDatabaseTypeName.TERADATA.equals(type) || EDatabaseTypeName.IMPALA.equals(type)) {
                 schemaName = sidOrDatabase;
             }
             // test the connection
