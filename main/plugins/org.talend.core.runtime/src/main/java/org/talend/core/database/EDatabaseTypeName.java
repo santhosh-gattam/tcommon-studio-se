@@ -114,7 +114,7 @@ public enum EDatabaseTypeName {
              "Redshift", "Redshift", Boolean.TRUE, "REDSHIFT", "REDSHIFT", EDatabaseSchemaOrCatalogMapping.Sid, EDatabaseSchemaOrCatalogMapping.Schema), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
     IMPALA(
-           "IMPALA", "Impala", Boolean.TRUE, "CLOUDERA", EDatabaseSchemaOrCatalogMapping.None, EDatabaseSchemaOrCatalogMapping.Schema), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ 
+           "IMPALA", "Impala", Boolean.TRUE, "IMPALA", EDatabaseSchemaOrCatalogMapping.None, EDatabaseSchemaOrCatalogMapping.Schema), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ 
 
     HBASE(
           "HBase", "HBase", Boolean.FALSE, "HBASE", EDatabaseSchemaOrCatalogMapping.Sid, EDatabaseSchemaOrCatalogMapping.Column_Family, true); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

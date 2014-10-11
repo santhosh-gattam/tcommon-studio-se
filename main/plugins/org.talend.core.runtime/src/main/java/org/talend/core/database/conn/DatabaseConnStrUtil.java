@@ -161,6 +161,21 @@ public class DatabaseConnStrUtil {
         return string;
     }
 
+    public static String getImpalaString(DatabaseConnection dbConn, String server, String port, String sidOrDatabase,
+            String template) {
+        boolean useKrb = Boolean.valueOf(dbConn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_USE_KRB));
+        String impalaPrincipal = null;
+        if (useKrb) {
+            impalaPrincipal = StringUtils.trimToNull(dbConn.getParameters()
+                    .get(ConnParameterKeys.IMPALA_AUTHENTICATION_PRINCIPLA));
+        }
+        String url = null;
+        if (template.startsWith(DbConnStrForHive.URL_HIVE_2_TEMPLATE)) {
+            url = getImpalaURLString(false, server, port, sidOrDatabase, impalaPrincipal);
+        }
+        return url;
+    }
+
     public static String getHiveURLString(DatabaseConnection dbConn, String server, String port, String sidOrDatabase,
             String template) {
         String hiveModel = dbConn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HIVE_MODE);
@@ -218,6 +233,41 @@ public class DatabaseConnStrUtil {
             s = getStringReplace(s, EDatabaseConnVar.SID.getVariable(), sid, supportContext);
         }
         return s;
+    }
+
+    private static String getImpalaURlString(String template, boolean supportContext, String server, String port, String sid) {
+        String s = template;
+        if (s != null) {
+            if (supportContext) { // if context mode, should quote the original "connStr".
+                s = TalendQuoteUtils.addQuotes(s);
+            }
+            s = getStringReplace(s, EDatabaseConnVar.HOST.getVariable(), server, supportContext);
+            s = getStringReplace(s, EDatabaseConnVar.PORT.getVariable(), port, supportContext);
+            s = getStringReplace(s, EDatabaseConnVar.SID.getVariable(), sid, supportContext);
+        }
+        return s;
+    }
+
+    private static String getImpalaURLString(boolean supportContext, String server, String port, String sid, String Principal) {
+        String s = EDatabaseConnTemplate.IMPALA.getUrlTemplate(EDatabaseVersion4Drivers.IMPALA_CDH5);
+        String standardURlString = getImpalaURlString(s, supportContext, server, port, sid);
+        String principalSuffix = "principal="; //$NON-NLS-1$
+        boolean hasPrinc = false;
+        String[] urlArray = standardURlString.split(SEMICOLON);
+        if (urlArray[urlArray.length - 1].startsWith(principalSuffix)) {
+            hasPrinc = true;
+        }
+        if (hasPrinc) {
+            if (Principal == null) {
+                standardURlString = standardURlString.substring(0, standardURlString.lastIndexOf(principalSuffix));
+            }
+        } else {
+            if (Principal != null) {
+                standardURlString = standardURlString.concat(SEMICOLON).concat(principalSuffix).concat(Principal);
+            }
+        }
+
+        return standardURlString;
     }
 
     private static String getHive2StandaloneURLString(boolean supportContext, String server, String port, String sid,

@@ -1385,6 +1385,10 @@ public class RepositoryToComponentProperty {
             return TalendQuoteUtils.addQuotes(connection.getParameters().get(ConnParameterKeys.HIVE_AUTHENTICATION_KEYTAB));
         }
 
+        if (value.equals("IMPALA_PRINCIPAL")) {
+            return TalendQuoteUtils.addQuotes(connection.getParameters().get(ConnParameterKeys.IMPALA_AUTHENTICATION_PRINCIPLA));
+        }
+
         return null;
 
     }

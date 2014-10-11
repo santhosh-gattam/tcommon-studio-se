@@ -1301,5 +1301,20 @@
          </importItemsHandler>
       </importItemsProvider>
    </extension>
+   <extension
+         point="org.talend.core.runtime.repositoryComponent_provider">
+      <RepositoryComponent
+            input="tImpalaInput"
+            name="IMPALA"
+            output="tImpalaOutput"
+            withSchema="true">
+         <Item
+               clazz="org.talend.core.model.properties.DatabaseConnectionItem">
+         </Item>
+         <DBType
+               type="Impala">
+         </DBType>
+      </RepositoryComponent>
+   </extension>
 
 </plugin>
