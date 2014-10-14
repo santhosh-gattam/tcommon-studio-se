@@ -12,6 +12,7 @@
 // ============================================================================
 package org.talend.core.ui.context.nattableTree;
 
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.nebula.widgets.nattable.NatTable;
 import org.eclipse.nebula.widgets.nattable.config.AbstractUiBindingConfiguration;
 import org.eclipse.nebula.widgets.nattable.data.IDataProvider;
@@ -39,8 +40,9 @@ public class ContextParaModeChangeMenuConfiguration extends AbstractUiBindingCon
 
     private final Menu modeMenu;
 
-    public ContextParaModeChangeMenuConfiguration(final NatTable natTable, final IDataProvider dataProvider) {
-        modeMenu = new ContextPopMenuBuilder(natTable).withChangeModeMenuItem(dataProvider).build();
+    public ContextParaModeChangeMenuConfiguration(final NatTable natTable, final IDataProvider dataProvider,
+            final ISelectionProvider selection) {
+        modeMenu = new ContextPopMenuBuilder(natTable).withChangeModeMenuItem(dataProvider, selection).build();
 
         modeMenu.addMenuListener(new MenuListener() {
 

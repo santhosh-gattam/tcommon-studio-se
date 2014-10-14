@@ -24,6 +24,7 @@ import org.talend.core.model.process.IContextParameter;
 import org.talend.core.model.properties.ContextItem;
 import org.talend.core.model.repository.ERepositoryObjectType;
 import org.talend.core.runtime.CoreRuntimePlugin;
+import org.talend.core.ui.context.ContextTreeTable.ContextTreeNode;
 import org.talend.core.ui.context.IContextModelManager;
 import org.talend.core.ui.context.cmd.ContextBuiltinToRepositoryCommand;
 import org.talend.core.ui.context.model.table.ContextTableTabChildModel;
@@ -120,26 +121,29 @@ public class ContextBuiltinToRepositoryAction extends AContextualAction {
         setEnabled(canWork);
     }
 
-    public void init(NatTable table, Object rowData) {
+    public void init(NatTable table, Object[] rowNodes) {
         this.table = table;
         this.contextManager = modelManager.getContextManager();
-        boolean canWork = table != null && rowData != null;
+        boolean canWork = table != null && rowNodes != null;
         if (canWork) {
-            if (rowData instanceof ContextTableTabParentModel) {
-                ContextTableTabParentModel param = (ContextTableTabParentModel) rowData;
-                if (!IContextParameter.BUILT_IN.equals(param.getSourceId())) {
-                    setEnabled(false);
-                    return;
-                } else {
-                    params.add(param.getContextParameter());
-                }
-            } else if (rowData instanceof ContextTableTabChildModel) {
-                ContextTableTabChildModel param = (ContextTableTabChildModel) rowData;
-                if (!IContextParameter.BUILT_IN.equals(param.getContextParameter().getSource())) {
-                    setEnabled(false);
-                    return;
-                } else {
-                    params.add(param.getContextParameter());
+            for (Object rowNode : rowNodes) {
+                Object rowData = ((ContextTreeNode) rowNode).getTreeData();
+                if (rowData instanceof ContextTableTabParentModel) {
+                    ContextTableTabParentModel param = (ContextTableTabParentModel) rowData;
+                    if (!IContextParameter.BUILT_IN.equals(param.getSourceId())) {
+                        setEnabled(false);
+                        return;
+                    } else {
+                        params.add(param.getContextParameter());
+                    }
+                } else if (rowData instanceof ContextTableTabChildModel) {
+                    ContextTableTabChildModel param = (ContextTableTabChildModel) rowData;
+                    if (!IContextParameter.BUILT_IN.equals(param.getContextParameter().getSource())) {
+                        setEnabled(false);
+                        return;
+                    } else {
+                        params.add(param.getContextParameter());
+                    }
                 }
             }
         }

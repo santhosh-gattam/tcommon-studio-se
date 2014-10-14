@@ -258,18 +258,15 @@ public class ContextTreeTable {
             bodyDataLayer.setConfigLabelAccumulator(labelAccumulator);
             registerColumnLabels(labelAccumulator, ContextRowDataListFixture.getContexts(manager.getContextManager()));
 
+            ISelectionProvider selectionProvider = new RowSelectionProvider<ContextTreeNode>(selectionLayer, bodyDataProvider,
+                    false);
+
             natTable = new NatTable(parent, NatTable.DEFAULT_STYLE_OPTIONS | SWT.BORDER, gridLayer, false);
             natTable.setConfigRegistry(configRegistry);
 
             addCustomStylingBehaviour(parent.getFont(), bodyDataProvider, columnGroupModel, manager.getContextManager());
 
-            boolean isRepositoryContext = (manager instanceof ContextComposite)
-                    && ((ContextComposite) manager).isRepositoryContext();
-
-            if (!isRepositoryContext) {
-
-                addCustomContextMenuBehavior(manager, bodyDataProvider);
-            }
+            addCustomContextMenuBehavior(manager, bodyDataProvider, selectionProvider);
 
             natTable.addConfiguration(new DefaultTreeLayerConfiguration(treeLayer));
 
@@ -297,9 +294,6 @@ public class ContextTreeTable {
             GridDataFactory.fillDefaults().grab(true, true).applyTo(natTable);
 
             // add selection listener for the context NatTable
-            ISelectionProvider selectionProvider = new RowSelectionProvider<ContextTreeNode>(selectionLayer, bodyDataProvider,
-                    false);
-
             addNatTableListener(bodyDataProvider, selectionProvider);
 
             GridDataFactory.fillDefaults().grab(true, true).applyTo(natTable);
@@ -327,20 +321,18 @@ public class ContextTreeTable {
     }
 
     private void contructContextTrees(List<ContextTableTabParentModel> listOfData) {
-        if (listOfData.size() > 0) {
-            for (ContextTableTabParentModel contextModel : listOfData) {
-                if (contextModel.hasChildren()) {
-                    createContextTreeNode(contextModel.getOrder(), manager, contextModel, TREE_CONTEXT_ROOT,
-                            contextModel.getSourceName());
-                    List<ContextTabChildModel> childModels = contextModel.getChildren();
-                    for (ContextTabChildModel childModel : childModels) {
-                        createContextTreeNode(contextModel.getOrder(), manager, childModel, contextModel.getSourceName(),
-                                childModel.getContextParameter().getName());
-                    }
-                } else {
-                    createContextTreeNode(contextModel.getOrder(), manager, contextModel, TREE_CONTEXT_ROOT, contextModel
+        for (ContextTableTabParentModel contextModel : listOfData) {
+            if (contextModel.hasChildren()) {
+                createContextTreeNode(contextModel.getOrder(), manager, contextModel, TREE_CONTEXT_ROOT,
+                        contextModel.getSourceName());
+                List<ContextTabChildModel> childModels = contextModel.getChildren();
+                for (ContextTabChildModel childModel : childModels) {
+                    createContextTreeNode(contextModel.getOrder(), manager, childModel, contextModel.getSourceName(), childModel
                             .getContextParameter().getName());
                 }
+            } else {
+                createContextTreeNode(contextModel.getOrder(), manager, contextModel, TREE_CONTEXT_ROOT, contextModel
+                        .getContextParameter().getName());
             }
         }
     }
@@ -521,8 +513,8 @@ public class ContextTreeTable {
     }
 
     private void addCustomContextMenuBehavior(final IContextModelManager modelManager,
-            final GlazedListsDataProvider<ContextTreeNode> bodyDataProvider) {
-        natTable.addConfiguration(new ContextParaModeChangeMenuConfiguration(natTable, bodyDataProvider));
+            final GlazedListsDataProvider<ContextTreeNode> bodyDataProvider, final ISelectionProvider selection) {
+        natTable.addConfiguration(new ContextParaModeChangeMenuConfiguration(natTable, bodyDataProvider, selection));
     }
 
     private void addContextColumnGroupsBehaviour(ColumnGroupHeaderLayer columnHeaderLayer, List<IContext> contexts) {

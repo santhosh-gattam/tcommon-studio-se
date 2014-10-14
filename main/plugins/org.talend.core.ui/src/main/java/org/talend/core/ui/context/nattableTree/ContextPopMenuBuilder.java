@@ -12,6 +12,7 @@
 // ============================================================================
 package org.talend.core.ui.context.nattableTree;
 
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.nebula.widgets.nattable.NatTable;
 import org.eclipse.nebula.widgets.nattable.data.IDataProvider;
 import org.eclipse.nebula.widgets.nattable.ui.menu.PopupMenuBuilder;
@@ -31,8 +32,8 @@ public class ContextPopMenuBuilder extends PopupMenuBuilder {
         super(parent);
     }
 
-    public PopupMenuBuilder withChangeModeMenuItem(IDataProvider dataProvider) {
-        return withMenuItemProvider(ContextMenuItemProviders.changeModeMenuItemProvider(dataProvider));
+    public PopupMenuBuilder withChangeModeMenuItem(IDataProvider dataProvider, ISelectionProvider selection) {
+        return withMenuItemProvider(ContextMenuItemProviders.changeModeMenuItemProvider(dataProvider, selection));
     }
 
 }

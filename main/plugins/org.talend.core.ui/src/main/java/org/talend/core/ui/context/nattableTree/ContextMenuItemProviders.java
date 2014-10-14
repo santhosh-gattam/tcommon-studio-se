@@ -13,6 +13,8 @@
 package org.talend.core.ui.context.nattableTree;
 
 import org.eclipse.gef.commands.Command;
+import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.nebula.widgets.nattable.NatTable;
 import org.eclipse.nebula.widgets.nattable.data.IDataProvider;
 import org.eclipse.nebula.widgets.nattable.extension.glazedlists.GlazedListsDataProvider;
@@ -29,7 +31,6 @@ import org.talend.core.ui.context.ContextTreeTable.ContextTreeNode;
 import org.talend.core.ui.context.IContextModelManager;
 import org.talend.core.ui.context.action.ContextBuiltinToRepositoryAction;
 import org.talend.core.ui.context.model.table.ContextTableTabChildModel;
-import org.talend.core.ui.context.model.table.ContextTableTabParentModel;
 import org.talend.core.ui.i18n.Messages;
 
 /**
@@ -39,7 +40,8 @@ import org.talend.core.ui.i18n.Messages;
 public class ContextMenuItemProviders extends MenuItemProviders {
 
     // the item of change the context parameter's mode such as from repositroy to build-in
-    public static IMenuItemProvider changeModeMenuItemProvider(final IDataProvider dataProvider) {
+    public static IMenuItemProvider changeModeMenuItemProvider(final IDataProvider dataProvider,
+            final ISelectionProvider selection) {
         return new IMenuItemProvider() {
 
             @Override
@@ -52,27 +54,18 @@ public class ContextMenuItemProviders extends MenuItemProviders {
 
                     @Override
                     public void widgetSelected(SelectionEvent e) {
-                        NatEventData natEventData = getNatEventData(e);
-                        NatTable nt = natEventData.getNatTable();
-                        int rowPosition = natEventData.getRowPosition();
-                        int rowIndex = nt.getRowIndexByPosition(rowPosition);
-                        @SuppressWarnings("unchecked")
-                        ContextTreeNode treeNode = ((GlazedListsDataProvider<ContextTreeNode>) dataProvider)
-                                .getRowObject(rowIndex);
-                        IContextModelManager manager = treeNode.getManager();
-                        if (treeNode.getTreeData() instanceof ContextTableTabChildModel) {
-                            ContextTableTabChildModel childModel = (ContextTableTabChildModel) treeNode.getTreeData();
-                            String sourceId = childModel.getSourceId();
-                            if (manager.getContextManager() != null) {
-                                if (!sourceId.equals(IContextParameter.BUILT_IN)) {
-                                    Command cmd = new ContextParaChangeModeCommand(manager, treeNode, childModel
-                                            .getContextParameter());
-                                    if (manager.getCommandStack() == null) {
-                                        cmd.execute();
-                                    } else {
-                                        manager.getCommandStack().execute(cmd);
-                                    }
+                        IStructuredSelection selectRows = (IStructuredSelection) selection.getSelection();
+                        if (selectRows.isEmpty()) {
+                            ContextTreeNode treeNode = getTreeNodeByRightClickPostion(dataProvider, e);
+                            handleRepositoryToBuiltIn(treeNode);
+                        } else {
+                            Object[] obj = getTreeNodesByMultipleSelection(selectRows);
+                            for (Object object : obj) {
+                                if (object == null) {
+                                    return;
                                 }
+                                ContextTreeNode treeNode = (ContextTreeNode) object;
+                                handleRepositoryToBuiltIn(treeNode);
                             }
                         }
                     }
@@ -86,26 +79,67 @@ public class ContextMenuItemProviders extends MenuItemProviders {
 
                     @Override
                     public void widgetSelected(SelectionEvent e) {
-                        NatEventData natEventData = getNatEventData(e);
-                        NatTable nt = natEventData.getNatTable();
-                        int rowPosition = natEventData.getRowPosition();
-                        int rowIndex = nt.getRowIndexByPosition(rowPosition);
-                        @SuppressWarnings("unchecked")
-                        ContextTreeNode treeNode = ((GlazedListsDataProvider<ContextTreeNode>) dataProvider)
-                                .getRowObject(rowIndex);
-                        IContextModelManager manager = treeNode.getManager();
-                        if (treeNode.getTreeData() instanceof ContextTableTabParentModel) {
-                            ContextTableTabParentModel paraModel = (ContextTableTabParentModel) treeNode.getTreeData();
-                            String sourceId = paraModel.getSourceId();
-                            if (sourceId.equals(IContextParameter.BUILT_IN)) {
-                                ContextBuiltinToRepositoryAction action = new ContextBuiltinToRepositoryAction(manager);
-                                action.init(natTable, treeNode.getTreeData());
-                                action.run();
-                            }
+                        IStructuredSelection selectRows = (IStructuredSelection) selection.getSelection();
+                        if (selectRows.isEmpty()) {
+                            ContextTreeNode treeNode = getTreeNodeByRightClickPostion(dataProvider, e);
+                            Object[] obj = new Object[1];
+                            obj[0] = treeNode;
+                            handleBuiltInToRepository(natTable, obj);
+                        } else {
+                            Object[] obj = getTreeNodesByMultipleSelection(selectRows);
+                            handleBuiltInToRepository(natTable, obj);
                         }
                     }
                 });
             }
         };
+    }
+
+    private static void handleBuiltInToRepository(final NatTable natTable, Object[] realTreeNodes) {
+        IContextModelManager modelManager = ((ContextTreeNode) realTreeNodes[0]).getManager();
+        ContextBuiltinToRepositoryAction action = new ContextBuiltinToRepositoryAction(modelManager);
+        action.init(natTable, realTreeNodes);
+        action.run();
+    }
+
+    private static void handleRepositoryToBuiltIn(ContextTreeNode treeNode) {
+        IContextModelManager manager = treeNode.getManager();
+        Object rowData = treeNode.getTreeData();
+        if (rowData instanceof ContextTableTabChildModel) {
+            ContextTableTabChildModel childModel = (ContextTableTabChildModel) rowData;
+            String sourceId = childModel.getSourceId();
+            if (manager.getContextManager() != null) {
+                if (!sourceId.equals(IContextParameter.BUILT_IN)) {
+                    Command cmd = new ContextParaChangeModeCommand(manager, treeNode, childModel.getContextParameter());
+                    if (manager.getCommandStack() == null) {
+                        cmd.execute();
+                    } else {
+                        manager.getCommandStack().execute(cmd);
+                    }
+                }
+            }
+        }
+    }
+
+    private static ContextTreeNode getTreeNodeByRightClickPostion(final IDataProvider dataProvider, SelectionEvent e) {
+        NatEventData natEventData = getNatEventData(e);
+        NatTable nt = natEventData.getNatTable();
+        int rowPosition = natEventData.getRowPosition();
+        int rowIndex = nt.getRowIndexByPosition(rowPosition);
+        @SuppressWarnings("unchecked")
+        ContextTreeNode treeNode = ((GlazedListsDataProvider<ContextTreeNode>) dataProvider).getRowObject(rowIndex);
+        return treeNode;
+    }
+
+    private static Object[] getTreeNodesByMultipleSelection(IStructuredSelection sels) {
+        Object[] obj = new Object[sels.toList().size()];
+        int i = 0;
+        for (Object node : sels.toList().toArray()) {
+            if (node instanceof ContextTreeNode) {
+                obj[i++] = node;
+            }
+
+        }
+        return obj;
     }
 }
