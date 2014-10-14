@@ -404,8 +404,8 @@ public final class MetadataTalendType {
                 return dbms;
             }
         }
-
-        throw new IllegalArgumentException(Messages.getString("MetadataTalendType.dbIdNotFound", dbmsId)); //$NON-NLS-1$
+        ExceptionHandler.log(Messages.getString("MetadataTalendType.dbIdNotFound", dbmsId));
+        return null;
     }
 
     /**

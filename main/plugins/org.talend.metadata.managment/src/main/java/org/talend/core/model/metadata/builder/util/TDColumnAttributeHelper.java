@@ -276,10 +276,15 @@ public class TDColumnAttributeHelper {
         String mapping = databaseconnection == null ? null : databaseconnection.getDbmsId();
         if (databaseconnection != null && mapping != null) {
             MappingTypeRetriever mappingTypeRetriever = MetadataTalendType.getMappingTypeRetriever(mapping);
-            String talendType = mappingTypeRetriever.getDefaultSelectedTalendType(typeName, ExtractMetaDataUtils.getInstance()
-                    .getIntMetaDataInfo(resutSet, "COLUMN_SIZE"), ExtractMetaDataUtils.getInstance().getIntMetaDataInfo(resutSet, //$NON-NLS-1$
-                    "DECIMAL_DIGITS")); //$NON-NLS-1$
-            column.setTalendType(talendType);
+            // in case we're using the SQLBuilder, the mapping might be null (for JDBC)
+            if (mappingTypeRetriever != null) {
+                String talendType = mappingTypeRetriever
+                        .getDefaultSelectedTalendType(
+                                typeName,
+                                ExtractMetaDataUtils.getInstance().getIntMetaDataInfo(resutSet, "COLUMN_SIZE"), ExtractMetaDataUtils.getInstance().getIntMetaDataInfo(resutSet, //$NON-NLS-1$
+                                                "DECIMAL_DIGITS")); //$NON-NLS-1$
+                column.setTalendType(talendType);
+            }
             // ADD xqliu 2010-12-28 bug 16538
             /* should set truely source type,hywang */
 
