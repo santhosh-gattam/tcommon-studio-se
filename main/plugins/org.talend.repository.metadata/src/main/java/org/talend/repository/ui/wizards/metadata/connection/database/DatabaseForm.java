@@ -1028,6 +1028,8 @@ public class DatabaseForm extends AbstractForm {
     }
 
     private void initForImpalaAuthentication() {
+        authenticationGrpForImpala.setVisible(false);
+        authenticationGrpForImpala.getParent().layout();
         useKerberosForImpala.setSelection(false);
         GridData hadoopData = (GridData) authenticationComForImpala.getLayoutData();
         hadoopData.exclude = true;
@@ -1493,7 +1495,7 @@ public class DatabaseForm extends AbstractForm {
             createHadoopLinkPart(parent);
         }
 
-        impalaSettingGroup = Form.createGroup(parent, 4, Messages.getString("DatabaseForm.impala.settings"), 60); //$NON-NLS-1$
+        impalaSettingGroup = Form.createGroup(parent, 5, Messages.getString("DatabaseForm.impala.settings"), 60); //$NON-NLS-1$
         GridLayout parentLayout = (GridLayout) parent.getLayout();
         GridDataFactory.fillDefaults().span(parentLayout.numColumns, 1).applyTo(impalaSettingGroup);
 
@@ -2832,6 +2834,8 @@ public class DatabaseForm extends AbstractForm {
             public void modifyText(final ModifyEvent e) {
                 getConnection().getParameters().clear();
                 urlConnectionStringText.setEditable(false);
+                authenticationGrpForImpala.setVisible(false);
+                authenticationGrpForImpala.getParent().layout();
                 // add for bug 12649
                 boolean isGeneralJDBC = isGeneralJDBC();
                 if (isGeneralJDBC) {
@@ -2862,6 +2866,9 @@ public class DatabaseForm extends AbstractForm {
                     initHBaseSettings();
                 } else if (isDBTypeSelected(EDatabaseConnTemplate.IMPALA)) {
                     initImpalaSettings();
+                    authenticationGrpForImpala.setVisible(true);
+                    authenticationGrpForImpala.getParent().layout();
+                    getConnection().setDbVersionString("");
                 } else {
                     if (urlConnectionStringText != null) {
                         urlConnectionStringText.setText(""); //$NON-NLS-1$
