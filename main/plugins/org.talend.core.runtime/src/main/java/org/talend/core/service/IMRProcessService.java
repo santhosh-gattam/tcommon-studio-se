@@ -44,4 +44,6 @@ public interface IMRProcessService extends IService {
     public List<IRepositoryViewObject> getMapReduceProcesses(Project project);
 
     public void generateMRInfosParameter(IProcess2 process);
+
+    public boolean isProgressBarNeeded(IProcess2 process);
 }
