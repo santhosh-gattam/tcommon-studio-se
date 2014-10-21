@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Sqlite3 Plug-in
 Bundle-SymbolicName: org.talend.libraries.jdbc.sqlite3
 Bundle-Version: 2.2.0.qualifier
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ClassPath: .,
  lib/sqlitejdbc-v056.jar
 Export-Package: org.ibex.nestedvm,

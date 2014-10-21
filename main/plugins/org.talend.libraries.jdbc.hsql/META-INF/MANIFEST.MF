@@ -17,5 +17,4 @@ Export-Package:
  org.hsqldb.scriptio,
  org.hsqldb.types,
  org.hsqldb.util
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy

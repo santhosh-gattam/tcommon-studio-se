@@ -7,7 +7,6 @@ Bundle-ClassPath: .
 Bundle-Activator: orgomg.cwm.objectmodel.core.presentation.Cwm_mipEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: orgomg.cwm.analysis.businessnomenclature.presentation,
  orgomg.cwm.analysis.datamining.presentation,
  orgomg.cwm.analysis.informationvisualization.presentation,

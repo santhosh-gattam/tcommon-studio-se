@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Ingres Plug-in
 Bundle-SymbolicName: org.talend.libraries.jdbc.ingres;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ClassPath: lib/iijdbc.jar,
  .
 Export-Package: com.ingres.gcf.dam,

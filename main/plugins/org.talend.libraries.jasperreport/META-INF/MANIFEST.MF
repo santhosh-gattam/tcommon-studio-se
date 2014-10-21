@@ -304,6 +304,5 @@ Require-Bundle: org.talend.libraries.hibernate,
  org.talend.libraries.jdtcompiler;resolution:=optional
 Eclipse-BuddyPolicy: registered
 Eclipse-RegisterBuddy: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 

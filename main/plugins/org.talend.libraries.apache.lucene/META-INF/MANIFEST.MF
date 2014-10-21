@@ -4,7 +4,6 @@ Bundle-Name: Lucene plug-in
 Bundle-SymbolicName: org.talend.libraries.apache.lucene
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: .Talend SA.
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ClassPath: lib/lucene-core-3.0.1.jar,
  .
 Export-Package: org.apache.lucene,
