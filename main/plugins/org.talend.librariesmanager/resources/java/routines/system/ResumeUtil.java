@@ -19,6 +19,7 @@ import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -329,15 +330,19 @@ public class ResumeUtil {
 
     // Util: convert the context variable to json style text.
     // feature:11296
-    public static String convertToJsonText(Object context) {
+    public static String convertToJsonText(Object context,List<String> parametersToEncrypt) {
         String jsonText = "";
         try {
-            // first node
             JSONObject firstNode = new JSONObject();
-            // second node
             JSONObject secondNode = new JSONObject(context);
+            for(String parameterToEncrypt : parametersToEncrypt) {
+            	if(secondNode.get(parameterToEncrypt) == null) {
+            		continue;
+            	}
+            	
+            	secondNode.put(parameterToEncrypt,routines.system.PasswordEncryptUtil.encryptPassword(secondNode.getString(parameterToEncrypt)));
+            }
             firstNode.putOpt("context_parameters", secondNode);
-            // System.out.println(firstNode.toString(8));
             jsonText = firstNode.toString(8);
         } catch (Exception e) {
             e.printStackTrace();
