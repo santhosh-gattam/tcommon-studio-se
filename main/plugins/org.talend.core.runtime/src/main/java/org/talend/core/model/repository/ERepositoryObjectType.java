@@ -431,6 +431,8 @@ public class ERepositoryObjectType extends DynaEnum<ERepositoryObjectType> {
 
     public final static ERepositoryObjectType METADATA_SAPCONNECTIONS = ERepositoryObjectType.valueOf("METADATA_SAPCONNECTIONS");
 
+    public final static ERepositoryObjectType METADATA_SAP_TABLE = ERepositoryObjectType.valueOf("METADATA_SAP_TABLE");
+
     public final static ERepositoryObjectType METADATA_FILE_EBCDIC = ERepositoryObjectType.valueOf("METADATA_FILE_EBCDIC");
 
     public final static ERepositoryObjectType METADATA_VALIDATION_RULES = ERepositoryObjectType

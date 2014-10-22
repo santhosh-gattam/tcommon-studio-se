@@ -1456,6 +1456,7 @@ public class ProjectRepositoryNode extends RepositoryNode implements IProjectRep
         StableRepositoryNode tableContainer = new StableRepositoryNode(node,
                 Messages.getString("ProjectRepositoryNode.sapTables"), ECoreImage.FOLDER_CLOSE_ICON); //$NON-NLS-1$
         tableContainer.setChildrenObjectType(ERepositoryObjectType.METADATA_CON_TABLE);
+        tableContainer.setProperties(EProperties.CONTENT_TYPE, ERepositoryObjectType.METADATA_SAP_TABLE);
         node.getChildren().add(tableContainer);
 
         List<MetadataTable> tablesWithOrders = ConnectionHelper.getTablesWithOrders(metadataConnection);

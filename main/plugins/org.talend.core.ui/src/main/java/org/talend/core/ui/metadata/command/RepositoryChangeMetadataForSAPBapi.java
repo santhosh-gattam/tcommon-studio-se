@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.gef.commands.Command;
 import org.talend.core.model.metadata.IMetadataTable;
 import org.talend.core.model.metadata.ISAPConstant;
@@ -46,6 +47,10 @@ public class RepositoryChangeMetadataForSAPBapi extends Command {
     private IMetadataTable newMetadatTable, oldMetadataTable;
 
     private SAPFunctionUnit functionUnit;
+
+    private final String ISINPUT = "isinput"; //$NON-NLS-1$
+
+    private final String TRUE = "true"; //$NON-NLS-1$
 
     public RepositoryChangeMetadataForSAPBapi(INode node, SAPFunctionUnit functionUnit, IMetadataTable newMetadatTable,
             IMetadataTable oldMetadataTable) {
@@ -99,12 +104,20 @@ public class RepositoryChangeMetadataForSAPBapi extends Command {
                 inputTableParam.setValue(paramValues);
             }
             if (newMetadatTable != null) {
+                Map<String, String> properties = newMetadatTable.getAdditionalProperties();
+                if (properties != null) {
+                    properties.put(ISINPUT, TRUE);
+                }
                 // create new line
                 createNewSchema(paramValues, newMetadatTable, MetadataSchemaType.INPUT.name());
             } else {
                 if (functionUnit != null) {
                     EList<MetadataTable> tables = functionUnit.getInputTables();
                     for (MetadataTable table : tables) {
+                        EMap<String, String> properties = table.getAdditionalProperties();
+                        if (properties != null) {
+                            properties.put(ISINPUT, TRUE);
+                        }
                         createNewSchema(paramValues, ConvertionHelper.convert(table), MetadataSchemaType.INPUT.name());
                     }
                 }
@@ -129,22 +142,23 @@ public class RepositoryChangeMetadataForSAPBapi extends Command {
             if (found) {
                 return;
             }
+            Boolean isInput = MetadataSchemaType.INPUT.name().equals(tableType);
             HashMap valueMap = new HashMap<String, Object>();
-            paramValues.add(valueMap);
 
             String uinqueTableName = node.getProcess().generateUniqueConnectionName(
                     MultiSchemasUtil.getConnectionBaseName(newMetadatTable.getLabel()));
-            String paramType = getParamType(newMetadatTable);
+            String paramType = getParamType(newMetadatTable, isInput);
             if (paramType == null) {
                 return;
             }
 
-            valueMap.put(ISAPConstant.NAME, uinqueTableName);
+            valueMap.put(ISAPConstant.NAME, TalendQuoteUtils.addQuotes(newMetadatTable.getLabel()));
             valueMap.put(ISAPConstant.TYPE, paramType);
             valueMap.put(ISAPConstant.FIELD_SCHEMA, uinqueTableName);
-            if (MetadataSchemaType.INPUT.name().equals(tableType)) {
-                valueMap.put(ISAPConstant.PARENT_ROW, "");
+            if (isInput) {
+                valueMap.put(ISAPConstant.PARENT_ROW, ""); //$NON-NLS-1$
             }
+            paramValues.add(valueMap);
 
             if (oldMetadataTable != null) {
                 CoreUIPlugin.getDefault().getDesignerCoreService().removeConnection(node, oldMetadataTable.getTableName());
@@ -152,12 +166,13 @@ public class RepositoryChangeMetadataForSAPBapi extends Command {
             }
 
             newMetadatTable.setTableName(uinqueTableName);
+            newMetadatTable.setLabel(uinqueTableName);
             node.getProcess().addUniqueConnectionName(uinqueTableName);
             node.getMetadataList().add(newMetadatTable);
         }
     }
 
-    private String getParamType(IMetadataTable table) {
+    private String getParamType(IMetadataTable table, boolean isInput) {
         if (functionUnit == null) {
             return null;
         }
@@ -166,8 +181,14 @@ public class RepositoryChangeMetadataForSAPBapi extends Command {
             return null;
         }
 
-        // SCHEMAS is output param
-        for (SAPFunctionParameter parameter : paramData.getOutputRoot().getChildren()) {
+        EList<SAPFunctionParameter> parameterChildrenList = null;
+        if (isInput) {
+            parameterChildrenList = paramData.getInputRoot().getChildren();
+        } else {
+            parameterChildrenList = paramData.getOutputRoot().getChildren();
+        }
+
+        for (SAPFunctionParameter parameter : parameterChildrenList) {
             if (parameter.getName().equals(table.getTableName())) {
                 if (parameter.getType().equals(ISAPConstant.PARAM_STRUCTURE)) {
                     return ISAPConstant.PARAM_STRUCTURE.toUpperCase();
@@ -177,7 +198,11 @@ public class RepositoryChangeMetadataForSAPBapi extends Command {
                     return ISAPConstant.PARAM_SINGLE.toUpperCase();
                 }
             }
-
+        }
+        // if there is no parameter named "SINGLE_PARAM_TABLE_NAME" in the paramData, then means this param is added by
+        // Studio
+        if (ISAPConstant.SINGLE_PARAM_TABLE_NAME.equals(table.getTableName())) {
+            return ISAPConstant.PARAM_TABLE.toUpperCase();
         }
         return null;
     }

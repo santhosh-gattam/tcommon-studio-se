@@ -203,13 +203,15 @@ public class RepoDoubleClickAction extends Action {
         if (nodeType == ERepositoryObjectType.METADATA_CON_TABLE) {
             RepositoryNode node = theNode.getParent();
             nodeType = (ERepositoryObjectType) node.getProperties(EProperties.CONTENT_TYPE);
-            if (nodeType == ERepositoryObjectType.METADATA_SAP_FUNCTION || nodeType == ERepositoryObjectType.METADATA_SAP_IDOC) {
+            if (nodeType == ERepositoryObjectType.METADATA_SAP_FUNCTION || nodeType == ERepositoryObjectType.METADATA_SAP_IDOC
+                    || nodeType == ERepositoryObjectType.METADATA_SAP_TABLE) {
                 return true;
             }
         } else if (nodeType == ERepositoryObjectType.METADATA_CON_COLUMN) {
             RepositoryNode node = theNode.getParent().getParent().getParent();
             nodeType = (ERepositoryObjectType) node.getProperties(EProperties.CONTENT_TYPE);
-            if (nodeType == ERepositoryObjectType.METADATA_SAP_FUNCTION || nodeType == ERepositoryObjectType.METADATA_SAP_IDOC) {
+            if (nodeType == ERepositoryObjectType.METADATA_SAP_FUNCTION || nodeType == ERepositoryObjectType.METADATA_SAP_IDOC
+                    || nodeType == ERepositoryObjectType.METADATA_SAP_TABLE) {
                 return true;
             }
         }
