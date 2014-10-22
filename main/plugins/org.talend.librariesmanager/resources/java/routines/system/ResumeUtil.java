@@ -330,17 +330,20 @@ public class ResumeUtil {
 
     // Util: convert the context variable to json style text.
     // feature:11296
-    public static String convertToJsonText(Object context,List<String> parametersToEncrypt) {
+    public static String convertToJsonText(Object context, List<String> parametersToEncrypt) {
         String jsonText = "";
         try {
             JSONObject firstNode = new JSONObject();
             JSONObject secondNode = new JSONObject(context);
-            for(String parameterToEncrypt : parametersToEncrypt) {
-            	if(secondNode.get(parameterToEncrypt) == null) {
-            		continue;
-            	}
-            	
-            	secondNode.put(parameterToEncrypt,routines.system.PasswordEncryptUtil.encryptPassword(secondNode.getString(parameterToEncrypt)));
+            if (parametersToEncrypt != null) {
+                for (String parameterToEncrypt : parametersToEncrypt) {
+                    if (secondNode.get(parameterToEncrypt) == null) {
+                        continue;
+                    }
+
+                    secondNode.put(parameterToEncrypt,
+                            routines.system.PasswordEncryptUtil.encryptPassword(secondNode.getString(parameterToEncrypt)));
+                }
             }
             firstNode.putOpt("context_parameters", secondNode);
             jsonText = firstNode.toString(8);
