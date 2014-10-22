@@ -328,8 +328,7 @@ public class ResumeUtil {
         return str;
     }
 
-    // Util: convert the context variable to json style text.
-    // feature:11296
+    // to support encrypt the password in the resume
     public static String convertToJsonText(Object context, List<String> parametersToEncrypt) {
         String jsonText = "";
         try {
@@ -352,6 +351,13 @@ public class ResumeUtil {
         }
 
         return jsonText;
+    }
+
+    // Util: convert the context variable to json style text.
+    // feature:11296
+    // @Deprecated
+    public static String convertToJsonText(Object context) {
+        return convertToJsonText(context, null);
     }
 
     // 7 fields
