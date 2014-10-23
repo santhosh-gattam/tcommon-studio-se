@@ -27,7 +27,9 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.talend.commons.exception.PersistenceException;
 import org.talend.commons.ui.gmf.util.DisplayUtils;
 import org.talend.commons.ui.runtime.exception.ExceptionHandler;
+import org.talend.core.GlobalServiceRegister;
 import org.talend.core.PluginChecker;
+import org.talend.core.hadoop.IHadoopClusterService;
 import org.talend.core.model.general.Project;
 import org.talend.core.model.properties.ConnectionItem;
 import org.talend.core.model.properties.FolderItem;
@@ -320,10 +322,11 @@ public class RepositoryNodeUtilities {
                 RepositoryNode node = (RepositoryNode) childNode;
                 if (isRepositoryFolder(node) || node.getType() == ENodeType.REFERENCED_PROJECT) {
                     folderChild.add(node);
+                } else if (isCurNodeUnderHadoopCluster(node, curNode)) {
+                    return getNodeOfHadoopCluster(node, curNode);
                 } else if (node.getId().equals(curNode.getId()) && node.getObjectType() == curNode.getRepositoryObjectType()) {
                     return node;
                 }
-
             }
             for (IRepositoryNode folderNode : folderChild) {
                 final RepositoryNode repositoryNode = getRepositoryNode(folderNode, curNode, view, expanded);
@@ -493,6 +496,42 @@ public class RepositoryNodeUtilities {
             return true;
         }
         return false;
+    }
+
+    private static boolean isCurNodeUnderHadoopCluster(IRepositoryNode parentNode, IRepositoryViewObject curNodeObject) {
+        if (GlobalServiceRegister.getDefault().isServiceRegistered(IHadoopClusterService.class)) {
+            IHadoopClusterService hadoopClusterService = (IHadoopClusterService) GlobalServiceRegister.getDefault().getService(
+                    IHadoopClusterService.class);
+            boolean isParentNodeOk = hadoopClusterService.isHadoopClusterNode(parentNode);
+            if (isParentNodeOk) {
+                boolean isCurrentNodeOk = false;
+                if (curNodeObject.getRepositoryNode() != null) {
+                    isCurrentNodeOk = hadoopClusterService.isHadoopSubnode(curNodeObject.getRepositoryNode());
+                } else {
+                    isCurrentNodeOk = hadoopClusterService.isHadoopSubItem(curNodeObject.getProperty().getItem());
+                }
+                return isCurrentNodeOk;
+            }
+        }
+        return false;
+    }
+
+    private static RepositoryNode getNodeOfHadoopCluster(IRepositoryNode clusterNode, IRepositoryViewObject curNode) {
+        if (GlobalServiceRegister.getDefault().isServiceRegistered(IHadoopClusterService.class)) {
+            IHadoopClusterService hadoopClusterService = (IHadoopClusterService) GlobalServiceRegister.getDefault().getService(
+                    IHadoopClusterService.class);
+            if (curNode.getRepositoryNode() != null) {
+                if (hadoopClusterService.isHadoopSubnode(curNode.getRepositoryNode())) {
+                    return (RepositoryNode) clusterNode;
+                }
+            } else {
+                Item parentClusterItem = hadoopClusterService.getHadoopClusterBySubitemId(curNode.getId());
+                if (clusterNode.getId().equals(parentClusterItem.getProperty().getId())) {
+                    return (RepositoryNode) clusterNode;
+                }
+            }
+        }
+        return null;
     }
 
     public static RepositoryNode getMetadataTableFromConnection(String schemaValue) {
