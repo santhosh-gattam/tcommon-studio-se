@@ -55,7 +55,7 @@
                     <talendType type="id_BigDecimal" default="true" />
                 </dbType>    
                 <dbType type="BIG_INTEGER" >
-                    <talendType type="id_Integer"  default="true"/>
+                    <talendType type="id_Object" default="true"/>
                 </dbType> 
                 <dbType type="BYTE">
                     <talendType type="id_Byte" default="true" />
