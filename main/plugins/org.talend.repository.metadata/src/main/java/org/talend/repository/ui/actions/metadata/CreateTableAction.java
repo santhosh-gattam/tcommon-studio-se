@@ -81,6 +81,7 @@ public class CreateTableAction extends AbstractCreateTableAction {
         this.node = node;
     }
 
+    @Override
     protected void doRun() {
         RepositoryNode metadataNode = null;
         if (node == null && repositoryNode != null) {
@@ -150,6 +151,8 @@ public class CreateTableAction extends AbstractCreateTableAction {
             createWSDLSchemaWizard(node, false);
         } else if (ERepositoryObjectType.METADATA_SALESFORCE_SCHEMA.equals(nodeType)) {
             createSalesforceSchemaWizard(node, false);
+        } else {
+            createExtenseNodeSchemaWizard(nodeType, node, false);
         }
         this.node = null;
     }
