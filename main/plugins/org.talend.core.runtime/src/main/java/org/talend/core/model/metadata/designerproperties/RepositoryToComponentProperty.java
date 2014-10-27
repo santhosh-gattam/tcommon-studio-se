@@ -399,7 +399,11 @@ public class RepositoryToComponentProperty {
                 Map<String, Object> map = new HashMap<String, Object>();
                 if (property.getPropertyName() != null && !"".equals(property.getPropertyName())) {
                     map.put("PROPERTY", TalendQuoteUtils.addQuotes(property.getPropertyName()));//$NON-NLS-1$
-                    map.put("VALUE", TalendQuoteUtils.addQuotes(property.getValue()));//$NON-NLS-1$                   
+                    if (isContextMode(connection, property.getValue())) {
+                        map.put("VALUE", property.getValue());//$NON-NLS-1$  
+                    } else {
+                        map.put("VALUE", TalendQuoteUtils.addQuotes(property.getValue()));//$NON-NLS-1$   
+                    }
                     values.add(map);
                 }
             }

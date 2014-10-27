@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
 import org.talend.core.language.ECodeLanguage;
 import org.talend.core.language.LanguageManager;
 import org.talend.core.model.context.ContextUtils;
+import org.talend.core.model.metadata.builder.connection.AdditionalConnectionProperty;
 import org.talend.core.model.metadata.builder.connection.ConnectionFactory;
 import org.talend.core.model.metadata.builder.connection.FTPConnection;
 import org.talend.core.model.metadata.builder.connection.LDAPSchemaConnection;
@@ -566,58 +567,129 @@ public final class OtherConnectionContextUtils {
         return varList;
     }
 
-    static List<IContextParameter> getSAPConnectionVariables(String prefixName, SAPConnection conn) {
-        if (conn == null || prefixName == null) {
+    static List<IContextParameter> getSAPConnectionVariables(final String prefixName, SAPConnection conn,
+            Set<IConnParamName> paramSet) {
+
+        if (conn == null || prefixName == null || paramSet == null || paramSet.isEmpty()) {
             return Collections.emptyList();
         }
+
         List<IContextParameter> varList = new ArrayList<IContextParameter>();
-        prefixName = prefixName + ConnectionContextHelper.LINE;
+        String paramPrefix = prefixName + ConnectionContextHelper.LINE;
         String paramName = null;
-
-        paramName = prefixName + EParamName.Client;
-        ConnectionContextHelper.createParameters(varList, paramName, conn.getClient());
-
-        paramName = prefixName + EParamName.Host;
-        ConnectionContextHelper.createParameters(varList, paramName, conn.getHost());
-
-        paramName = prefixName + EParamName.UserName;
-        ConnectionContextHelper.createParameters(varList, paramName, conn.getUsername());
-
-        paramName = prefixName + EParamName.Password;
-        ConnectionContextHelper.createParameters(varList, paramName, conn.getValue(conn.getPassword(), false),
-                JavaTypesManager.PASSWORD);
-
-        paramName = prefixName + EParamName.SystemNumber;
-        ConnectionContextHelper.createParameters(varList, paramName, conn.getSystemNumber());
-
-        paramName = prefixName + EParamName.Language;
-        ConnectionContextHelper.createParameters(varList, paramName, conn.getLanguage());
+        for (IConnParamName param : paramSet) {
+            if (param instanceof EParamName) {
+                EParamName sapParam = (EParamName) param;
+                paramName = paramPrefix + sapParam;
+                switch (sapParam) {
+                case Client:
+                    ConnectionContextHelper.createParameters(varList, paramName, conn.getClient());
+                    break;
+                case Host:
+                    ConnectionContextHelper.createParameters(varList, paramName, conn.getHost());
+                    break;
+                case UserName:
+                    ConnectionContextHelper.createParameters(varList, paramName, conn.getUsername());
+                    break;
+                case Password:
+                    ConnectionContextHelper.createParameters(varList, paramName, conn.getValue(conn.getPassword(), false),
+                            JavaTypesManager.PASSWORD);
+                    break;
+                case SystemNumber:
+                    ConnectionContextHelper.createParameters(varList, paramName, conn.getSystemNumber());
+                    break;
+                case Language:
+                    ConnectionContextHelper.createParameters(varList, paramName, conn.getLanguage());
+                    break;
+                default:
+                }
+            }
+        }
+        // Create sap context parameters for additional properties
+        for (AdditionalConnectionProperty sapProperty : conn.getAdditionalProperties()) {
+            ConnectionContextHelper.createParameters(varList, sapProperty.getPropertyName(), sapProperty.getValue());
+        }
 
         return varList;
     }
 
-    static void setSAPConnectionProperties(String prefixName, SAPConnection conn) {
-        if (conn == null || prefixName == null) {
+    static void setSAPConnectionPropertiesForContextMode(String prefixName, SAPConnection sapCon, Set<IConnParamName> paramSet) {
+
+        if (sapCon == null || prefixName == null) {
+            return;
         }
+
         String originalVariableName = prefixName + ConnectionContextHelper.LINE;
-        String paramName = null;
-        paramName = originalVariableName + EParamName.Client;
-        conn.setClient(ContextParameterUtils.getNewScriptCode(paramName, LANGUAGE));
+        String sapVariableName = null;
+        for (IConnParamName param : paramSet) {
+            if (param instanceof EParamName) {
+                EParamName sapParam = (EParamName) param;
+                originalVariableName = prefixName + ConnectionContextHelper.LINE;
+                sapVariableName = originalVariableName + sapParam;
+                setSAPConnnectionBasicPropertiesForContextMode(sapCon, sapParam, sapVariableName);
+            }
+        }
+        setSAPConnectionAdditionPropertiesForContextMode(sapCon);
+    }
 
-        paramName = originalVariableName + EParamName.Host;
-        conn.setHost(ContextParameterUtils.getNewScriptCode(paramName, LANGUAGE));
+    static void setSAPConnectionPropertiesForExistContextMode(SAPConnection sapConn, Set<IConnParamName> paramSet,
+            Map<ContextItem, List<ConectionAdaptContextVariableModel>> map) {
+        if (sapConn == null) {
+            return;
+        }
 
-        paramName = originalVariableName + EParamName.UserName;
-        conn.setUsername(ContextParameterUtils.getNewScriptCode(paramName, LANGUAGE));
+        String sapVariableName = null;
+        ContextItem currentContext = null;
+        for (IConnParamName param : paramSet) {
+            if (param instanceof EParamName) {
+                EParamName sapParam = (EParamName) param;
+                if (map != null && map.size() > 0) {
+                    for (Map.Entry<ContextItem, List<ConectionAdaptContextVariableModel>> entry : map.entrySet()) {
+                        currentContext = entry.getKey();
+                        List<ConectionAdaptContextVariableModel> modelList = entry.getValue();
+                        for (ConectionAdaptContextVariableModel model : modelList) {
+                            if (model.getValue().equals(sapParam.name())) {
+                                sapVariableName = model.getName();
+                                break;
+                            }
+                        }
+                    }
+                }
+                sapVariableName = getCorrectVariableName(currentContext, sapVariableName, sapParam);
+                setSAPConnnectionBasicPropertiesForContextMode(sapConn, sapParam, sapVariableName);
+            }
+        }
+        setSAPConnectionAdditionPropertiesForContextMode(sapConn);
+    }
 
-        paramName = originalVariableName + EParamName.Password;
-        conn.setPassword(ContextParameterUtils.getNewScriptCode(paramName, LANGUAGE));
+    static void setSAPConnnectionBasicPropertiesForContextMode(SAPConnection sapConn, EParamName sapParam, String sapBasicVarName) {
+        switch (sapParam) {
+        case Client:
+            sapConn.setClient(ContextParameterUtils.getNewScriptCode(sapBasicVarName, LANGUAGE));
+            break;
+        case Host:
+            sapConn.setHost(ContextParameterUtils.getNewScriptCode(sapBasicVarName, LANGUAGE));
+            break;
+        case UserName:
+            sapConn.setUsername(ContextParameterUtils.getNewScriptCode(sapBasicVarName, LANGUAGE));
+            break;
+        case Password:
+            sapConn.setPassword(ContextParameterUtils.getNewScriptCode(sapBasicVarName, LANGUAGE));
+            break;
+        case SystemNumber:
+            sapConn.setSystemNumber(ContextParameterUtils.getNewScriptCode(sapBasicVarName, LANGUAGE));
+            break;
+        case Language:
+            sapConn.setLanguage(ContextParameterUtils.getNewScriptCode(sapBasicVarName, LANGUAGE));
+            break;
+        default:
+        }
+    }
 
-        paramName = originalVariableName + EParamName.SystemNumber;
-        conn.setSystemNumber(ContextParameterUtils.getNewScriptCode(paramName, LANGUAGE));
-
-        paramName = originalVariableName + EParamName.Language;
-        conn.setLanguage(ContextParameterUtils.getNewScriptCode(paramName, LANGUAGE));
+    static void setSAPConnectionAdditionPropertiesForContextMode(SAPConnection sapConn) {
+        for (AdditionalConnectionProperty sapProperty : sapConn.getAdditionalProperties()) {
+            sapProperty.setValue(ContextParameterUtils.getNewScriptCode(sapProperty.getPropertyName(), LANGUAGE));
+        }
     }
 
     static void revertSAPPropertiesForContextMode(SAPConnection conn, ContextType contextType) {
@@ -637,6 +709,12 @@ public final class OtherConnectionContextUtils {
         conn.setPassword(conn.getValue(passWord, true));
         conn.setSystemNumber(systemNumber);
         conn.setLanguage(language);
+
+        for (AdditionalConnectionProperty sapProperty : conn.getAdditionalProperties()) {
+            String contextPropertyValue = TalendQuoteUtils.removeQuotes(ConnectionContextHelper.getOriginalValue(contextType,
+                    sapProperty.getValue()));
+            sapProperty.setValue(contextPropertyValue);
+        }
     }
 
     public static SAPConnection cloneOriginalValueSAPConnection(SAPConnection fileConn, ContextType contextType) {

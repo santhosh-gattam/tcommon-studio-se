@@ -42,6 +42,7 @@ import org.talend.core.model.context.JobContextManager;
 import org.talend.core.model.metadata.IMetadataColumn;
 import org.talend.core.model.metadata.IMetadataTable;
 import org.talend.core.model.metadata.MetadataSchemaType;
+import org.talend.core.model.metadata.builder.connection.AdditionalConnectionProperty;
 import org.talend.core.model.metadata.builder.connection.Connection;
 import org.talend.core.model.metadata.builder.connection.DatabaseConnection;
 import org.talend.core.model.metadata.builder.connection.DelimitedFileConnection;
@@ -52,6 +53,7 @@ import org.talend.core.model.metadata.builder.connection.PositionalFileConnectio
 import org.talend.core.model.metadata.builder.connection.QueriesConnection;
 import org.talend.core.model.metadata.builder.connection.Query;
 import org.talend.core.model.metadata.builder.connection.RegexpFileConnection;
+import org.talend.core.model.metadata.builder.connection.SAPConnection;
 import org.talend.core.model.metadata.builder.connection.SAPFunctionUnit;
 import org.talend.core.model.metadata.builder.connection.SAPIDocUnit;
 import org.talend.core.model.metadata.builder.connection.SalesforceSchemaConnection;
@@ -914,6 +916,45 @@ public abstract class RepositoryUpdateManager {
                                     dbConn.setProxyUser(newValue);
                                 } else if (dbConn.getProxyPort() != null && dbConn.getProxyPort().equals(oldValue)) {
                                     dbConn.setProxyPort(newValue);
+                                }
+                                factory.save(item);
+                            }
+                        }
+                    }
+                }
+            }
+
+            List<IRepositoryViewObject> sapConnList = factory.getAll(ERepositoryObjectType.METADATA_SAPCONNECTIONS, true);
+            for (IRepositoryViewObject obj : sapConnList) {
+                Item item = obj.getProperty().getItem();
+                if (item instanceof ConnectionItem) {
+                    Connection conn = ((ConnectionItem) item).getConnection();
+                    if (conn.isContextMode()) {
+                        ContextItem contextItem = ContextUtils.getContextItemById2(conn.getContextId());
+                        if (contextItem == null) {
+                            continue;
+                        }
+                        if (citem == contextItem) {
+                            if (conn instanceof SAPConnection) {
+                                SAPConnection sapConn = (SAPConnection) conn;
+                                if (sapConn.getClient() != null && sapConn.getClient().equals(oldValue)) {
+                                    sapConn.setClient(newValue);
+                                } else if (sapConn.getUsername() != null && sapConn.getUsername().equals(oldValue)) {
+                                    sapConn.setUsername(newValue);
+                                } else if (sapConn.getPassword() != null && sapConn.getPassword().equals(oldValue)) {
+                                    sapConn.setPassword(newValue);
+                                } else if (sapConn.getHost() != null && sapConn.getHost().equals(oldValue)) {
+                                    sapConn.setHost(newValue);
+                                } else if (sapConn.getSystemNumber() != null && sapConn.getSystemNumber().equals(oldValue)) {
+                                    sapConn.setSystemNumber(newValue);
+                                } else if (sapConn.getLanguage() != null && sapConn.getLanguage().equals(oldValue)) {
+                                    sapConn.setLanguage(newValue);
+                                } else {
+                                    for (AdditionalConnectionProperty sapProperty : sapConn.getAdditionalProperties()) {
+                                        if (sapProperty.getValue() != null && sapProperty.getValue().equals(oldValue)) {
+                                            sapProperty.setValue(newValue);
+                                        }
+                                    }
                                 }
                                 factory.save(item);
                             }
