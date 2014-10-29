@@ -59,6 +59,7 @@ import org.talend.designer.core.model.utils.emf.component.TABLEType;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#isSHOW <em>SHOW</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getSHOWIF <em>SHOWIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#isRAW <em>RAW</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}</li>
  * </ul>
  * </p>
  *
@@ -654,6 +655,35 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
      * @ordered
      */
     protected boolean rAWESet;
+
+    /**
+     * The default value of the '{@link #isLOG4J_ENABLED() <em>LOG4J ENABLED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isLOG4J_ENABLED()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean LOG4J_ENABLED_EDEFAULT = true;
+
+    /**
+     * The cached value of the '{@link #isLOG4J_ENABLED() <em>LOG4J ENABLED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isLOG4J_ENABLED()
+     * @generated
+     * @ordered
+     */
+    protected boolean log4J_ENABLED = LOG4J_ENABLED_EDEFAULT;
+
+    /**
+     * This is true if the LOG4J ENABLED attribute has been set.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    protected boolean log4J_ENABLEDESet;
 
     /**
      * <!-- begin-user-doc -->
@@ -1521,6 +1551,52 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
      * <!-- end-user-doc -->
      * @generated
      */
+    public boolean isLOG4J_ENABLED() {
+        return log4J_ENABLED;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setLOG4J_ENABLED(boolean newLOG4J_ENABLED) {
+        boolean oldLOG4J_ENABLED = log4J_ENABLED;
+        log4J_ENABLED = newLOG4J_ENABLED;
+        boolean oldLOG4J_ENABLEDESet = log4J_ENABLEDESet;
+        log4J_ENABLEDESet = true;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED, oldLOG4J_ENABLED, log4J_ENABLED, !oldLOG4J_ENABLEDESet));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void unsetLOG4J_ENABLED() {
+        boolean oldLOG4J_ENABLED = log4J_ENABLED;
+        boolean oldLOG4J_ENABLEDESet = log4J_ENABLEDESet;
+        log4J_ENABLED = LOG4J_ENABLED_EDEFAULT;
+        log4J_ENABLEDESet = false;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.UNSET, ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED, oldLOG4J_ENABLED, LOG4J_ENABLED_EDEFAULT, oldLOG4J_ENABLEDESet));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isSetLOG4J_ENABLED() {
+        return log4J_ENABLEDESet;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case ComponentPackage.PARAMETER_TYPE__DEFAULT:
@@ -1596,6 +1672,8 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
                 return getSHOWIF();
             case ComponentPackage.PARAMETER_TYPE__RAW:
                 return isRAW() ? Boolean.TRUE : Boolean.FALSE;
+            case ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED:
+                return isLOG4J_ENABLED() ? Boolean.TRUE : Boolean.FALSE;
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -1690,6 +1768,9 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
             case ComponentPackage.PARAMETER_TYPE__RAW:
                 setRAW(((Boolean)newValue).booleanValue());
                 return;
+            case ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED:
+                setLOG4J_ENABLED(((Boolean)newValue).booleanValue());
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -1782,6 +1863,9 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
             case ComponentPackage.PARAMETER_TYPE__RAW:
                 unsetRAW();
                 return;
+            case ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED:
+                unsetLOG4J_ENABLED();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -1847,6 +1931,8 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
                 return SHOWIF_EDEFAULT == null ? sHOWIF != null : !SHOWIF_EDEFAULT.equals(sHOWIF);
             case ComponentPackage.PARAMETER_TYPE__RAW:
                 return isSetRAW();
+            case ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED:
+                return isSetLOG4J_ENABLED();
         }
         return super.eIsSet(featureID);
     }
@@ -1906,6 +1992,8 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
         result.append(sHOWIF);
         result.append(", rAW: ");
         if (rAWESet) result.append(rAW); else result.append("<unset>");
+        result.append(", LOG4J_ENABLED: ");
+        if (log4J_ENABLEDESet) result.append(log4J_ENABLED); else result.append("<unset>");
         result.append(')');
         return result.toString();
     }

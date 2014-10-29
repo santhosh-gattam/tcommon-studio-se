@@ -45,6 +45,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isREDUCE <em>REDUCE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getPARTITIONING <em>PARTITIONING</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isSUPPORTS_DB_TYPE <em>SUPPORTS DB TYPE</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}</li>
  * </ul>
  * </p>
  *
@@ -1251,5 +1252,60 @@ public interface HEADERType extends EObject {
      * @generated
      */
     void setSUPPORTS_DB_TYPE(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>LOG4J ENABLED</b></em>' attribute.
+     * The default value is <code>"false"</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>LOG4J ENABLED</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>LOG4J ENABLED</em>' attribute.
+     * @see #isSetLOG4J_ENABLED()
+     * @see #unsetLOG4J_ENABLED()
+     * @see #setLOG4J_ENABLED(boolean)
+     * @see org.talend.designer.core.model.utils.emf.component.ComponentPackage#getHEADERType_LOG4J_ENABLED()
+     * @model default="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+     *        extendedMetaData="kind='attribute' name='TSTATCATCHER_STATS' namespace='##targetNamespace'"
+     * @generated
+     */
+    boolean isLOG4J_ENABLED();
+
+    /**
+     * Sets the value of the '{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>LOG4J ENABLED</em>' attribute.
+     * @see #isSetLOG4J_ENABLED()
+     * @see #unsetLOG4J_ENABLED()
+     * @see #isLOG4J_ENABLED()
+     * @generated
+     */
+    void setLOG4J_ENABLED(boolean value);
+
+    /**
+     * Unsets the value of the '{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isSetLOG4J_ENABLED()
+     * @see #isLOG4J_ENABLED()
+     * @see #setLOG4J_ENABLED(boolean)
+     * @generated
+     */
+    void unsetLOG4J_ENABLED();
+
+    /**
+     * Returns whether the value of the '{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}' attribute is set.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return whether the value of the '<em>LOG4J ENABLED</em>' attribute is set.
+     * @see #unsetLOG4J_ENABLED()
+     * @see #isLOG4J_ENABLED()
+     * @see #setLOG4J_ENABLED(boolean)
+     * @generated
+     */
+    boolean isSetLOG4J_ENABLED();
 
 } // HEADERType

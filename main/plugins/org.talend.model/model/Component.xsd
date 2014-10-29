@@ -192,8 +192,9 @@
   		type="xsd:boolean" />
   	<xsd:attribute ecore:name="pARTITIONING" name="PARTITIONING"
   		type="xsd:string" />
-  	<xsd:attribute default="false" ecore:name="sUPPORTS_DB_TYPE" name="SUPPORTS_DB_TYPE" 
-  	    type="xsd:boolean" />
+  	<xsd:attribute default="false" ecore:name="sUPPORTS_DB_TYPE"
+  		name="SUPPORTS_DB_TYPE" type="xsd:boolean" />
+  	<xsd:attribute name="LOG4J_ENABLED" type="xsd:boolean" default="false"></xsd:attribute>
   </xsd:complexType>
   <xsd:complexType ecore:name="IMPORTSType" name="IMPORTS_._type">
     <xsd:sequence>
@@ -292,60 +293,84 @@
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType ecore:name="PARAMETERType" name="PARAMETER_._type">
-    <xsd:sequence>
-      <xsd:element ecore:name="dEFAULT" maxOccurs="unbounded" minOccurs="0" name="DEFAULT" type="DEFAULT_._type">
-        <xsd:annotation>
-          <xsd:documentation>
+  	<xsd:sequence>
+  		<xsd:element ecore:name="dEFAULT" maxOccurs="unbounded"
+  			minOccurs="0" name="DEFAULT" type="DEFAULT_._type">
+  			<xsd:annotation>
+  				<xsd:documentation>
   					Used for TEXT or CHECK field
   				</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element ecore:name="iTEMS" minOccurs="0" ref="ITEMS">
-        <xsd:annotation>
-          <xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:element>
+  		<xsd:element ecore:name="iTEMS" minOccurs="0" ref="ITEMS">
+  			<xsd:annotation>
+  				<xsd:documentation>
   					Used for CLOSED_LIST or TABLE field
   				</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element ecore:name="tABLE" maxOccurs="unbounded" minOccurs="0" name="TABLE" type="TABLE_._type">
-        <xsd:annotation>
-          <xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:element>
+  		<xsd:element ecore:name="tABLE" maxOccurs="unbounded"
+  			minOccurs="0" name="TABLE" type="TABLE_._type">
+  			<xsd:annotation>
+  				<xsd:documentation>
   					Used only for SCHEMA_TYPE field
   				</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-      <xsd:element ecore:name="jAVACOMMAND" minOccurs="0" name="JAVACOMMAND" type="JAVACOMMAND_._type">
-        <xsd:annotation>
-          <xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:element>
+  		<xsd:element ecore:name="jAVACOMMAND" minOccurs="0"
+  			name="JAVACOMMAND" type="JAVACOMMAND_._type">
+  			<xsd:annotation>
+  				<xsd:documentation>
   					This will run an external java code in a given
   					jar.
   				</xsd:documentation>
-        </xsd:annotation>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute ecore:name="bACKGROUND" name="BACKGROUND" type="xsd:string"/>
-    <xsd:attribute ecore:name="cOLOR" name="COLOR" type="xsd:string"/>
-    <xsd:attribute ecore:name="cONTEXT" name="CONTEXT" type="xsd:string"/>
-    <xsd:attribute ecore:name="cONTEXTMODE" name="CONTEXT_MODE" type="xsd:boolean"/>
-    <xsd:attribute ecore:name="dYNAMICSETTINGS" name="DYNAMIC_SETTINGS" type="xsd:boolean"/>
-    <xsd:attribute ecore:name="fIELD" name="FIELD" type="xsd:string" use="required"/>
-    <xsd:attribute ecore:name="fILTER" name="FILTER" type="xsd:string"/>
-    <xsd:attribute ecore:name="gROUP" name="GROUP" type="xsd:string"/>
-    <xsd:attribute ecore:name="mAXLENGTH" name="MAX_LENGTH" type="xsd:int"/>
-    <xsd:attribute ecore:name="nAME" name="NAME" type="xsd:string" use="required"/>
-    <xsd:attribute default="3" ecore:name="nBLINES" name="NB_LINES" type="xsd:int"/>
-    <xsd:attribute ecore:name="nOCONTEXTASSIST" name="NO_CONTEXT_ASSIST" type="xsd:boolean"/>
-    <xsd:attribute ecore:name="nOTREADONLYIF" name="NOT_READONLY_IF" type="xsd:string"/>
-    <xsd:attribute ecore:name="nOTSHOWIF" name="NOT_SHOW_IF" type="xsd:string"/>
-    <xsd:attribute ecore:name="nUMROW" name="NUM_ROW" type="xsd:int" use="required"/>
-    <xsd:attribute default="false" ecore:name="rEADONLY" name="READONLY" type="xsd:boolean"/>
-    <xsd:attribute ecore:name="rEADONLYIF" name="READONLY_IF" type="xsd:string"/>
-    <xsd:attribute ecore:name="rEPOSITORYVALUE" name="REPOSITORY_VALUE" type="xsd:string"/>
-    <xsd:attribute default="false" ecore:name="rEQUIRED" name="REQUIRED" type="xsd:boolean"/>
-    <xsd:attribute ecore:name="rEQUIREDIF" name="REQUIRED_IF" type="xsd:string"/>
-    <xsd:attribute default="true" ecore:name="sHOW" name="SHOW" type="xsd:boolean"/>
-    <xsd:attribute ecore:name="sHOWIF" name="SHOW_IF" type="xsd:string"/>
-    <xsd:attribute ecore:name="rAW" name="RAW" type="xsd:boolean"/>
+  			</xsd:annotation>
+  		</xsd:element>
+  	</xsd:sequence>
+  	<xsd:attribute ecore:name="bACKGROUND" name="BACKGROUND"
+  		type="xsd:string" />
+  	<xsd:attribute ecore:name="cOLOR" name="COLOR" type="xsd:string" />
+  	<xsd:attribute ecore:name="cONTEXT" name="CONTEXT"
+  		type="xsd:string" />
+  	<xsd:attribute ecore:name="cONTEXTMODE" name="CONTEXT_MODE"
+  		type="xsd:boolean" />
+  	<xsd:attribute ecore:name="dYNAMICSETTINGS"
+  		name="DYNAMIC_SETTINGS" type="xsd:boolean" />
+  	<xsd:attribute ecore:name="fIELD" name="FIELD" type="xsd:string"
+  		use="required" />
+  	<xsd:attribute ecore:name="fILTER" name="FILTER"
+  		type="xsd:string" />
+  	<xsd:attribute ecore:name="gROUP" name="GROUP" type="xsd:string" />
+  	<xsd:attribute ecore:name="mAXLENGTH" name="MAX_LENGTH"
+  		type="xsd:int" />
+  	<xsd:attribute ecore:name="nAME" name="NAME" type="xsd:string"
+  		use="required" />
+  	<xsd:attribute default="3" ecore:name="nBLINES" name="NB_LINES"
+  		type="xsd:int" />
+  	<xsd:attribute ecore:name="nOCONTEXTASSIST"
+  		name="NO_CONTEXT_ASSIST" type="xsd:boolean" />
+  	<xsd:attribute ecore:name="nOTREADONLYIF" name="NOT_READONLY_IF"
+  		type="xsd:string" />
+  	<xsd:attribute ecore:name="nOTSHOWIF" name="NOT_SHOW_IF"
+  		type="xsd:string" />
+  	<xsd:attribute ecore:name="nUMROW" name="NUM_ROW" type="xsd:int"
+  		use="required" />
+  	<xsd:attribute default="false" ecore:name="rEADONLY"
+  		name="READONLY" type="xsd:boolean" />
+  	<xsd:attribute ecore:name="rEADONLYIF" name="READONLY_IF"
+  		type="xsd:string" />
+  	<xsd:attribute ecore:name="rEPOSITORYVALUE"
+  		name="REPOSITORY_VALUE" type="xsd:string" />
+  	<xsd:attribute default="false" ecore:name="rEQUIRED"
+  		name="REQUIRED" type="xsd:boolean" />
+  	<xsd:attribute ecore:name="rEQUIREDIF" name="REQUIRED_IF"
+  		type="xsd:string" />
+  	<xsd:attribute default="true" ecore:name="sHOW" name="SHOW"
+  		type="xsd:boolean" />
+  	<xsd:attribute ecore:name="sHOWIF" name="SHOW_IF"
+  		type="xsd:string" />
+  	<xsd:attribute ecore:name="rAW" name="RAW" type="xsd:boolean" />
+  	<xsd:attribute name="LOG4J_ENABLED" type="xsd:boolean" default="true"></xsd:attribute>
   </xsd:complexType>
   <xsd:complexType ecore:name="PLUGINDEPENDENCIESType" name="PLUGINDEPENDENCIES_._type">
     <xsd:sequence>

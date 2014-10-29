@@ -1195,13 +1195,22 @@ public interface ComponentPackage extends EPackage {
     int HEADER_TYPE__SUPPORTS_DB_TYPE = 30;
 
     /**
+     * The feature id for the '<em><b>LOG4J ENABLED</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__LOG4J_ENABLED = 31;
+
+    /**
      * The number of structural features of the '<em>HEADER Type</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int HEADER_TYPE_FEATURE_COUNT = 31;
+    int HEADER_TYPE_FEATURE_COUNT = 32;
 
     /**
      * The meta object id for the '{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTSTypeImpl <em>IMPORTS Type</em>}' class.
@@ -2014,13 +2023,22 @@ public interface ComponentPackage extends EPackage {
     int PARAMETER_TYPE__RAW = 26;
 
     /**
+     * The feature id for the '<em><b>LOG4J ENABLED</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PARAMETER_TYPE__LOG4J_ENABLED = 27;
+
+    /**
      * The number of structural features of the '<em>PARAMETER Type</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int PARAMETER_TYPE_FEATURE_COUNT = 27;
+    int PARAMETER_TYPE_FEATURE_COUNT = 28;
 
     /**
      * The meta object id for the '{@link org.talend.designer.core.model.utils.emf.component.impl.PLUGINDEPENDENCIESTypeImpl <em>PLUGINDEPENDENCIES Type</em>}' class.
@@ -3696,6 +3714,17 @@ public interface ComponentPackage extends EPackage {
     EAttribute getHEADERType_SUPPORTS_DB_TYPE();
 
     /**
+     * Returns the meta object for the attribute '{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>LOG4J ENABLED</em>'.
+     * @see org.talend.designer.core.model.utils.emf.component.HEADERType#isLOG4J_ENABLED()
+     * @see #getHEADERType()
+     * @generated
+     */
+    EAttribute getHEADERType_LOG4J_ENABLED();
+
+    /**
      * Returns the meta object for class '{@link org.talend.designer.core.model.utils.emf.component.IMPORTSType <em>IMPORTS Type</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4576,6 +4605,17 @@ public interface ComponentPackage extends EPackage {
      * @generated
      */
     EAttribute getPARAMETERType_RAW();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.talend.designer.core.model.utils.emf.component.PARAMETERType#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>LOG4J ENABLED</em>'.
+     * @see org.talend.designer.core.model.utils.emf.component.PARAMETERType#isLOG4J_ENABLED()
+     * @see #getPARAMETERType()
+     * @generated
+     */
+    EAttribute getPARAMETERType_LOG4J_ENABLED();
 
     /**
      * Returns the meta object for class '{@link org.talend.designer.core.model.utils.emf.component.PLUGINDEPENDENCIESType <em>PLUGINDEPENDENCIES Type</em>}'.
@@ -5938,6 +5978,14 @@ public interface ComponentPackage extends EPackage {
         EAttribute HEADER_TYPE__SUPPORTS_DB_TYPE = eINSTANCE.getHEADERType_SUPPORTS_DB_TYPE();
 
         /**
+         * The meta object literal for the '<em><b>LOG4J ENABLED</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute HEADER_TYPE__LOG4J_ENABLED = eINSTANCE.getHEADERType_LOG4J_ENABLED();
+
+        /**
          * The meta object literal for the '{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTSTypeImpl <em>IMPORTS Type</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -6602,6 +6650,14 @@ public interface ComponentPackage extends EPackage {
          * @generated
          */
         EAttribute PARAMETER_TYPE__RAW = eINSTANCE.getPARAMETERType_RAW();
+
+        /**
+         * The meta object literal for the '<em><b>LOG4J ENABLED</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute PARAMETER_TYPE__LOG4J_ENABLED = eINSTANCE.getPARAMETERType_LOG4J_ENABLED();
 
         /**
          * The meta object literal for the '{@link org.talend.designer.core.model.utils.emf.component.impl.PLUGINDEPENDENCIESTypeImpl <em>PLUGINDEPENDENCIES Type</em>}' class.

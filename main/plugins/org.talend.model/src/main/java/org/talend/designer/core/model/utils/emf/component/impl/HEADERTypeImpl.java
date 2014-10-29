@@ -55,6 +55,7 @@ import org.talend.designer.core.model.utils.emf.component.HEADERType;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isREDUCE <em>REDUCE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getPARTITIONING <em>PARTITIONING</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isSUPPORTS_DB_TYPE <em>SUPPORTS DB TYPE</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}</li>
  * </ul>
  * </p>
  *
@@ -787,6 +788,35 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
      * @ordered
      */
     protected boolean sUPPORTS_DB_TYPE = SUPPORTS_DB_TYPE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isLOG4J_ENABLED() <em>LOG4J ENABLED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isLOG4J_ENABLED()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean LOG4J_ENABLED_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isLOG4J_ENABLED() <em>LOG4J ENABLED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isLOG4J_ENABLED()
+     * @generated
+     * @ordered
+     */
+    protected boolean log4J_ENABLED = LOG4J_ENABLED_EDEFAULT;
+
+    /**
+     * This is true if the LOG4J ENABLED attribute has been set.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    protected boolean log4J_ENABLEDESet;
 
     /**
      * <!-- begin-user-doc -->
@@ -1809,6 +1839,52 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
      * <!-- end-user-doc -->
      * @generated
      */
+    public boolean isLOG4J_ENABLED() {
+        return log4J_ENABLED;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setLOG4J_ENABLED(boolean newLOG4J_ENABLED) {
+        boolean oldLOG4J_ENABLED = log4J_ENABLED;
+        log4J_ENABLED = newLOG4J_ENABLED;
+        boolean oldLOG4J_ENABLEDESet = log4J_ENABLEDESet;
+        log4J_ENABLEDESet = true;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.HEADER_TYPE__LOG4J_ENABLED, oldLOG4J_ENABLED, log4J_ENABLED, !oldLOG4J_ENABLEDESet));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void unsetLOG4J_ENABLED() {
+        boolean oldLOG4J_ENABLED = log4J_ENABLED;
+        boolean oldLOG4J_ENABLEDESet = log4J_ENABLEDESet;
+        log4J_ENABLED = LOG4J_ENABLED_EDEFAULT;
+        log4J_ENABLEDESet = false;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.UNSET, ComponentPackage.HEADER_TYPE__LOG4J_ENABLED, oldLOG4J_ENABLED, LOG4J_ENABLED_EDEFAULT, oldLOG4J_ENABLEDESet));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isSetLOG4J_ENABLED() {
+        return log4J_ENABLEDESet;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case ComponentPackage.HEADER_TYPE__FORMAT:
@@ -1886,6 +1962,8 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
                 return getPARTITIONING();
             case ComponentPackage.HEADER_TYPE__SUPPORTS_DB_TYPE:
                 return isSUPPORTS_DB_TYPE() ? Boolean.TRUE : Boolean.FALSE;
+            case ComponentPackage.HEADER_TYPE__LOG4J_ENABLED:
+                return isLOG4J_ENABLED() ? Boolean.TRUE : Boolean.FALSE;
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -1989,6 +2067,9 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
                 return;
             case ComponentPackage.HEADER_TYPE__SUPPORTS_DB_TYPE:
                 setSUPPORTS_DB_TYPE(((Boolean)newValue).booleanValue());
+                return;
+            case ComponentPackage.HEADER_TYPE__LOG4J_ENABLED:
+                setLOG4J_ENABLED(((Boolean)newValue).booleanValue());
                 return;
         }
         super.eSet(featureID, newValue);
@@ -2094,6 +2175,9 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
             case ComponentPackage.HEADER_TYPE__SUPPORTS_DB_TYPE:
                 setSUPPORTS_DB_TYPE(SUPPORTS_DB_TYPE_EDEFAULT);
                 return;
+            case ComponentPackage.HEADER_TYPE__LOG4J_ENABLED:
+                unsetLOG4J_ENABLED();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -2167,6 +2251,8 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
                 return PARTITIONING_EDEFAULT == null ? pARTITIONING != null : !PARTITIONING_EDEFAULT.equals(pARTITIONING);
             case ComponentPackage.HEADER_TYPE__SUPPORTS_DB_TYPE:
                 return sUPPORTS_DB_TYPE != SUPPORTS_DB_TYPE_EDEFAULT;
+            case ComponentPackage.HEADER_TYPE__LOG4J_ENABLED:
+                return isSetLOG4J_ENABLED();
         }
         return super.eIsSet(featureID);
     }
@@ -2240,6 +2326,8 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
         result.append(pARTITIONING);
         result.append(", sUPPORTS_DB_TYPE: ");
         result.append(sUPPORTS_DB_TYPE);
+        result.append(", LOG4J_ENABLED: ");
+        if (log4J_ENABLEDESet) result.append(log4J_ENABLED); else result.append("<unset>");
         result.append(')');
         return result.toString();
     }
