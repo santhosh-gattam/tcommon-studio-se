@@ -4,7 +4,7 @@
     templateDirectory="" modelName="component" editPluginClass="org.talend.designer.core.model.utils.emf.component.provider.componentEditPlugin"
     editorPluginClass="org.talend.designer.core.model.utils.emf.component.presentation.componentEditorPlugin"
     testSuiteClass="org.talend.designer.core.model.utils.emf.component.tests.componentAllTests"
-    importerID="org.eclipse.emf.importer.ecore" runtimeVersion="2.6">
+    importerID="org.eclipse.emf.importer.ecore" runtimeVersion="2.6" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>Component.ecore</foreignModel>
   <genPackages prefix="Component" basePackage="org.talend.designer.core.model.utils.emf"
       resource="XML" disposableProviderFactory="true" ecorePackage="Component.ecore#/">
@@ -21,6 +21,7 @@
     <genClasses ecoreClass="Component.ecore#//COLUMNType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//COLUMNType/cOMMENT"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//COLUMNType/cUSTOM"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//COLUMNType/dBTYPE"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//COLUMNType/dEFAULT"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//COLUMNType/kEY"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//COLUMNType/lENGTH"/>
@@ -32,7 +33,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//COLUMNType/rELATEDENTITY"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//COLUMNType/rELATIONSHIPTYPE"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//COLUMNType/tYPE"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//COLUMNType/dBTYPE"/>
     </genClasses>
     <genClasses ecoreClass="Component.ecore#//COMPONENTType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Component.ecore#//COMPONENTType/hEADER"/>
@@ -112,10 +112,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/hASCONDITIONALOUTPUTS"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/hASHCOMPONENT"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/iSMULTIPLYINGOUTPUTS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/lOG4J_ENABLED"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/mAINCODECALLED"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/nUMBERPARALLELIZE"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/pARALLELIZE"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/pARTITIONING"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/pLATEFORM"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/rEDUCE"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/rELEASEDATE"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/sCHEMAAUTOPROPAGATE"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/sERIAL"/>
@@ -125,19 +128,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/sTATUS"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/sUBJOBCOLOR"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/sUBJOBTITLECOLOR"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/sUPPORTS_DB_TYPE"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/tECHNICAL"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/tSTATCATCHERSTATS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/tYPE"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/vERSION"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/vISIBLE"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/tYPE"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/rEDUCE"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/pARTITIONING"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//HEADERType/sUPPORTS_DB_TYPE"/>
     </genClasses>
     <genClasses ecoreClass="Component.ecore#//IMPORTSType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTSType/rEQUIREDIF"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Component.ecore#//IMPORTSType/iMPORT"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Component.ecore#//IMPORTSType/iMPORTS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTSType/rEQUIREDIF"/>
     </genClasses>
     <genClasses ecoreClass="Component.ecore#//IMPORTType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Component.ecore#//IMPORTType/iNSTALL"/>
@@ -145,13 +146,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/bundleID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/mESSAGE"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/mODULE"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/mODULEGROUP"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/mRREQUIRED"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/nAME"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/rEQUIRED"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/rEQUIREDIF"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/sHOW"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/urlPath"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/rEQUIREDIF"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/mRREQUIRED"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//IMPORTType/mODULEGROUP"/>
     </genClasses>
     <genClasses ecoreClass="Component.ecore#//INSTALLType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//INSTALLType/cOMMAND"/>
@@ -175,12 +176,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//ITEMType/nOCONTEXTASSIST"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//ITEMType/nOTREADONLYIF"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//ITEMType/nOTSHOWIF"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//ITEMType/rAW"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//ITEMType/rEADONLY"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//ITEMType/rEADONLYIF"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//ITEMType/rEPOSITORYITEM"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//ITEMType/sHOWIF"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//ITEMType/vALUE"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//ITEMType/rAW"/>
     </genClasses>
     <genClasses ecoreClass="Component.ecore#//JAVACOMMANDType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Component.ecore#//JAVACOMMANDType/aRG"/>
@@ -208,6 +209,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/fIELD"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/fILTER"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/gROUP"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/lOG4J_ENABLED"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/mAXLENGTH"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/nAME"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/nBLINES"/>
@@ -215,6 +217,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/nOTREADONLYIF"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/nOTSHOWIF"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/nUMROW"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/rAW"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/rEADONLY"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/rEADONLYIF"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/rEPOSITORYVALUE"/>
@@ -222,7 +225,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/rEQUIREDIF"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/sHOW"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/sHOWIF"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//PARAMETERType/rAW"/>
     </genClasses>
     <genClasses ecoreClass="Component.ecore#//PLUGINDEPENDENCIESType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Component.ecore#//PLUGINDEPENDENCIESType/pLUGINDEPENDENCY"/>
@@ -236,8 +238,8 @@
     <genClasses ecoreClass="Component.ecore#//RETURNType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//RETURNType/aVAILABILITY"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//RETURNType/nAME"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//RETURNType/tYPE"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//RETURNType/sHOWIF"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Component.ecore#//RETURNType/tYPE"/>
     </genClasses>
     <genClasses ecoreClass="Component.ecore#//SQLTEMPLATESType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Component.ecore#//SQLTEMPLATESType/sQLTEMPLATE"/>

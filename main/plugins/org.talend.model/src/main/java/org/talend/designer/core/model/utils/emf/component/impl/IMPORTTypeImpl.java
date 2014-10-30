@@ -35,13 +35,13 @@ import org.talend.designer.core.model.utils.emf.component.INSTALLType;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#getBundleID <em>Bundle ID</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#getMESSAGE <em>MESSAGE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#getMODULE <em>MODULE</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#getMODULEGROUP <em>MODULEGROUP</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#isMRREQUIRED <em>MRREQUIRED</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#getNAME <em>NAME</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#isREQUIRED <em>REQUIRED</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#getREQUIREDIF <em>REQUIREDIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#isSHOW <em>SHOW</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#getUrlPath <em>Url Path</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#getREQUIREDIF <em>REQUIREDIF</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#isMRREQUIRED <em>MRREQUIRED</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTTypeImpl#getMODULEGROUP <em>MODULEGROUP</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,6 +129,55 @@ public class IMPORTTypeImpl extends EObjectImpl implements IMPORTType {
     protected String mODULE = MODULE_EDEFAULT;
 
     /**
+     * The default value of the '{@link #getMODULEGROUP() <em>MODULEGROUP</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getMODULEGROUP()
+     * @generated
+     * @ordered
+     */
+    protected static final String MODULEGROUP_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getMODULEGROUP() <em>MODULEGROUP</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getMODULEGROUP()
+     * @generated
+     * @ordered
+     */
+    protected String mODULEGROUP = MODULEGROUP_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isMRREQUIRED() <em>MRREQUIRED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isMRREQUIRED()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean MRREQUIRED_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isMRREQUIRED() <em>MRREQUIRED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isMRREQUIRED()
+     * @generated
+     * @ordered
+     */
+    protected boolean mRREQUIRED = MRREQUIRED_EDEFAULT;
+
+    /**
+     * This is true if the MRREQUIRED attribute has been set.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    protected boolean mRREQUIREDESet;
+
+    /**
      * The default value of the '{@link #getNAME() <em>NAME</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -178,6 +227,26 @@ public class IMPORTTypeImpl extends EObjectImpl implements IMPORTType {
     protected boolean rEQUIREDESet;
 
     /**
+     * The default value of the '{@link #getREQUIREDIF() <em>REQUIREDIF</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getREQUIREDIF()
+     * @generated
+     * @ordered
+     */
+    protected static final String REQUIREDIF_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getREQUIREDIF() <em>REQUIREDIF</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getREQUIREDIF()
+     * @generated
+     * @ordered
+     */
+    protected String rEQUIREDIF = REQUIREDIF_EDEFAULT;
+
+    /**
      * The default value of the '{@link #isSHOW() <em>SHOW</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -225,66 +294,6 @@ public class IMPORTTypeImpl extends EObjectImpl implements IMPORTType {
      * @ordered
      */
     protected String urlPath = URL_PATH_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #getREQUIREDIF() <em>REQUIREDIF</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getREQUIREDIF()
-     * @generated
-     * @ordered
-     */
-    protected static final String REQUIREDIF_EDEFAULT = null;
-
-    /**
-     * The cached value of the '{@link #getREQUIREDIF() <em>REQUIREDIF</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getREQUIREDIF()
-     * @generated
-     * @ordered
-     */
-    protected String rEQUIREDIF = REQUIREDIF_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #isMRREQUIRED() <em>MRREQUIRED</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isMRREQUIRED()
-     * @generated
-     * @ordered
-     */
-    protected static final boolean MRREQUIRED_EDEFAULT = false;
-
-    /**
-     * The cached value of the '{@link #isMRREQUIRED() <em>MRREQUIRED</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isMRREQUIRED()
-     * @generated
-     * @ordered
-     */
-    protected boolean mRREQUIRED = MRREQUIRED_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #getMODULEGROUP() <em>MODULEGROUP</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getMODULEGROUP()
-     * @generated
-     * @ordered
-     */
-    protected static final String MODULEGROUP_EDEFAULT = null;
-
-    /**
-     * The cached value of the '{@link #getMODULEGROUP() <em>MODULEGROUP</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getMODULEGROUP()
-     * @generated
-     * @ordered
-     */
-    protected String mODULEGROUP = MODULEGROUP_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -563,8 +572,33 @@ public class IMPORTTypeImpl extends EObjectImpl implements IMPORTType {
     public void setMRREQUIRED(boolean newMRREQUIRED) {
         boolean oldMRREQUIRED = mRREQUIRED;
         mRREQUIRED = newMRREQUIRED;
+        boolean oldMRREQUIREDESet = mRREQUIREDESet;
+        mRREQUIREDESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.IMPORT_TYPE__MRREQUIRED, oldMRREQUIRED, mRREQUIRED));
+            eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.IMPORT_TYPE__MRREQUIRED, oldMRREQUIRED, mRREQUIRED, !oldMRREQUIREDESet));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void unsetMRREQUIRED() {
+        boolean oldMRREQUIRED = mRREQUIRED;
+        boolean oldMRREQUIREDESet = mRREQUIREDESet;
+        mRREQUIRED = MRREQUIRED_EDEFAULT;
+        mRREQUIREDESet = false;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.UNSET, ComponentPackage.IMPORT_TYPE__MRREQUIRED, oldMRREQUIRED, MRREQUIRED_EDEFAULT, oldMRREQUIREDESet));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isSetMRREQUIRED() {
+        return mRREQUIREDESet;
     }
 
     /**
@@ -618,20 +652,20 @@ public class IMPORTTypeImpl extends EObjectImpl implements IMPORTType {
                 return getMESSAGE();
             case ComponentPackage.IMPORT_TYPE__MODULE:
                 return getMODULE();
+            case ComponentPackage.IMPORT_TYPE__MODULEGROUP:
+                return getMODULEGROUP();
+            case ComponentPackage.IMPORT_TYPE__MRREQUIRED:
+                return isMRREQUIRED() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.IMPORT_TYPE__NAME:
                 return getNAME();
             case ComponentPackage.IMPORT_TYPE__REQUIRED:
                 return isREQUIRED() ? Boolean.TRUE : Boolean.FALSE;
+            case ComponentPackage.IMPORT_TYPE__REQUIREDIF:
+                return getREQUIREDIF();
             case ComponentPackage.IMPORT_TYPE__SHOW:
                 return isSHOW() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.IMPORT_TYPE__URL_PATH:
                 return getUrlPath();
-            case ComponentPackage.IMPORT_TYPE__REQUIREDIF:
-                return getREQUIREDIF();
-            case ComponentPackage.IMPORT_TYPE__MRREQUIRED:
-                return isMRREQUIRED() ? Boolean.TRUE : Boolean.FALSE;
-            case ComponentPackage.IMPORT_TYPE__MODULEGROUP:
-                return getMODULEGROUP();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -660,26 +694,26 @@ public class IMPORTTypeImpl extends EObjectImpl implements IMPORTType {
             case ComponentPackage.IMPORT_TYPE__MODULE:
                 setMODULE((String)newValue);
                 return;
+            case ComponentPackage.IMPORT_TYPE__MODULEGROUP:
+                setMODULEGROUP((String)newValue);
+                return;
+            case ComponentPackage.IMPORT_TYPE__MRREQUIRED:
+                setMRREQUIRED(((Boolean)newValue).booleanValue());
+                return;
             case ComponentPackage.IMPORT_TYPE__NAME:
                 setNAME((String)newValue);
                 return;
             case ComponentPackage.IMPORT_TYPE__REQUIRED:
                 setREQUIRED(((Boolean)newValue).booleanValue());
                 return;
+            case ComponentPackage.IMPORT_TYPE__REQUIREDIF:
+                setREQUIREDIF((String)newValue);
+                return;
             case ComponentPackage.IMPORT_TYPE__SHOW:
                 setSHOW(((Boolean)newValue).booleanValue());
                 return;
             case ComponentPackage.IMPORT_TYPE__URL_PATH:
                 setUrlPath((String)newValue);
-                return;
-            case ComponentPackage.IMPORT_TYPE__REQUIREDIF:
-                setREQUIREDIF((String)newValue);
-                return;
-            case ComponentPackage.IMPORT_TYPE__MRREQUIRED:
-                setMRREQUIRED(((Boolean)newValue).booleanValue());
-                return;
-            case ComponentPackage.IMPORT_TYPE__MODULEGROUP:
-                setMODULEGROUP((String)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -707,26 +741,26 @@ public class IMPORTTypeImpl extends EObjectImpl implements IMPORTType {
             case ComponentPackage.IMPORT_TYPE__MODULE:
                 setMODULE(MODULE_EDEFAULT);
                 return;
+            case ComponentPackage.IMPORT_TYPE__MODULEGROUP:
+                setMODULEGROUP(MODULEGROUP_EDEFAULT);
+                return;
+            case ComponentPackage.IMPORT_TYPE__MRREQUIRED:
+                unsetMRREQUIRED();
+                return;
             case ComponentPackage.IMPORT_TYPE__NAME:
                 setNAME(NAME_EDEFAULT);
                 return;
             case ComponentPackage.IMPORT_TYPE__REQUIRED:
                 unsetREQUIRED();
                 return;
+            case ComponentPackage.IMPORT_TYPE__REQUIREDIF:
+                setREQUIREDIF(REQUIREDIF_EDEFAULT);
+                return;
             case ComponentPackage.IMPORT_TYPE__SHOW:
                 unsetSHOW();
                 return;
             case ComponentPackage.IMPORT_TYPE__URL_PATH:
                 setUrlPath(URL_PATH_EDEFAULT);
-                return;
-            case ComponentPackage.IMPORT_TYPE__REQUIREDIF:
-                setREQUIREDIF(REQUIREDIF_EDEFAULT);
-                return;
-            case ComponentPackage.IMPORT_TYPE__MRREQUIRED:
-                setMRREQUIRED(MRREQUIRED_EDEFAULT);
-                return;
-            case ComponentPackage.IMPORT_TYPE__MODULEGROUP:
-                setMODULEGROUP(MODULEGROUP_EDEFAULT);
                 return;
         }
         super.eUnset(featureID);
@@ -749,20 +783,20 @@ public class IMPORTTypeImpl extends EObjectImpl implements IMPORTType {
                 return MESSAGE_EDEFAULT == null ? mESSAGE != null : !MESSAGE_EDEFAULT.equals(mESSAGE);
             case ComponentPackage.IMPORT_TYPE__MODULE:
                 return MODULE_EDEFAULT == null ? mODULE != null : !MODULE_EDEFAULT.equals(mODULE);
+            case ComponentPackage.IMPORT_TYPE__MODULEGROUP:
+                return MODULEGROUP_EDEFAULT == null ? mODULEGROUP != null : !MODULEGROUP_EDEFAULT.equals(mODULEGROUP);
+            case ComponentPackage.IMPORT_TYPE__MRREQUIRED:
+                return isSetMRREQUIRED();
             case ComponentPackage.IMPORT_TYPE__NAME:
                 return NAME_EDEFAULT == null ? nAME != null : !NAME_EDEFAULT.equals(nAME);
             case ComponentPackage.IMPORT_TYPE__REQUIRED:
                 return isSetREQUIRED();
+            case ComponentPackage.IMPORT_TYPE__REQUIREDIF:
+                return REQUIREDIF_EDEFAULT == null ? rEQUIREDIF != null : !REQUIREDIF_EDEFAULT.equals(rEQUIREDIF);
             case ComponentPackage.IMPORT_TYPE__SHOW:
                 return isSetSHOW();
             case ComponentPackage.IMPORT_TYPE__URL_PATH:
                 return URL_PATH_EDEFAULT == null ? urlPath != null : !URL_PATH_EDEFAULT.equals(urlPath);
-            case ComponentPackage.IMPORT_TYPE__REQUIREDIF:
-                return REQUIREDIF_EDEFAULT == null ? rEQUIREDIF != null : !REQUIREDIF_EDEFAULT.equals(rEQUIREDIF);
-            case ComponentPackage.IMPORT_TYPE__MRREQUIRED:
-                return mRREQUIRED != MRREQUIRED_EDEFAULT;
-            case ComponentPackage.IMPORT_TYPE__MODULEGROUP:
-                return MODULEGROUP_EDEFAULT == null ? mODULEGROUP != null : !MODULEGROUP_EDEFAULT.equals(mODULEGROUP);
         }
         return super.eIsSet(featureID);
     }
@@ -784,20 +818,20 @@ public class IMPORTTypeImpl extends EObjectImpl implements IMPORTType {
         result.append(mESSAGE);
         result.append(", mODULE: ");
         result.append(mODULE);
+        result.append(", mODULEGROUP: ");
+        result.append(mODULEGROUP);
+        result.append(", mRREQUIRED: ");
+        if (mRREQUIREDESet) result.append(mRREQUIRED); else result.append("<unset>");
         result.append(", nAME: ");
         result.append(nAME);
         result.append(", rEQUIRED: ");
         if (rEQUIREDESet) result.append(rEQUIRED); else result.append("<unset>");
+        result.append(", rEQUIREDIF: ");
+        result.append(rEQUIREDIF);
         result.append(", sHOW: ");
         if (sHOWESet) result.append(sHOW); else result.append("<unset>");
         result.append(", urlPath: ");
         result.append(urlPath);
-        result.append(", rEQUIREDIF: ");
-        result.append(rEQUIREDIF);
-        result.append(", mRREQUIRED: ");
-        result.append(mRREQUIRED);
-        result.append(", mODULEGROUP: ");
-        result.append(mODULEGROUP);
         result.append(')');
         return result.toString();
     }

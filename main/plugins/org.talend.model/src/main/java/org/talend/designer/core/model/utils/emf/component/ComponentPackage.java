@@ -178,13 +178,22 @@ public interface ComponentPackage extends EPackage {
     int COLUMN_TYPE__CUSTOM = 1;
 
     /**
+     * The feature id for the '<em><b>DBTYPE</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COLUMN_TYPE__DBTYPE = 2;
+
+    /**
      * The feature id for the '<em><b>DEFAULT</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int COLUMN_TYPE__DEFAULT = 2;
+    int COLUMN_TYPE__DEFAULT = 3;
 
     /**
      * The feature id for the '<em><b>KEY</b></em>' attribute.
@@ -193,7 +202,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_TYPE__KEY = 3;
+    int COLUMN_TYPE__KEY = 4;
 
     /**
      * The feature id for the '<em><b>LENGTH</b></em>' attribute.
@@ -202,7 +211,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_TYPE__LENGTH = 4;
+    int COLUMN_TYPE__LENGTH = 5;
 
     /**
      * The feature id for the '<em><b>NAME</b></em>' attribute.
@@ -211,7 +220,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_TYPE__NAME = 5;
+    int COLUMN_TYPE__NAME = 6;
 
     /**
      * The feature id for the '<em><b>NULLABLE</b></em>' attribute.
@@ -220,7 +229,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_TYPE__NULLABLE = 6;
+    int COLUMN_TYPE__NULLABLE = 7;
 
     /**
      * The feature id for the '<em><b>PATTERN</b></em>' attribute.
@@ -229,7 +238,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_TYPE__PATTERN = 7;
+    int COLUMN_TYPE__PATTERN = 8;
 
     /**
      * The feature id for the '<em><b>PRECISION</b></em>' attribute.
@@ -238,7 +247,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_TYPE__PRECISION = 8;
+    int COLUMN_TYPE__PRECISION = 9;
 
     /**
      * The feature id for the '<em><b>READONLY</b></em>' attribute.
@@ -247,7 +256,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_TYPE__READONLY = 9;
+    int COLUMN_TYPE__READONLY = 10;
 
     /**
      * The feature id for the '<em><b>RELATEDENTITY</b></em>' attribute.
@@ -256,7 +265,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_TYPE__RELATEDENTITY = 10;
+    int COLUMN_TYPE__RELATEDENTITY = 11;
 
     /**
      * The feature id for the '<em><b>RELATIONSHIPTYPE</b></em>' attribute.
@@ -265,7 +274,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_TYPE__RELATIONSHIPTYPE = 11;
+    int COLUMN_TYPE__RELATIONSHIPTYPE = 12;
 
     /**
      * The feature id for the '<em><b>TYPE</b></em>' attribute.
@@ -274,16 +283,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COLUMN_TYPE__TYPE = 12;
-
-    /**
-     * The feature id for the '<em><b>DBTYPE</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int COLUMN_TYPE__DBTYPE = 13;
+    int COLUMN_TYPE__TYPE = 13;
 
     /**
      * The number of structural features of the '<em>COLUMN Type</em>' class.
@@ -1006,13 +1006,22 @@ public interface ComponentPackage extends EPackage {
     int HEADER_TYPE__ISMULTIPLYINGOUTPUTS = 9;
 
     /**
+     * The feature id for the '<em><b>LOG4J ENABLED</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__LOG4J_ENABLED = 10;
+
+    /**
      * The feature id for the '<em><b>MAINCODECALLED</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int HEADER_TYPE__MAINCODECALLED = 10;
+    int HEADER_TYPE__MAINCODECALLED = 11;
 
     /**
      * The feature id for the '<em><b>NUMBERPARALLELIZE</b></em>' attribute.
@@ -1021,7 +1030,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HEADER_TYPE__NUMBERPARALLELIZE = 11;
+    int HEADER_TYPE__NUMBERPARALLELIZE = 12;
 
     /**
      * The feature id for the '<em><b>PARALLELIZE</b></em>' attribute.
@@ -1030,151 +1039,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HEADER_TYPE__PARALLELIZE = 12;
-
-    /**
-     * The feature id for the '<em><b>PLATEFORM</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__PLATEFORM = 13;
-
-    /**
-     * The feature id for the '<em><b>RELEASEDATE</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__RELEASEDATE = 14;
-
-    /**
-     * The feature id for the '<em><b>SCHEMAAUTOPROPAGATE</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__SCHEMAAUTOPROPAGATE = 15;
-
-    /**
-     * The feature id for the '<em><b>SERIAL</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__SERIAL = 16;
-
-    /**
-     * The feature id for the '<em><b>SHORTNAME</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__SHORTNAME = 17;
-
-    /**
-     * The feature id for the '<em><b>SINGLETON</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__SINGLETON = 18;
-
-    /**
-     * The feature id for the '<em><b>STARTABLE</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__STARTABLE = 19;
-
-    /**
-     * The feature id for the '<em><b>STATUS</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__STATUS = 20;
-
-    /**
-     * The feature id for the '<em><b>SUBJOBCOLOR</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__SUBJOBCOLOR = 21;
-
-    /**
-     * The feature id for the '<em><b>SUBJOBTITLECOLOR</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__SUBJOBTITLECOLOR = 22;
-
-    /**
-     * The feature id for the '<em><b>TECHNICAL</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__TECHNICAL = 23;
-
-    /**
-     * The feature id for the '<em><b>TSTATCATCHERSTATS</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__TSTATCATCHERSTATS = 24;
-
-    /**
-     * The feature id for the '<em><b>VERSION</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__VERSION = 25;
-
-    /**
-     * The feature id for the '<em><b>VISIBLE</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__VISIBLE = 26;
-
-    /**
-     * The feature id for the '<em><b>TYPE</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__TYPE = 27;
-
-    /**
-     * The feature id for the '<em><b>REDUCE</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int HEADER_TYPE__REDUCE = 28;
+    int HEADER_TYPE__PARALLELIZE = 13;
 
     /**
      * The feature id for the '<em><b>PARTITIONING</b></em>' attribute.
@@ -1183,7 +1048,106 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HEADER_TYPE__PARTITIONING = 29;
+    int HEADER_TYPE__PARTITIONING = 14;
+
+    /**
+     * The feature id for the '<em><b>PLATEFORM</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__PLATEFORM = 15;
+
+    /**
+     * The feature id for the '<em><b>REDUCE</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__REDUCE = 16;
+
+    /**
+     * The feature id for the '<em><b>RELEASEDATE</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__RELEASEDATE = 17;
+
+    /**
+     * The feature id for the '<em><b>SCHEMAAUTOPROPAGATE</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__SCHEMAAUTOPROPAGATE = 18;
+
+    /**
+     * The feature id for the '<em><b>SERIAL</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__SERIAL = 19;
+
+    /**
+     * The feature id for the '<em><b>SHORTNAME</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__SHORTNAME = 20;
+
+    /**
+     * The feature id for the '<em><b>SINGLETON</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__SINGLETON = 21;
+
+    /**
+     * The feature id for the '<em><b>STARTABLE</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__STARTABLE = 22;
+
+    /**
+     * The feature id for the '<em><b>STATUS</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__STATUS = 23;
+
+    /**
+     * The feature id for the '<em><b>SUBJOBCOLOR</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__SUBJOBCOLOR = 24;
+
+    /**
+     * The feature id for the '<em><b>SUBJOBTITLECOLOR</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__SUBJOBTITLECOLOR = 25;
 
     /**
      * The feature id for the '<em><b>SUPPORTS DB TYPE</b></em>' attribute.
@@ -1192,16 +1156,52 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int HEADER_TYPE__SUPPORTS_DB_TYPE = 30;
+    int HEADER_TYPE__SUPPORTS_DB_TYPE = 26;
 
     /**
-     * The feature id for the '<em><b>LOG4J ENABLED</b></em>' attribute.
+     * The feature id for the '<em><b>TECHNICAL</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int HEADER_TYPE__LOG4J_ENABLED = 31;
+    int HEADER_TYPE__TECHNICAL = 27;
+
+    /**
+     * The feature id for the '<em><b>TSTATCATCHERSTATS</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__TSTATCATCHERSTATS = 28;
+
+    /**
+     * The feature id for the '<em><b>TYPE</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__TYPE = 29;
+
+    /**
+     * The feature id for the '<em><b>VERSION</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__VERSION = 30;
+
+    /**
+     * The feature id for the '<em><b>VISIBLE</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int HEADER_TYPE__VISIBLE = 31;
 
     /**
      * The number of structural features of the '<em>HEADER Type</em>' class.
@@ -1223,22 +1223,13 @@ public interface ComponentPackage extends EPackage {
     int IMPORTS_TYPE = 13;
 
     /**
-     * The feature id for the '<em><b>REQUIREDIF</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int IMPORTS_TYPE__REQUIREDIF = 0;
-
-    /**
      * The feature id for the '<em><b>IMPORT</b></em>' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int IMPORTS_TYPE__IMPORT = 1;
+    int IMPORTS_TYPE__IMPORT = 0;
 
     /**
      * The feature id for the '<em><b>IMPORTS</b></em>' containment reference list.
@@ -1247,7 +1238,16 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int IMPORTS_TYPE__IMPORTS = 2;
+    int IMPORTS_TYPE__IMPORTS = 1;
+
+    /**
+     * The feature id for the '<em><b>REQUIREDIF</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int IMPORTS_TYPE__REQUIREDIF = 2;
 
     /**
      * The number of structural features of the '<em>IMPORTS Type</em>' class.
@@ -1314,13 +1314,31 @@ public interface ComponentPackage extends EPackage {
     int IMPORT_TYPE__MODULE = 4;
 
     /**
+     * The feature id for the '<em><b>MODULEGROUP</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int IMPORT_TYPE__MODULEGROUP = 5;
+
+    /**
+     * The feature id for the '<em><b>MRREQUIRED</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int IMPORT_TYPE__MRREQUIRED = 6;
+
+    /**
      * The feature id for the '<em><b>NAME</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int IMPORT_TYPE__NAME = 5;
+    int IMPORT_TYPE__NAME = 7;
 
     /**
      * The feature id for the '<em><b>REQUIRED</b></em>' attribute.
@@ -1329,25 +1347,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int IMPORT_TYPE__REQUIRED = 6;
-
-    /**
-     * The feature id for the '<em><b>SHOW</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int IMPORT_TYPE__SHOW = 7;
-
-    /**
-     * The feature id for the '<em><b>Url Path</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int IMPORT_TYPE__URL_PATH = 8;
+    int IMPORT_TYPE__REQUIRED = 8;
 
     /**
      * The feature id for the '<em><b>REQUIREDIF</b></em>' attribute.
@@ -1359,22 +1359,22 @@ public interface ComponentPackage extends EPackage {
     int IMPORT_TYPE__REQUIREDIF = 9;
 
     /**
-     * The feature id for the '<em><b>MRREQUIRED</b></em>' attribute.
+     * The feature id for the '<em><b>SHOW</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int IMPORT_TYPE__MRREQUIRED = 10;
+    int IMPORT_TYPE__SHOW = 10;
 
     /**
-     * The feature id for the '<em><b>MODULEGROUP</b></em>' attribute.
+     * The feature id for the '<em><b>Url Path</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int IMPORT_TYPE__MODULEGROUP = 11;
+    int IMPORT_TYPE__URL_PATH = 11;
 
     /**
      * The number of structural features of the '<em>IMPORT Type</em>' class.
@@ -1587,13 +1587,22 @@ public interface ComponentPackage extends EPackage {
     int ITEM_TYPE__NOTSHOWIF = 8;
 
     /**
+     * The feature id for the '<em><b>RAW</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ITEM_TYPE__RAW = 9;
+
+    /**
      * The feature id for the '<em><b>READONLY</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int ITEM_TYPE__READONLY = 9;
+    int ITEM_TYPE__READONLY = 10;
 
     /**
      * The feature id for the '<em><b>READONLYIF</b></em>' attribute.
@@ -1602,7 +1611,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ITEM_TYPE__READONLYIF = 10;
+    int ITEM_TYPE__READONLYIF = 11;
 
     /**
      * The feature id for the '<em><b>REPOSITORYITEM</b></em>' attribute.
@@ -1611,7 +1620,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ITEM_TYPE__REPOSITORYITEM = 11;
+    int ITEM_TYPE__REPOSITORYITEM = 12;
 
     /**
      * The feature id for the '<em><b>SHOWIF</b></em>' attribute.
@@ -1620,7 +1629,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ITEM_TYPE__SHOWIF = 12;
+    int ITEM_TYPE__SHOWIF = 13;
 
     /**
      * The feature id for the '<em><b>VALUE</b></em>' attribute.
@@ -1629,16 +1638,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int ITEM_TYPE__VALUE = 13;
-
-    /**
-     * The feature id for the '<em><b>RAW</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int ITEM_TYPE__RAW = 14;
+    int ITEM_TYPE__VALUE = 14;
 
     /**
      * The number of structural features of the '<em>ITEM Type</em>' class.
@@ -1888,13 +1888,22 @@ public interface ComponentPackage extends EPackage {
     int PARAMETER_TYPE__GROUP = 11;
 
     /**
+     * The feature id for the '<em><b>LOG4J ENABLED</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PARAMETER_TYPE__LOG4J_ENABLED = 12;
+
+    /**
      * The feature id for the '<em><b>MAXLENGTH</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int PARAMETER_TYPE__MAXLENGTH = 12;
+    int PARAMETER_TYPE__MAXLENGTH = 13;
 
     /**
      * The feature id for the '<em><b>NAME</b></em>' attribute.
@@ -1903,7 +1912,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int PARAMETER_TYPE__NAME = 13;
+    int PARAMETER_TYPE__NAME = 14;
 
     /**
      * The feature id for the '<em><b>NBLINES</b></em>' attribute.
@@ -1912,7 +1921,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int PARAMETER_TYPE__NBLINES = 14;
+    int PARAMETER_TYPE__NBLINES = 15;
 
     /**
      * The feature id for the '<em><b>NOCONTEXTASSIST</b></em>' attribute.
@@ -1921,7 +1930,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int PARAMETER_TYPE__NOCONTEXTASSIST = 15;
+    int PARAMETER_TYPE__NOCONTEXTASSIST = 16;
 
     /**
      * The feature id for the '<em><b>NOTREADONLYIF</b></em>' attribute.
@@ -1930,7 +1939,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int PARAMETER_TYPE__NOTREADONLYIF = 16;
+    int PARAMETER_TYPE__NOTREADONLYIF = 17;
 
     /**
      * The feature id for the '<em><b>NOTSHOWIF</b></em>' attribute.
@@ -1939,7 +1948,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int PARAMETER_TYPE__NOTSHOWIF = 17;
+    int PARAMETER_TYPE__NOTSHOWIF = 18;
 
     /**
      * The feature id for the '<em><b>NUMROW</b></em>' attribute.
@@ -1948,70 +1957,7 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int PARAMETER_TYPE__NUMROW = 18;
-
-    /**
-     * The feature id for the '<em><b>READONLY</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PARAMETER_TYPE__READONLY = 19;
-
-    /**
-     * The feature id for the '<em><b>READONLYIF</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PARAMETER_TYPE__READONLYIF = 20;
-
-    /**
-     * The feature id for the '<em><b>REPOSITORYVALUE</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PARAMETER_TYPE__REPOSITORYVALUE = 21;
-
-    /**
-     * The feature id for the '<em><b>REQUIRED</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PARAMETER_TYPE__REQUIRED = 22;
-
-    /**
-     * The feature id for the '<em><b>REQUIREDIF</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PARAMETER_TYPE__REQUIREDIF = 23;
-
-    /**
-     * The feature id for the '<em><b>SHOW</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PARAMETER_TYPE__SHOW = 24;
-
-    /**
-     * The feature id for the '<em><b>SHOWIF</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int PARAMETER_TYPE__SHOWIF = 25;
+    int PARAMETER_TYPE__NUMROW = 19;
 
     /**
      * The feature id for the '<em><b>RAW</b></em>' attribute.
@@ -2020,16 +1966,70 @@ public interface ComponentPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int PARAMETER_TYPE__RAW = 26;
+    int PARAMETER_TYPE__RAW = 20;
 
     /**
-     * The feature id for the '<em><b>LOG4J ENABLED</b></em>' attribute.
+     * The feature id for the '<em><b>READONLY</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int PARAMETER_TYPE__LOG4J_ENABLED = 27;
+    int PARAMETER_TYPE__READONLY = 21;
+
+    /**
+     * The feature id for the '<em><b>READONLYIF</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PARAMETER_TYPE__READONLYIF = 22;
+
+    /**
+     * The feature id for the '<em><b>REPOSITORYVALUE</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PARAMETER_TYPE__REPOSITORYVALUE = 23;
+
+    /**
+     * The feature id for the '<em><b>REQUIRED</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PARAMETER_TYPE__REQUIRED = 24;
+
+    /**
+     * The feature id for the '<em><b>REQUIREDIF</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PARAMETER_TYPE__REQUIREDIF = 25;
+
+    /**
+     * The feature id for the '<em><b>SHOW</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PARAMETER_TYPE__SHOW = 26;
+
+    /**
+     * The feature id for the '<em><b>SHOWIF</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PARAMETER_TYPE__SHOWIF = 27;
 
     /**
      * The number of structural features of the '<em>PARAMETER Type</em>' class.
@@ -2153,22 +2153,22 @@ public interface ComponentPackage extends EPackage {
     int RETURN_TYPE__NAME = 1;
 
     /**
-     * The feature id for the '<em><b>TYPE</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int RETURN_TYPE__TYPE = 2;
-
-    /**
      * The feature id for the '<em><b>SHOWIF</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int RETURN_TYPE__SHOWIF = 3;
+    int RETURN_TYPE__SHOWIF = 2;
+
+    /**
+     * The feature id for the '<em><b>TYPE</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RETURN_TYPE__TYPE = 3;
 
     /**
      * The number of structural features of the '<em>RETURN Type</em>' class.

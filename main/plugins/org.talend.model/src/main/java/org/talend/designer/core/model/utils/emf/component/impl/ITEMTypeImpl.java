@@ -31,12 +31,12 @@ import org.talend.designer.core.model.utils.emf.component.ITEMType;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.ITEMTypeImpl#isNOCONTEXTASSIST <em>NOCONTEXTASSIST</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.ITEMTypeImpl#getNOTREADONLYIF <em>NOTREADONLYIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.ITEMTypeImpl#getNOTSHOWIF <em>NOTSHOWIF</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.ITEMTypeImpl#isRAW <em>RAW</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.ITEMTypeImpl#isREADONLY <em>READONLY</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.ITEMTypeImpl#getREADONLYIF <em>READONLYIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.ITEMTypeImpl#getREPOSITORYITEM <em>REPOSITORYITEM</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.ITEMTypeImpl#getSHOWIF <em>SHOWIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.ITEMTypeImpl#getVALUE <em>VALUE</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.ITEMTypeImpl#isRAW <em>RAW</em>}</li>
  * </ul>
  * </p>
  *
@@ -241,6 +241,35 @@ public class ITEMTypeImpl extends EObjectImpl implements ITEMType {
     protected String nOTSHOWIF = NOTSHOWIF_EDEFAULT;
 
     /**
+     * The default value of the '{@link #isRAW() <em>RAW</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isRAW()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean RAW_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isRAW() <em>RAW</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isRAW()
+     * @generated
+     * @ordered
+     */
+    protected boolean rAW = RAW_EDEFAULT;
+
+    /**
+     * This is true if the RAW attribute has been set.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    protected boolean rAWESet;
+
+    /**
      * The default value of the '{@link #isREADONLY() <em>READONLY</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -348,35 +377,6 @@ public class ITEMTypeImpl extends EObjectImpl implements ITEMType {
      * @ordered
      */
     protected String vALUE = VALUE_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #isRAW() <em>RAW</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isRAW()
-     * @generated
-     * @ordered
-     */
-    protected static final boolean RAW_EDEFAULT = false;
-
-    /**
-     * The cached value of the '{@link #isRAW() <em>RAW</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isRAW()
-     * @generated
-     * @ordered
-     */
-    protected boolean rAW = RAW_EDEFAULT;
-
-    /**
-     * This is true if the RAW attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    protected boolean rAWESet;
 
     /**
      * <!-- begin-user-doc -->
@@ -896,6 +896,8 @@ public class ITEMTypeImpl extends EObjectImpl implements ITEMType {
                 return getNOTREADONLYIF();
             case ComponentPackage.ITEM_TYPE__NOTSHOWIF:
                 return getNOTSHOWIF();
+            case ComponentPackage.ITEM_TYPE__RAW:
+                return isRAW() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.ITEM_TYPE__READONLY:
                 return isREADONLY() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.ITEM_TYPE__READONLYIF:
@@ -906,8 +908,6 @@ public class ITEMTypeImpl extends EObjectImpl implements ITEMType {
                 return getSHOWIF();
             case ComponentPackage.ITEM_TYPE__VALUE:
                 return getVALUE();
-            case ComponentPackage.ITEM_TYPE__RAW:
-                return isRAW() ? Boolean.TRUE : Boolean.FALSE;
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -946,6 +946,9 @@ public class ITEMTypeImpl extends EObjectImpl implements ITEMType {
             case ComponentPackage.ITEM_TYPE__NOTSHOWIF:
                 setNOTSHOWIF((String)newValue);
                 return;
+            case ComponentPackage.ITEM_TYPE__RAW:
+                setRAW(((Boolean)newValue).booleanValue());
+                return;
             case ComponentPackage.ITEM_TYPE__READONLY:
                 setREADONLY(((Boolean)newValue).booleanValue());
                 return;
@@ -960,9 +963,6 @@ public class ITEMTypeImpl extends EObjectImpl implements ITEMType {
                 return;
             case ComponentPackage.ITEM_TYPE__VALUE:
                 setVALUE((String)newValue);
-                return;
-            case ComponentPackage.ITEM_TYPE__RAW:
-                setRAW(((Boolean)newValue).booleanValue());
                 return;
         }
         super.eSet(featureID, newValue);
@@ -1002,6 +1002,9 @@ public class ITEMTypeImpl extends EObjectImpl implements ITEMType {
             case ComponentPackage.ITEM_TYPE__NOTSHOWIF:
                 setNOTSHOWIF(NOTSHOWIF_EDEFAULT);
                 return;
+            case ComponentPackage.ITEM_TYPE__RAW:
+                unsetRAW();
+                return;
             case ComponentPackage.ITEM_TYPE__READONLY:
                 unsetREADONLY();
                 return;
@@ -1016,9 +1019,6 @@ public class ITEMTypeImpl extends EObjectImpl implements ITEMType {
                 return;
             case ComponentPackage.ITEM_TYPE__VALUE:
                 setVALUE(VALUE_EDEFAULT);
-                return;
-            case ComponentPackage.ITEM_TYPE__RAW:
-                unsetRAW();
                 return;
         }
         super.eUnset(featureID);
@@ -1049,6 +1049,8 @@ public class ITEMTypeImpl extends EObjectImpl implements ITEMType {
                 return NOTREADONLYIF_EDEFAULT == null ? nOTREADONLYIF != null : !NOTREADONLYIF_EDEFAULT.equals(nOTREADONLYIF);
             case ComponentPackage.ITEM_TYPE__NOTSHOWIF:
                 return NOTSHOWIF_EDEFAULT == null ? nOTSHOWIF != null : !NOTSHOWIF_EDEFAULT.equals(nOTSHOWIF);
+            case ComponentPackage.ITEM_TYPE__RAW:
+                return isSetRAW();
             case ComponentPackage.ITEM_TYPE__READONLY:
                 return isSetREADONLY();
             case ComponentPackage.ITEM_TYPE__READONLYIF:
@@ -1059,8 +1061,6 @@ public class ITEMTypeImpl extends EObjectImpl implements ITEMType {
                 return SHOWIF_EDEFAULT == null ? sHOWIF != null : !SHOWIF_EDEFAULT.equals(sHOWIF);
             case ComponentPackage.ITEM_TYPE__VALUE:
                 return VALUE_EDEFAULT == null ? vALUE != null : !VALUE_EDEFAULT.equals(vALUE);
-            case ComponentPackage.ITEM_TYPE__RAW:
-                return isSetRAW();
         }
         return super.eIsSet(featureID);
     }
@@ -1090,6 +1090,8 @@ public class ITEMTypeImpl extends EObjectImpl implements ITEMType {
         result.append(nOTREADONLYIF);
         result.append(", nOTSHOWIF: ");
         result.append(nOTSHOWIF);
+        result.append(", rAW: ");
+        if (rAWESet) result.append(rAW); else result.append("<unset>");
         result.append(", rEADONLY: ");
         if (rEADONLYESet) result.append(rEADONLY); else result.append("<unset>");
         result.append(", rEADONLYIF: ");
@@ -1100,8 +1102,6 @@ public class ITEMTypeImpl extends EObjectImpl implements ITEMType {
         result.append(sHOWIF);
         result.append(", vALUE: ");
         result.append(vALUE);
-        result.append(", rAW: ");
-        if (rAWESet) result.append(rAW); else result.append("<unset>");
         result.append(')');
         return result.toString();
     }

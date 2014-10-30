@@ -21,12 +21,12 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.ITEMType#isNOCONTEXTASSIST <em>NOCONTEXTASSIST</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.ITEMType#getNOTREADONLYIF <em>NOTREADONLYIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.ITEMType#getNOTSHOWIF <em>NOTSHOWIF</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.ITEMType#isRAW <em>RAW</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.ITEMType#isREADONLY <em>READONLY</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.ITEMType#getREADONLYIF <em>READONLYIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.ITEMType#getREPOSITORYITEM <em>REPOSITORYITEM</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.ITEMType#getSHOWIF <em>SHOWIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.ITEMType#getVALUE <em>VALUE</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.ITEMType#isRAW <em>RAW</em>}</li>
  * </ul>
  * </p>
  *

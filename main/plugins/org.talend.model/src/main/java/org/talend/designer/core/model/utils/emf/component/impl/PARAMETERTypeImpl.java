@@ -44,6 +44,7 @@ import org.talend.designer.core.model.utils.emf.component.TABLEType;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getFIELD <em>FIELD</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getFILTER <em>FILTER</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getGROUP <em>GROUP</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getMAXLENGTH <em>MAXLENGTH</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getNAME <em>NAME</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getNBLINES <em>NBLINES</em>}</li>
@@ -51,6 +52,7 @@ import org.talend.designer.core.model.utils.emf.component.TABLEType;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getNOTREADONLYIF <em>NOTREADONLYIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getNOTSHOWIF <em>NOTSHOWIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getNUMROW <em>NUMROW</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#isRAW <em>RAW</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#isREADONLY <em>READONLY</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getREADONLYIF <em>READONLYIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getREPOSITORYVALUE <em>REPOSITORYVALUE</em>}</li>
@@ -58,8 +60,6 @@ import org.talend.designer.core.model.utils.emf.component.TABLEType;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getREQUIREDIF <em>REQUIREDIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#isSHOW <em>SHOW</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#getSHOWIF <em>SHOWIF</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#isRAW <em>RAW</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.PARAMETERTypeImpl#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}</li>
  * </ul>
  * </p>
  *
@@ -285,6 +285,35 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
     protected String gROUP = GROUP_EDEFAULT;
 
     /**
+     * The default value of the '{@link #isLOG4J_ENABLED() <em>LOG4J ENABLED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isLOG4J_ENABLED()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean LOG4J_ENABLED_EDEFAULT = true;
+
+    /**
+     * The cached value of the '{@link #isLOG4J_ENABLED() <em>LOG4J ENABLED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isLOG4J_ENABLED()
+     * @generated
+     * @ordered
+     */
+    protected boolean lOG4J_ENABLED = LOG4J_ENABLED_EDEFAULT;
+
+    /**
+     * This is true if the LOG4J ENABLED attribute has been set.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    protected boolean lOG4J_ENABLEDESet;
+
+    /**
      * The default value of the '{@link #getMAXLENGTH() <em>MAXLENGTH</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -461,6 +490,35 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
     protected boolean nUMROWESet;
 
     /**
+     * The default value of the '{@link #isRAW() <em>RAW</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isRAW()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean RAW_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isRAW() <em>RAW</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isRAW()
+     * @generated
+     * @ordered
+     */
+    protected boolean rAW = RAW_EDEFAULT;
+
+    /**
+     * This is true if the RAW attribute has been set.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    protected boolean rAWESet;
+
+    /**
      * The default value of the '{@link #isREADONLY() <em>READONLY</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -626,64 +684,6 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
      * @ordered
      */
     protected String sHOWIF = SHOWIF_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #isRAW() <em>RAW</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isRAW()
-     * @generated
-     * @ordered
-     */
-    protected static final boolean RAW_EDEFAULT = false;
-
-    /**
-     * The cached value of the '{@link #isRAW() <em>RAW</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isRAW()
-     * @generated
-     * @ordered
-     */
-    protected boolean rAW = RAW_EDEFAULT;
-
-    /**
-     * This is true if the RAW attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    protected boolean rAWESet;
-
-    /**
-     * The default value of the '{@link #isLOG4J_ENABLED() <em>LOG4J ENABLED</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isLOG4J_ENABLED()
-     * @generated
-     * @ordered
-     */
-    protected static final boolean LOG4J_ENABLED_EDEFAULT = true;
-
-    /**
-     * The cached value of the '{@link #isLOG4J_ENABLED() <em>LOG4J ENABLED</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isLOG4J_ENABLED()
-     * @generated
-     * @ordered
-     */
-    protected boolean log4J_ENABLED = LOG4J_ENABLED_EDEFAULT;
-
-    /**
-     * This is true if the LOG4J ENABLED attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    protected boolean log4J_ENABLEDESet;
 
     /**
      * <!-- begin-user-doc -->
@@ -1552,7 +1552,7 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
      * @generated
      */
     public boolean isLOG4J_ENABLED() {
-        return log4J_ENABLED;
+        return lOG4J_ENABLED;
     }
 
     /**
@@ -1561,12 +1561,12 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
      * @generated
      */
     public void setLOG4J_ENABLED(boolean newLOG4J_ENABLED) {
-        boolean oldLOG4J_ENABLED = log4J_ENABLED;
-        log4J_ENABLED = newLOG4J_ENABLED;
-        boolean oldLOG4J_ENABLEDESet = log4J_ENABLEDESet;
-        log4J_ENABLEDESet = true;
+        boolean oldLOG4J_ENABLED = lOG4J_ENABLED;
+        lOG4J_ENABLED = newLOG4J_ENABLED;
+        boolean oldLOG4J_ENABLEDESet = lOG4J_ENABLEDESet;
+        lOG4J_ENABLEDESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED, oldLOG4J_ENABLED, log4J_ENABLED, !oldLOG4J_ENABLEDESet));
+            eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED, oldLOG4J_ENABLED, lOG4J_ENABLED, !oldLOG4J_ENABLEDESet));
     }
 
     /**
@@ -1575,10 +1575,10 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
      * @generated
      */
     public void unsetLOG4J_ENABLED() {
-        boolean oldLOG4J_ENABLED = log4J_ENABLED;
-        boolean oldLOG4J_ENABLEDESet = log4J_ENABLEDESet;
-        log4J_ENABLED = LOG4J_ENABLED_EDEFAULT;
-        log4J_ENABLEDESet = false;
+        boolean oldLOG4J_ENABLED = lOG4J_ENABLED;
+        boolean oldLOG4J_ENABLEDESet = lOG4J_ENABLEDESet;
+        lOG4J_ENABLED = LOG4J_ENABLED_EDEFAULT;
+        lOG4J_ENABLEDESet = false;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.UNSET, ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED, oldLOG4J_ENABLED, LOG4J_ENABLED_EDEFAULT, oldLOG4J_ENABLEDESet));
     }
@@ -1589,7 +1589,7 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
      * @generated
      */
     public boolean isSetLOG4J_ENABLED() {
-        return log4J_ENABLEDESet;
+        return lOG4J_ENABLEDESet;
     }
 
     /**
@@ -1642,6 +1642,8 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
                 return getFILTER();
             case ComponentPackage.PARAMETER_TYPE__GROUP:
                 return getGROUP();
+            case ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED:
+                return isLOG4J_ENABLED() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.PARAMETER_TYPE__MAXLENGTH:
                 return new Integer(getMAXLENGTH());
             case ComponentPackage.PARAMETER_TYPE__NAME:
@@ -1656,6 +1658,8 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
                 return getNOTSHOWIF();
             case ComponentPackage.PARAMETER_TYPE__NUMROW:
                 return new Integer(getNUMROW());
+            case ComponentPackage.PARAMETER_TYPE__RAW:
+                return isRAW() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.PARAMETER_TYPE__READONLY:
                 return isREADONLY() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.PARAMETER_TYPE__READONLYIF:
@@ -1670,10 +1674,6 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
                 return isSHOW() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.PARAMETER_TYPE__SHOWIF:
                 return getSHOWIF();
-            case ComponentPackage.PARAMETER_TYPE__RAW:
-                return isRAW() ? Boolean.TRUE : Boolean.FALSE;
-            case ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED:
-                return isLOG4J_ENABLED() ? Boolean.TRUE : Boolean.FALSE;
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -1723,6 +1723,9 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
             case ComponentPackage.PARAMETER_TYPE__GROUP:
                 setGROUP((String)newValue);
                 return;
+            case ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED:
+                setLOG4J_ENABLED(((Boolean)newValue).booleanValue());
+                return;
             case ComponentPackage.PARAMETER_TYPE__MAXLENGTH:
                 setMAXLENGTH(((Integer)newValue).intValue());
                 return;
@@ -1744,6 +1747,9 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
             case ComponentPackage.PARAMETER_TYPE__NUMROW:
                 setNUMROW(((Integer)newValue).intValue());
                 return;
+            case ComponentPackage.PARAMETER_TYPE__RAW:
+                setRAW(((Boolean)newValue).booleanValue());
+                return;
             case ComponentPackage.PARAMETER_TYPE__READONLY:
                 setREADONLY(((Boolean)newValue).booleanValue());
                 return;
@@ -1764,12 +1770,6 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
                 return;
             case ComponentPackage.PARAMETER_TYPE__SHOWIF:
                 setSHOWIF((String)newValue);
-                return;
-            case ComponentPackage.PARAMETER_TYPE__RAW:
-                setRAW(((Boolean)newValue).booleanValue());
-                return;
-            case ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED:
-                setLOG4J_ENABLED(((Boolean)newValue).booleanValue());
                 return;
         }
         super.eSet(featureID, newValue);
@@ -1818,6 +1818,9 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
             case ComponentPackage.PARAMETER_TYPE__GROUP:
                 setGROUP(GROUP_EDEFAULT);
                 return;
+            case ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED:
+                unsetLOG4J_ENABLED();
+                return;
             case ComponentPackage.PARAMETER_TYPE__MAXLENGTH:
                 unsetMAXLENGTH();
                 return;
@@ -1839,6 +1842,9 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
             case ComponentPackage.PARAMETER_TYPE__NUMROW:
                 unsetNUMROW();
                 return;
+            case ComponentPackage.PARAMETER_TYPE__RAW:
+                unsetRAW();
+                return;
             case ComponentPackage.PARAMETER_TYPE__READONLY:
                 unsetREADONLY();
                 return;
@@ -1859,12 +1865,6 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
                 return;
             case ComponentPackage.PARAMETER_TYPE__SHOWIF:
                 setSHOWIF(SHOWIF_EDEFAULT);
-                return;
-            case ComponentPackage.PARAMETER_TYPE__RAW:
-                unsetRAW();
-                return;
-            case ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED:
-                unsetLOG4J_ENABLED();
                 return;
         }
         super.eUnset(featureID);
@@ -1901,6 +1901,8 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
                 return FILTER_EDEFAULT == null ? fILTER != null : !FILTER_EDEFAULT.equals(fILTER);
             case ComponentPackage.PARAMETER_TYPE__GROUP:
                 return GROUP_EDEFAULT == null ? gROUP != null : !GROUP_EDEFAULT.equals(gROUP);
+            case ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED:
+                return isSetLOG4J_ENABLED();
             case ComponentPackage.PARAMETER_TYPE__MAXLENGTH:
                 return isSetMAXLENGTH();
             case ComponentPackage.PARAMETER_TYPE__NAME:
@@ -1915,6 +1917,8 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
                 return NOTSHOWIF_EDEFAULT == null ? nOTSHOWIF != null : !NOTSHOWIF_EDEFAULT.equals(nOTSHOWIF);
             case ComponentPackage.PARAMETER_TYPE__NUMROW:
                 return isSetNUMROW();
+            case ComponentPackage.PARAMETER_TYPE__RAW:
+                return isSetRAW();
             case ComponentPackage.PARAMETER_TYPE__READONLY:
                 return isSetREADONLY();
             case ComponentPackage.PARAMETER_TYPE__READONLYIF:
@@ -1929,10 +1933,6 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
                 return isSetSHOW();
             case ComponentPackage.PARAMETER_TYPE__SHOWIF:
                 return SHOWIF_EDEFAULT == null ? sHOWIF != null : !SHOWIF_EDEFAULT.equals(sHOWIF);
-            case ComponentPackage.PARAMETER_TYPE__RAW:
-                return isSetRAW();
-            case ComponentPackage.PARAMETER_TYPE__LOG4J_ENABLED:
-                return isSetLOG4J_ENABLED();
         }
         return super.eIsSet(featureID);
     }
@@ -1962,6 +1962,8 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
         result.append(fILTER);
         result.append(", gROUP: ");
         result.append(gROUP);
+        result.append(", lOG4J_ENABLED: ");
+        if (lOG4J_ENABLEDESet) result.append(lOG4J_ENABLED); else result.append("<unset>");
         result.append(", mAXLENGTH: ");
         if (mAXLENGTHESet) result.append(mAXLENGTH); else result.append("<unset>");
         result.append(", nAME: ");
@@ -1976,6 +1978,8 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
         result.append(nOTSHOWIF);
         result.append(", nUMROW: ");
         if (nUMROWESet) result.append(nUMROW); else result.append("<unset>");
+        result.append(", rAW: ");
+        if (rAWESet) result.append(rAW); else result.append("<unset>");
         result.append(", rEADONLY: ");
         if (rEADONLYESet) result.append(rEADONLY); else result.append("<unset>");
         result.append(", rEADONLYIF: ");
@@ -1990,10 +1994,6 @@ public class PARAMETERTypeImpl extends EObjectImpl implements PARAMETERType {
         if (sHOWESet) result.append(sHOW); else result.append("<unset>");
         result.append(", sHOWIF: ");
         result.append(sHOWIF);
-        result.append(", rAW: ");
-        if (rAWESet) result.append(rAW); else result.append("<unset>");
-        result.append(", LOG4J_ENABLED: ");
-        if (log4J_ENABLEDESet) result.append(log4J_ENABLED); else result.append("<unset>");
         result.append(')');
         return result.toString();
     }

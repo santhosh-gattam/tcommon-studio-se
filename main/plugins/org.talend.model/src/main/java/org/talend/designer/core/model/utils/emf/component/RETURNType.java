@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.RETURNType#getAVAILABILITY <em>AVAILABILITY</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.RETURNType#getNAME <em>NAME</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.RETURNType#getTYPE <em>TYPE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.RETURNType#getSHOWIF <em>SHOWIF</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.RETURNType#getTYPE <em>TYPE</em>}</li>
  * </ul>
  * </p>
  *

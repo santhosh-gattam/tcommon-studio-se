@@ -5,6 +5,7 @@ package org.talend.designer.core.model.utils.emf.component;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.FeatureMap;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,9 +15,9 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTSType#getREQUIREDIF <em>REQUIREDIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTSType#getIMPORT <em>IMPORT</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTSType#getIMPORTS <em>IMPORTS</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTSType#getREQUIREDIF <em>REQUIREDIF</em>}</li>
  * </ul>
  * </p>
  *

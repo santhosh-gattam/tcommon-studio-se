@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.COLUMNType#getCOMMENT <em>COMMENT</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.COLUMNType#isCUSTOM <em>CUSTOM</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.COLUMNType#getDBTYPE <em>DBTYPE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.COLUMNType#getDEFAULT <em>DEFAULT</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.COLUMNType#isKEY <em>KEY</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.COLUMNType#getLENGTH <em>LENGTH</em>}</li>
@@ -25,7 +26,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.COLUMNType#getRELATEDENTITY <em>RELATEDENTITY</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.COLUMNType#getRELATIONSHIPTYPE <em>RELATIONSHIPTYPE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.COLUMNType#getTYPE <em>TYPE</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.COLUMNType#getDBTYPE <em>DBTYPE</em>}</li>
  * </ul>
  * </p>
  *

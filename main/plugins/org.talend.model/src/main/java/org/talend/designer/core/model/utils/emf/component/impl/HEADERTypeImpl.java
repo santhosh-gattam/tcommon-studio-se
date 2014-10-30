@@ -34,10 +34,13 @@ import org.talend.designer.core.model.utils.emf.component.HEADERType;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isHASCONDITIONALOUTPUTS <em>HASCONDITIONALOUTPUTS</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isHASHCOMPONENT <em>HASHCOMPONENT</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isISMULTIPLYINGOUTPUTS <em>ISMULTIPLYINGOUTPUTS</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isMAINCODECALLED <em>MAINCODECALLED</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getNUMBERPARALLELIZE <em>NUMBERPARALLELIZE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isPARALLELIZE <em>PARALLELIZE</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getPARTITIONING <em>PARTITIONING</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getPLATEFORM <em>PLATEFORM</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isREDUCE <em>REDUCE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getRELEASEDATE <em>RELEASEDATE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isSCHEMAAUTOPROPAGATE <em>SCHEMAAUTOPROPAGATE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getSERIAL <em>SERIAL</em>}</li>
@@ -47,15 +50,12 @@ import org.talend.designer.core.model.utils.emf.component.HEADERType;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getSTATUS <em>STATUS</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getSUBJOBCOLOR <em>SUBJOBCOLOR</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getSUBJOBTITLECOLOR <em>SUBJOBTITLECOLOR</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isSUPPORTS_DB_TYPE <em>SUPPORTS DB TYPE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isTECHNICAL <em>TECHNICAL</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isTSTATCATCHERSTATS <em>TSTATCATCHERSTATS</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getTYPE <em>TYPE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getVERSION <em>VERSION</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isVISIBLE <em>VISIBLE</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getTYPE <em>TYPE</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isREDUCE <em>REDUCE</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#getPARTITIONING <em>PARTITIONING</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isSUPPORTS_DB_TYPE <em>SUPPORTS DB TYPE</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.HEADERTypeImpl#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}</li>
  * </ul>
  * </p>
  *
@@ -289,6 +289,35 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
     protected boolean iSMULTIPLYINGOUTPUTSESet;
 
     /**
+     * The default value of the '{@link #isLOG4J_ENABLED() <em>LOG4J ENABLED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isLOG4J_ENABLED()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean LOG4J_ENABLED_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isLOG4J_ENABLED() <em>LOG4J ENABLED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isLOG4J_ENABLED()
+     * @generated
+     * @ordered
+     */
+    protected boolean lOG4J_ENABLED = LOG4J_ENABLED_EDEFAULT;
+
+    /**
+     * This is true if the LOG4J ENABLED attribute has been set.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    protected boolean lOG4J_ENABLEDESet;
+
+    /**
      * The default value of the '{@link #isMAINCODECALLED() <em>MAINCODECALLED</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -376,6 +405,26 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
     protected boolean pARALLELIZEESet;
 
     /**
+     * The default value of the '{@link #getPARTITIONING() <em>PARTITIONING</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getPARTITIONING()
+     * @generated
+     * @ordered
+     */
+    protected static final String PARTITIONING_EDEFAULT = "AUTO";
+
+    /**
+     * The cached value of the '{@link #getPARTITIONING() <em>PARTITIONING</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getPARTITIONING()
+     * @generated
+     * @ordered
+     */
+    protected String pARTITIONING = PARTITIONING_EDEFAULT;
+
+    /**
      * The default value of the '{@link #getPLATEFORM() <em>PLATEFORM</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -394,6 +443,26 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
      * @ordered
      */
     protected String pLATEFORM = PLATEFORM_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #isREDUCE() <em>REDUCE</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isREDUCE()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean REDUCE_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isREDUCE() <em>REDUCE</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isREDUCE()
+     * @generated
+     * @ordered
+     */
+    protected boolean rEDUCE = REDUCE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getRELEASEDATE() <em>RELEASEDATE</em>}' attribute.
@@ -603,6 +672,26 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
     protected String sUBJOBTITLECOLOR = SUBJOBTITLECOLOR_EDEFAULT;
 
     /**
+     * The default value of the '{@link #isSUPPORTS_DB_TYPE() <em>SUPPORTS DB TYPE</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isSUPPORTS_DB_TYPE()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean SUPPORTS_DB_TYPE_EDEFAULT = false;
+
+    /**
+     * The cached value of the '{@link #isSUPPORTS_DB_TYPE() <em>SUPPORTS DB TYPE</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isSUPPORTS_DB_TYPE()
+     * @generated
+     * @ordered
+     */
+    protected boolean sUPPORTS_DB_TYPE = SUPPORTS_DB_TYPE_EDEFAULT;
+
+    /**
      * The default value of the '{@link #isTECHNICAL() <em>TECHNICAL</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -661,6 +750,26 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
     protected boolean tSTATCATCHERSTATSESet;
 
     /**
+     * The default value of the '{@link #getTYPE() <em>TYPE</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTYPE()
+     * @generated
+     * @ordered
+     */
+    protected static final String TYPE_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTYPE() <em>TYPE</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTYPE()
+     * @generated
+     * @ordered
+     */
+    protected String tYPE = TYPE_EDEFAULT;
+
+    /**
      * The default value of the '{@link #getVERSION() <em>VERSION</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -708,115 +817,6 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
      * @ordered
      */
     protected boolean vISIBLEESet;
-
-    /**
-     * The default value of the '{@link #getTYPE() <em>TYPE</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getTYPE()
-     * @generated
-     * @ordered
-     */
-    protected static final String TYPE_EDEFAULT = null;
-
-    /**
-     * The cached value of the '{@link #getTYPE() <em>TYPE</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getTYPE()
-     * @generated
-     * @ordered
-     */
-    protected String tYPE = TYPE_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #isREDUCE() <em>REDUCE</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isREDUCE()
-     * @generated
-     * @ordered
-     */
-    protected static final boolean REDUCE_EDEFAULT = false;
-
-    /**
-     * The cached value of the '{@link #isREDUCE() <em>REDUCE</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isREDUCE()
-     * @generated
-     * @ordered
-     */
-    protected boolean rEDUCE = REDUCE_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #getPARTITIONING() <em>PARTITIONING</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getPARTITIONING()
-     * @generated
-     * @ordered
-     */
-    protected static final String PARTITIONING_EDEFAULT = "AUTO";
-
-    /**
-     * The cached value of the '{@link #getPARTITIONING() <em>PARTITIONING</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getPARTITIONING()
-     * @generated
-     * @ordered
-     */
-    protected String pARTITIONING = PARTITIONING_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #isSUPPORTS_DB_TYPE() <em>SUPPORTS DB TYPE</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isSUPPORTS_DB_TYPE()
-     * @generated
-     * @ordered
-     */
-    protected static final boolean SUPPORTS_DB_TYPE_EDEFAULT = false;
-
-    /**
-     * The cached value of the '{@link #isSUPPORTS_DB_TYPE() <em>SUPPORTS DB TYPE</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isSUPPORTS_DB_TYPE()
-     * @generated
-     * @ordered
-     */
-    protected boolean sUPPORTS_DB_TYPE = SUPPORTS_DB_TYPE_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #isLOG4J_ENABLED() <em>LOG4J ENABLED</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isLOG4J_ENABLED()
-     * @generated
-     * @ordered
-     */
-    protected static final boolean LOG4J_ENABLED_EDEFAULT = false;
-
-    /**
-     * The cached value of the '{@link #isLOG4J_ENABLED() <em>LOG4J ENABLED</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #isLOG4J_ENABLED()
-     * @generated
-     * @ordered
-     */
-    protected boolean log4J_ENABLED = LOG4J_ENABLED_EDEFAULT;
-
-    /**
-     * This is true if the LOG4J ENABLED attribute has been set.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    protected boolean log4J_ENABLEDESet;
 
     /**
      * <!-- begin-user-doc -->
@@ -1840,7 +1840,7 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
      * @generated
      */
     public boolean isLOG4J_ENABLED() {
-        return log4J_ENABLED;
+        return lOG4J_ENABLED;
     }
 
     /**
@@ -1849,12 +1849,12 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
      * @generated
      */
     public void setLOG4J_ENABLED(boolean newLOG4J_ENABLED) {
-        boolean oldLOG4J_ENABLED = log4J_ENABLED;
-        log4J_ENABLED = newLOG4J_ENABLED;
-        boolean oldLOG4J_ENABLEDESet = log4J_ENABLEDESet;
-        log4J_ENABLEDESet = true;
+        boolean oldLOG4J_ENABLED = lOG4J_ENABLED;
+        lOG4J_ENABLED = newLOG4J_ENABLED;
+        boolean oldLOG4J_ENABLEDESet = lOG4J_ENABLEDESet;
+        lOG4J_ENABLEDESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.HEADER_TYPE__LOG4J_ENABLED, oldLOG4J_ENABLED, log4J_ENABLED, !oldLOG4J_ENABLEDESet));
+            eNotify(new ENotificationImpl(this, Notification.SET, ComponentPackage.HEADER_TYPE__LOG4J_ENABLED, oldLOG4J_ENABLED, lOG4J_ENABLED, !oldLOG4J_ENABLEDESet));
     }
 
     /**
@@ -1863,10 +1863,10 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
      * @generated
      */
     public void unsetLOG4J_ENABLED() {
-        boolean oldLOG4J_ENABLED = log4J_ENABLED;
-        boolean oldLOG4J_ENABLEDESet = log4J_ENABLEDESet;
-        log4J_ENABLED = LOG4J_ENABLED_EDEFAULT;
-        log4J_ENABLEDESet = false;
+        boolean oldLOG4J_ENABLED = lOG4J_ENABLED;
+        boolean oldLOG4J_ENABLEDESet = lOG4J_ENABLEDESet;
+        lOG4J_ENABLED = LOG4J_ENABLED_EDEFAULT;
+        lOG4J_ENABLEDESet = false;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.UNSET, ComponentPackage.HEADER_TYPE__LOG4J_ENABLED, oldLOG4J_ENABLED, LOG4J_ENABLED_EDEFAULT, oldLOG4J_ENABLEDESet));
     }
@@ -1877,7 +1877,7 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
      * @generated
      */
     public boolean isSetLOG4J_ENABLED() {
-        return log4J_ENABLEDESet;
+        return lOG4J_ENABLEDESet;
     }
 
     /**
@@ -1920,14 +1920,20 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
                 return isHASHCOMPONENT() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.HEADER_TYPE__ISMULTIPLYINGOUTPUTS:
                 return isISMULTIPLYINGOUTPUTS() ? Boolean.TRUE : Boolean.FALSE;
+            case ComponentPackage.HEADER_TYPE__LOG4J_ENABLED:
+                return isLOG4J_ENABLED() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.HEADER_TYPE__MAINCODECALLED:
                 return isMAINCODECALLED() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.HEADER_TYPE__NUMBERPARALLELIZE:
                 return getNUMBERPARALLELIZE();
             case ComponentPackage.HEADER_TYPE__PARALLELIZE:
                 return isPARALLELIZE() ? Boolean.TRUE : Boolean.FALSE;
+            case ComponentPackage.HEADER_TYPE__PARTITIONING:
+                return getPARTITIONING();
             case ComponentPackage.HEADER_TYPE__PLATEFORM:
                 return getPLATEFORM();
+            case ComponentPackage.HEADER_TYPE__REDUCE:
+                return isREDUCE() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.HEADER_TYPE__RELEASEDATE:
                 return getRELEASEDATE();
             case ComponentPackage.HEADER_TYPE__SCHEMAAUTOPROPAGATE:
@@ -1946,24 +1952,18 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
                 return getSUBJOBCOLOR();
             case ComponentPackage.HEADER_TYPE__SUBJOBTITLECOLOR:
                 return getSUBJOBTITLECOLOR();
+            case ComponentPackage.HEADER_TYPE__SUPPORTS_DB_TYPE:
+                return isSUPPORTS_DB_TYPE() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.HEADER_TYPE__TECHNICAL:
                 return isTECHNICAL() ? Boolean.TRUE : Boolean.FALSE;
             case ComponentPackage.HEADER_TYPE__TSTATCATCHERSTATS:
                 return isTSTATCATCHERSTATS() ? Boolean.TRUE : Boolean.FALSE;
+            case ComponentPackage.HEADER_TYPE__TYPE:
+                return getTYPE();
             case ComponentPackage.HEADER_TYPE__VERSION:
                 return getVERSION();
             case ComponentPackage.HEADER_TYPE__VISIBLE:
                 return isVISIBLE() ? Boolean.TRUE : Boolean.FALSE;
-            case ComponentPackage.HEADER_TYPE__TYPE:
-                return getTYPE();
-            case ComponentPackage.HEADER_TYPE__REDUCE:
-                return isREDUCE() ? Boolean.TRUE : Boolean.FALSE;
-            case ComponentPackage.HEADER_TYPE__PARTITIONING:
-                return getPARTITIONING();
-            case ComponentPackage.HEADER_TYPE__SUPPORTS_DB_TYPE:
-                return isSUPPORTS_DB_TYPE() ? Boolean.TRUE : Boolean.FALSE;
-            case ComponentPackage.HEADER_TYPE__LOG4J_ENABLED:
-                return isLOG4J_ENABLED() ? Boolean.TRUE : Boolean.FALSE;
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -2005,6 +2005,9 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
             case ComponentPackage.HEADER_TYPE__ISMULTIPLYINGOUTPUTS:
                 setISMULTIPLYINGOUTPUTS(((Boolean)newValue).booleanValue());
                 return;
+            case ComponentPackage.HEADER_TYPE__LOG4J_ENABLED:
+                setLOG4J_ENABLED(((Boolean)newValue).booleanValue());
+                return;
             case ComponentPackage.HEADER_TYPE__MAINCODECALLED:
                 setMAINCODECALLED(((Boolean)newValue).booleanValue());
                 return;
@@ -2014,8 +2017,14 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
             case ComponentPackage.HEADER_TYPE__PARALLELIZE:
                 setPARALLELIZE(((Boolean)newValue).booleanValue());
                 return;
+            case ComponentPackage.HEADER_TYPE__PARTITIONING:
+                setPARTITIONING((String)newValue);
+                return;
             case ComponentPackage.HEADER_TYPE__PLATEFORM:
                 setPLATEFORM((String)newValue);
+                return;
+            case ComponentPackage.HEADER_TYPE__REDUCE:
+                setREDUCE(((Boolean)newValue).booleanValue());
                 return;
             case ComponentPackage.HEADER_TYPE__RELEASEDATE:
                 setRELEASEDATE((String)newValue);
@@ -2044,32 +2053,23 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
             case ComponentPackage.HEADER_TYPE__SUBJOBTITLECOLOR:
                 setSUBJOBTITLECOLOR((String)newValue);
                 return;
+            case ComponentPackage.HEADER_TYPE__SUPPORTS_DB_TYPE:
+                setSUPPORTS_DB_TYPE(((Boolean)newValue).booleanValue());
+                return;
             case ComponentPackage.HEADER_TYPE__TECHNICAL:
                 setTECHNICAL(((Boolean)newValue).booleanValue());
                 return;
             case ComponentPackage.HEADER_TYPE__TSTATCATCHERSTATS:
                 setTSTATCATCHERSTATS(((Boolean)newValue).booleanValue());
                 return;
+            case ComponentPackage.HEADER_TYPE__TYPE:
+                setTYPE((String)newValue);
+                return;
             case ComponentPackage.HEADER_TYPE__VERSION:
                 setVERSION((BigDecimal)newValue);
                 return;
             case ComponentPackage.HEADER_TYPE__VISIBLE:
                 setVISIBLE(((Boolean)newValue).booleanValue());
-                return;
-            case ComponentPackage.HEADER_TYPE__TYPE:
-                setTYPE((String)newValue);
-                return;
-            case ComponentPackage.HEADER_TYPE__REDUCE:
-                setREDUCE(((Boolean)newValue).booleanValue());
-                return;
-            case ComponentPackage.HEADER_TYPE__PARTITIONING:
-                setPARTITIONING((String)newValue);
-                return;
-            case ComponentPackage.HEADER_TYPE__SUPPORTS_DB_TYPE:
-                setSUPPORTS_DB_TYPE(((Boolean)newValue).booleanValue());
-                return;
-            case ComponentPackage.HEADER_TYPE__LOG4J_ENABLED:
-                setLOG4J_ENABLED(((Boolean)newValue).booleanValue());
                 return;
         }
         super.eSet(featureID, newValue);
@@ -2112,6 +2112,9 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
             case ComponentPackage.HEADER_TYPE__ISMULTIPLYINGOUTPUTS:
                 unsetISMULTIPLYINGOUTPUTS();
                 return;
+            case ComponentPackage.HEADER_TYPE__LOG4J_ENABLED:
+                unsetLOG4J_ENABLED();
+                return;
             case ComponentPackage.HEADER_TYPE__MAINCODECALLED:
                 unsetMAINCODECALLED();
                 return;
@@ -2121,8 +2124,14 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
             case ComponentPackage.HEADER_TYPE__PARALLELIZE:
                 unsetPARALLELIZE();
                 return;
+            case ComponentPackage.HEADER_TYPE__PARTITIONING:
+                setPARTITIONING(PARTITIONING_EDEFAULT);
+                return;
             case ComponentPackage.HEADER_TYPE__PLATEFORM:
                 setPLATEFORM(PLATEFORM_EDEFAULT);
+                return;
+            case ComponentPackage.HEADER_TYPE__REDUCE:
+                setREDUCE(REDUCE_EDEFAULT);
                 return;
             case ComponentPackage.HEADER_TYPE__RELEASEDATE:
                 setRELEASEDATE(RELEASEDATE_EDEFAULT);
@@ -2151,32 +2160,23 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
             case ComponentPackage.HEADER_TYPE__SUBJOBTITLECOLOR:
                 setSUBJOBTITLECOLOR(SUBJOBTITLECOLOR_EDEFAULT);
                 return;
+            case ComponentPackage.HEADER_TYPE__SUPPORTS_DB_TYPE:
+                setSUPPORTS_DB_TYPE(SUPPORTS_DB_TYPE_EDEFAULT);
+                return;
             case ComponentPackage.HEADER_TYPE__TECHNICAL:
                 unsetTECHNICAL();
                 return;
             case ComponentPackage.HEADER_TYPE__TSTATCATCHERSTATS:
                 unsetTSTATCATCHERSTATS();
                 return;
+            case ComponentPackage.HEADER_TYPE__TYPE:
+                setTYPE(TYPE_EDEFAULT);
+                return;
             case ComponentPackage.HEADER_TYPE__VERSION:
                 setVERSION(VERSION_EDEFAULT);
                 return;
             case ComponentPackage.HEADER_TYPE__VISIBLE:
                 unsetVISIBLE();
-                return;
-            case ComponentPackage.HEADER_TYPE__TYPE:
-                setTYPE(TYPE_EDEFAULT);
-                return;
-            case ComponentPackage.HEADER_TYPE__REDUCE:
-                setREDUCE(REDUCE_EDEFAULT);
-                return;
-            case ComponentPackage.HEADER_TYPE__PARTITIONING:
-                setPARTITIONING(PARTITIONING_EDEFAULT);
-                return;
-            case ComponentPackage.HEADER_TYPE__SUPPORTS_DB_TYPE:
-                setSUPPORTS_DB_TYPE(SUPPORTS_DB_TYPE_EDEFAULT);
-                return;
-            case ComponentPackage.HEADER_TYPE__LOG4J_ENABLED:
-                unsetLOG4J_ENABLED();
                 return;
         }
         super.eUnset(featureID);
@@ -2209,14 +2209,20 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
                 return isSetHASHCOMPONENT();
             case ComponentPackage.HEADER_TYPE__ISMULTIPLYINGOUTPUTS:
                 return isSetISMULTIPLYINGOUTPUTS();
+            case ComponentPackage.HEADER_TYPE__LOG4J_ENABLED:
+                return isSetLOG4J_ENABLED();
             case ComponentPackage.HEADER_TYPE__MAINCODECALLED:
                 return isSetMAINCODECALLED();
             case ComponentPackage.HEADER_TYPE__NUMBERPARALLELIZE:
                 return isSetNUMBERPARALLELIZE();
             case ComponentPackage.HEADER_TYPE__PARALLELIZE:
                 return isSetPARALLELIZE();
+            case ComponentPackage.HEADER_TYPE__PARTITIONING:
+                return PARTITIONING_EDEFAULT == null ? pARTITIONING != null : !PARTITIONING_EDEFAULT.equals(pARTITIONING);
             case ComponentPackage.HEADER_TYPE__PLATEFORM:
                 return PLATEFORM_EDEFAULT == null ? pLATEFORM != null : !PLATEFORM_EDEFAULT.equals(pLATEFORM);
+            case ComponentPackage.HEADER_TYPE__REDUCE:
+                return rEDUCE != REDUCE_EDEFAULT;
             case ComponentPackage.HEADER_TYPE__RELEASEDATE:
                 return RELEASEDATE_EDEFAULT == null ? rELEASEDATE != null : !RELEASEDATE_EDEFAULT.equals(rELEASEDATE);
             case ComponentPackage.HEADER_TYPE__SCHEMAAUTOPROPAGATE:
@@ -2235,24 +2241,18 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
                 return SUBJOBCOLOR_EDEFAULT == null ? sUBJOBCOLOR != null : !SUBJOBCOLOR_EDEFAULT.equals(sUBJOBCOLOR);
             case ComponentPackage.HEADER_TYPE__SUBJOBTITLECOLOR:
                 return SUBJOBTITLECOLOR_EDEFAULT == null ? sUBJOBTITLECOLOR != null : !SUBJOBTITLECOLOR_EDEFAULT.equals(sUBJOBTITLECOLOR);
+            case ComponentPackage.HEADER_TYPE__SUPPORTS_DB_TYPE:
+                return sUPPORTS_DB_TYPE != SUPPORTS_DB_TYPE_EDEFAULT;
             case ComponentPackage.HEADER_TYPE__TECHNICAL:
                 return isSetTECHNICAL();
             case ComponentPackage.HEADER_TYPE__TSTATCATCHERSTATS:
                 return isSetTSTATCATCHERSTATS();
+            case ComponentPackage.HEADER_TYPE__TYPE:
+                return TYPE_EDEFAULT == null ? tYPE != null : !TYPE_EDEFAULT.equals(tYPE);
             case ComponentPackage.HEADER_TYPE__VERSION:
                 return VERSION_EDEFAULT == null ? vERSION != null : !VERSION_EDEFAULT.equals(vERSION);
             case ComponentPackage.HEADER_TYPE__VISIBLE:
                 return isSetVISIBLE();
-            case ComponentPackage.HEADER_TYPE__TYPE:
-                return TYPE_EDEFAULT == null ? tYPE != null : !TYPE_EDEFAULT.equals(tYPE);
-            case ComponentPackage.HEADER_TYPE__REDUCE:
-                return rEDUCE != REDUCE_EDEFAULT;
-            case ComponentPackage.HEADER_TYPE__PARTITIONING:
-                return PARTITIONING_EDEFAULT == null ? pARTITIONING != null : !PARTITIONING_EDEFAULT.equals(pARTITIONING);
-            case ComponentPackage.HEADER_TYPE__SUPPORTS_DB_TYPE:
-                return sUPPORTS_DB_TYPE != SUPPORTS_DB_TYPE_EDEFAULT;
-            case ComponentPackage.HEADER_TYPE__LOG4J_ENABLED:
-                return isSetLOG4J_ENABLED();
         }
         return super.eIsSet(featureID);
     }
@@ -2284,14 +2284,20 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
         if (hASHCOMPONENTESet) result.append(hASHCOMPONENT); else result.append("<unset>");
         result.append(", iSMULTIPLYINGOUTPUTS: ");
         if (iSMULTIPLYINGOUTPUTSESet) result.append(iSMULTIPLYINGOUTPUTS); else result.append("<unset>");
+        result.append(", lOG4J_ENABLED: ");
+        if (lOG4J_ENABLEDESet) result.append(lOG4J_ENABLED); else result.append("<unset>");
         result.append(", mAINCODECALLED: ");
         if (mAINCODECALLEDESet) result.append(mAINCODECALLED); else result.append("<unset>");
         result.append(", nUMBERPARALLELIZE: ");
         if (nUMBERPARALLELIZEESet) result.append(nUMBERPARALLELIZE); else result.append("<unset>");
         result.append(", pARALLELIZE: ");
         if (pARALLELIZEESet) result.append(pARALLELIZE); else result.append("<unset>");
+        result.append(", pARTITIONING: ");
+        result.append(pARTITIONING);
         result.append(", pLATEFORM: ");
         result.append(pLATEFORM);
+        result.append(", rEDUCE: ");
+        result.append(rEDUCE);
         result.append(", rELEASEDATE: ");
         result.append(rELEASEDATE);
         result.append(", sCHEMAAUTOPROPAGATE: ");
@@ -2310,24 +2316,18 @@ public class HEADERTypeImpl extends EObjectImpl implements HEADERType {
         result.append(sUBJOBCOLOR);
         result.append(", sUBJOBTITLECOLOR: ");
         result.append(sUBJOBTITLECOLOR);
+        result.append(", sUPPORTS_DB_TYPE: ");
+        result.append(sUPPORTS_DB_TYPE);
         result.append(", tECHNICAL: ");
         if (tECHNICALESet) result.append(tECHNICAL); else result.append("<unset>");
         result.append(", tSTATCATCHERSTATS: ");
         if (tSTATCATCHERSTATSESet) result.append(tSTATCATCHERSTATS); else result.append("<unset>");
+        result.append(", tYPE: ");
+        result.append(tYPE);
         result.append(", vERSION: ");
         result.append(vERSION);
         result.append(", vISIBLE: ");
         if (vISIBLEESet) result.append(vISIBLE); else result.append("<unset>");
-        result.append(", tYPE: ");
-        result.append(tYPE);
-        result.append(", rEDUCE: ");
-        result.append(rEDUCE);
-        result.append(", pARTITIONING: ");
-        result.append(pARTITIONING);
-        result.append(", sUPPORTS_DB_TYPE: ");
-        result.append(sUPPORTS_DB_TYPE);
-        result.append(", LOG4J_ENABLED: ");
-        if (log4J_ENABLEDESet) result.append(log4J_ENABLED); else result.append("<unset>");
         result.append(')');
         return result.toString();
     }

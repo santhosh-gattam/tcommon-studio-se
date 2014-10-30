@@ -24,10 +24,13 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isHASCONDITIONALOUTPUTS <em>HASCONDITIONALOUTPUTS</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isHASHCOMPONENT <em>HASHCOMPONENT</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isISMULTIPLYINGOUTPUTS <em>ISMULTIPLYINGOUTPUTS</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isMAINCODECALLED <em>MAINCODECALLED</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getNUMBERPARALLELIZE <em>NUMBERPARALLELIZE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isPARALLELIZE <em>PARALLELIZE</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getPARTITIONING <em>PARTITIONING</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getPLATEFORM <em>PLATEFORM</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isREDUCE <em>REDUCE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getRELEASEDATE <em>RELEASEDATE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isSCHEMAAUTOPROPAGATE <em>SCHEMAAUTOPROPAGATE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getSERIAL <em>SERIAL</em>}</li>
@@ -37,15 +40,12 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getSTATUS <em>STATUS</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getSUBJOBCOLOR <em>SUBJOBCOLOR</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getSUBJOBTITLECOLOR <em>SUBJOBTITLECOLOR</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isSUPPORTS_DB_TYPE <em>SUPPORTS DB TYPE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isTECHNICAL <em>TECHNICAL</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isTSTATCATCHERSTATS <em>TSTATCATCHERSTATS</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getTYPE <em>TYPE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getVERSION <em>VERSION</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isVISIBLE <em>VISIBLE</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getTYPE <em>TYPE</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isREDUCE <em>REDUCE</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#getPARTITIONING <em>PARTITIONING</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isSUPPORTS_DB_TYPE <em>SUPPORTS DB TYPE</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.HEADERType#isLOG4J_ENABLED <em>LOG4J ENABLED</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,8 +60,8 @@ public interface HEADERType extends EObject {
      * <!-- end-user-doc -->
      * <!-- begin-model-doc -->
      * 
-     * 							Not used for the moment
-     * 						
+     *   					Not used for the moment
+     *   				
      * <!-- end-model-doc -->
      * @return the value of the '<em>SIGNATURE</em>' attribute.
      * @see #setSIGNATURE(String)
@@ -1156,7 +1156,8 @@ public interface HEADERType extends EObject {
      * @return the value of the '<em>TYPE</em>' attribute.
      * @see #setTYPE(String)
      * @see org.talend.designer.core.model.utils.emf.component.ComponentPackage#getHEADERType_TYPE()
-     * @model extendedMetaData="kind='attribute' name='TYPE' namespace='##targetNamespace'"
+     * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+     *        extendedMetaData="kind='attribute' name='TYPE' namespace='##targetNamespace'"
      * @generated
      */
     String getTYPE();
@@ -1268,7 +1269,7 @@ public interface HEADERType extends EObject {
      * @see #setLOG4J_ENABLED(boolean)
      * @see org.talend.designer.core.model.utils.emf.component.ComponentPackage#getHEADERType_LOG4J_ENABLED()
      * @model default="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
-     *        extendedMetaData="kind='attribute' name='TSTATCATCHER_STATS' namespace='##targetNamespace'"
+     *        extendedMetaData="kind='attribute' name='LOG4J_ENABLED' namespace='##targetNamespace'"
      * @generated
      */
     boolean isLOG4J_ENABLED();

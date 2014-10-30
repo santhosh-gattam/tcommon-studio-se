@@ -84,13 +84,6 @@
             type="item">
       </parser>
    </extension>  
-   <extension
-        point="org.eclipse.emf.ecore.uri_mapping">
-     <mapping
-           source="http://www.talend.org"
-           target="dummy.uri">
-    </mapping>
-  </extension>
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Component -->
       <package

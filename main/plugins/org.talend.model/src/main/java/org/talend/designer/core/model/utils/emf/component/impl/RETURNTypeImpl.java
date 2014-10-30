@@ -21,8 +21,8 @@ import org.talend.designer.core.model.utils.emf.component.RETURNType;
  * <ul>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.RETURNTypeImpl#getAVAILABILITY <em>AVAILABILITY</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.RETURNTypeImpl#getNAME <em>NAME</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.RETURNTypeImpl#getTYPE <em>TYPE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.RETURNTypeImpl#getSHOWIF <em>SHOWIF</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.RETURNTypeImpl#getTYPE <em>TYPE</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,26 +70,6 @@ public class RETURNTypeImpl extends EObjectImpl implements RETURNType {
     protected String nAME = NAME_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getTYPE() <em>TYPE</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getTYPE()
-     * @generated
-     * @ordered
-     */
-    protected static final String TYPE_EDEFAULT = null;
-
-    /**
-     * The cached value of the '{@link #getTYPE() <em>TYPE</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getTYPE()
-     * @generated
-     * @ordered
-     */
-    protected String tYPE = TYPE_EDEFAULT;
-
-    /**
      * The default value of the '{@link #getSHOWIF() <em>SHOWIF</em>}' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -108,6 +88,26 @@ public class RETURNTypeImpl extends EObjectImpl implements RETURNType {
      * @ordered
      */
     protected String sHOWIF = SHOWIF_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getTYPE() <em>TYPE</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTYPE()
+     * @generated
+     * @ordered
+     */
+    protected static final String TYPE_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getTYPE() <em>TYPE</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getTYPE()
+     * @generated
+     * @ordered
+     */
+    protected String tYPE = TYPE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -222,10 +222,10 @@ public class RETURNTypeImpl extends EObjectImpl implements RETURNType {
                 return getAVAILABILITY();
             case ComponentPackage.RETURN_TYPE__NAME:
                 return getNAME();
-            case ComponentPackage.RETURN_TYPE__TYPE:
-                return getTYPE();
             case ComponentPackage.RETURN_TYPE__SHOWIF:
                 return getSHOWIF();
+            case ComponentPackage.RETURN_TYPE__TYPE:
+                return getTYPE();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -243,11 +243,11 @@ public class RETURNTypeImpl extends EObjectImpl implements RETURNType {
             case ComponentPackage.RETURN_TYPE__NAME:
                 setNAME((String)newValue);
                 return;
-            case ComponentPackage.RETURN_TYPE__TYPE:
-                setTYPE((String)newValue);
-                return;
             case ComponentPackage.RETURN_TYPE__SHOWIF:
                 setSHOWIF((String)newValue);
+                return;
+            case ComponentPackage.RETURN_TYPE__TYPE:
+                setTYPE((String)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -266,11 +266,11 @@ public class RETURNTypeImpl extends EObjectImpl implements RETURNType {
             case ComponentPackage.RETURN_TYPE__NAME:
                 setNAME(NAME_EDEFAULT);
                 return;
-            case ComponentPackage.RETURN_TYPE__TYPE:
-                setTYPE(TYPE_EDEFAULT);
-                return;
             case ComponentPackage.RETURN_TYPE__SHOWIF:
                 setSHOWIF(SHOWIF_EDEFAULT);
+                return;
+            case ComponentPackage.RETURN_TYPE__TYPE:
+                setTYPE(TYPE_EDEFAULT);
                 return;
         }
         super.eUnset(featureID);
@@ -287,10 +287,10 @@ public class RETURNTypeImpl extends EObjectImpl implements RETURNType {
                 return AVAILABILITY_EDEFAULT == null ? aVAILABILITY != null : !AVAILABILITY_EDEFAULT.equals(aVAILABILITY);
             case ComponentPackage.RETURN_TYPE__NAME:
                 return NAME_EDEFAULT == null ? nAME != null : !NAME_EDEFAULT.equals(nAME);
-            case ComponentPackage.RETURN_TYPE__TYPE:
-                return TYPE_EDEFAULT == null ? tYPE != null : !TYPE_EDEFAULT.equals(tYPE);
             case ComponentPackage.RETURN_TYPE__SHOWIF:
                 return SHOWIF_EDEFAULT == null ? sHOWIF != null : !SHOWIF_EDEFAULT.equals(sHOWIF);
+            case ComponentPackage.RETURN_TYPE__TYPE:
+                return TYPE_EDEFAULT == null ? tYPE != null : !TYPE_EDEFAULT.equals(tYPE);
         }
         return super.eIsSet(featureID);
     }
@@ -308,10 +308,10 @@ public class RETURNTypeImpl extends EObjectImpl implements RETURNType {
         result.append(aVAILABILITY);
         result.append(", nAME: ");
         result.append(nAME);
-        result.append(", tYPE: ");
-        result.append(tYPE);
         result.append(", sHOWIF: ");
         result.append(sHOWIF);
+        result.append(", tYPE: ");
+        result.append(tYPE);
         result.append(')');
         return result.toString();
     }

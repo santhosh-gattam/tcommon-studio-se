@@ -15,7 +15,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.BasicFeatureMap;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.talend.designer.core.model.utils.emf.component.ComponentPackage;
@@ -29,35 +31,15 @@ import org.talend.designer.core.model.utils.emf.component.IMPORTType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTSTypeImpl#getREQUIREDIF <em>REQUIREDIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTSTypeImpl#getIMPORT <em>IMPORT</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTSTypeImpl#getIMPORTS <em>IMPORTS</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.impl.IMPORTSTypeImpl#getREQUIREDIF <em>REQUIREDIF</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class IMPORTSTypeImpl extends EObjectImpl implements IMPORTSType {
-    /**
-     * The default value of the '{@link #getREQUIREDIF() <em>REQUIREDIF</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getREQUIREDIF()
-     * @generated
-     * @ordered
-     */
-    protected static final String REQUIREDIF_EDEFAULT = null;
-
-    /**
-     * The cached value of the '{@link #getREQUIREDIF() <em>REQUIREDIF</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getREQUIREDIF()
-     * @generated
-     * @ordered
-     */
-    protected String rEQUIREDIF = REQUIREDIF_EDEFAULT;
-
     /**
      * The cached value of the '{@link #getIMPORT() <em>IMPORT</em>}' containment reference list.
      * <!-- begin-user-doc -->
@@ -77,6 +59,26 @@ public class IMPORTSTypeImpl extends EObjectImpl implements IMPORTSType {
      * @ordered
      */
     protected EList iMPORTS;
+
+    /**
+     * The default value of the '{@link #getREQUIREDIF() <em>REQUIREDIF</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getREQUIREDIF()
+     * @generated
+     * @ordered
+     */
+    protected static final String REQUIREDIF_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getREQUIREDIF() <em>REQUIREDIF</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getREQUIREDIF()
+     * @generated
+     * @ordered
+     */
+    protected String rEQUIREDIF = REQUIREDIF_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -163,12 +165,12 @@ public class IMPORTSTypeImpl extends EObjectImpl implements IMPORTSType {
      */
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-            case ComponentPackage.IMPORTS_TYPE__REQUIREDIF:
-                return getREQUIREDIF();
             case ComponentPackage.IMPORTS_TYPE__IMPORT:
                 return getIMPORT();
             case ComponentPackage.IMPORTS_TYPE__IMPORTS:
                 return getIMPORTS();
+            case ComponentPackage.IMPORTS_TYPE__REQUIREDIF:
+                return getREQUIREDIF();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -180,9 +182,6 @@ public class IMPORTSTypeImpl extends EObjectImpl implements IMPORTSType {
      */
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-            case ComponentPackage.IMPORTS_TYPE__REQUIREDIF:
-                setREQUIREDIF((String)newValue);
-                return;
             case ComponentPackage.IMPORTS_TYPE__IMPORT:
                 getIMPORT().clear();
                 getIMPORT().addAll((Collection)newValue);
@@ -190,6 +189,9 @@ public class IMPORTSTypeImpl extends EObjectImpl implements IMPORTSType {
             case ComponentPackage.IMPORTS_TYPE__IMPORTS:
                 getIMPORTS().clear();
                 getIMPORTS().addAll((Collection)newValue);
+                return;
+            case ComponentPackage.IMPORTS_TYPE__REQUIREDIF:
+                setREQUIREDIF((String)newValue);
                 return;
         }
         super.eSet(featureID, newValue);
@@ -202,14 +204,14 @@ public class IMPORTSTypeImpl extends EObjectImpl implements IMPORTSType {
      */
     public void eUnset(int featureID) {
         switch (featureID) {
-            case ComponentPackage.IMPORTS_TYPE__REQUIREDIF:
-                setREQUIREDIF(REQUIREDIF_EDEFAULT);
-                return;
             case ComponentPackage.IMPORTS_TYPE__IMPORT:
                 getIMPORT().clear();
                 return;
             case ComponentPackage.IMPORTS_TYPE__IMPORTS:
                 getIMPORTS().clear();
+                return;
+            case ComponentPackage.IMPORTS_TYPE__REQUIREDIF:
+                setREQUIREDIF(REQUIREDIF_EDEFAULT);
                 return;
         }
         super.eUnset(featureID);
@@ -222,12 +224,12 @@ public class IMPORTSTypeImpl extends EObjectImpl implements IMPORTSType {
      */
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-            case ComponentPackage.IMPORTS_TYPE__REQUIREDIF:
-                return REQUIREDIF_EDEFAULT == null ? rEQUIREDIF != null : !REQUIREDIF_EDEFAULT.equals(rEQUIREDIF);
             case ComponentPackage.IMPORTS_TYPE__IMPORT:
                 return iMPORT != null && !iMPORT.isEmpty();
             case ComponentPackage.IMPORTS_TYPE__IMPORTS:
                 return iMPORTS != null && !iMPORTS.isEmpty();
+            case ComponentPackage.IMPORTS_TYPE__REQUIREDIF:
+                return REQUIREDIF_EDEFAULT == null ? rEQUIREDIF != null : !REQUIREDIF_EDEFAULT.equals(rEQUIREDIF);
         }
         return super.eIsSet(featureID);
     }

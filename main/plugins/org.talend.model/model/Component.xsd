@@ -191,10 +191,11 @@
   	<xsd:attribute default="false" ecore:name="rEDUCE" name="REDUCE"
   		type="xsd:boolean" />
   	<xsd:attribute ecore:name="pARTITIONING" name="PARTITIONING"
-  		type="xsd:string" />
+  		type="xsd:string" default="AUTO"/>
   	<xsd:attribute default="false" ecore:name="sUPPORTS_DB_TYPE"
   		name="SUPPORTS_DB_TYPE" type="xsd:boolean" />
-  	<xsd:attribute name="LOG4J_ENABLED" type="xsd:boolean" default="false"></xsd:attribute>
+  	<xsd:attribute default="false" ecore:name="lOG4J_ENABLED"
+  		name="LOG4J_ENABLED" type="xsd:boolean" />
   </xsd:complexType>
   <xsd:complexType ecore:name="IMPORTSType" name="IMPORTS_._type">
     <xsd:sequence>
@@ -370,7 +371,8 @@
   	<xsd:attribute ecore:name="sHOWIF" name="SHOW_IF"
   		type="xsd:string" />
   	<xsd:attribute ecore:name="rAW" name="RAW" type="xsd:boolean" />
-  	<xsd:attribute name="LOG4J_ENABLED" type="xsd:boolean" default="true"></xsd:attribute>
+  	<xsd:attribute default="true" ecore:name="lOG4J_ENABLED"
+        name="LOG4J_ENABLED" type="xsd:boolean" />
   </xsd:complexType>
   <xsd:complexType ecore:name="PLUGINDEPENDENCIESType" name="PLUGINDEPENDENCIES_._type">
     <xsd:sequence>

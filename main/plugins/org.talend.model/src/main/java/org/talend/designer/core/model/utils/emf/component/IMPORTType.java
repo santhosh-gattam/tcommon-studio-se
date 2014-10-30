@@ -19,13 +19,13 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#getBundleID <em>Bundle ID</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#getMESSAGE <em>MESSAGE</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#getMODULE <em>MODULE</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#getMODULEGROUP <em>MODULEGROUP</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#isMRREQUIRED <em>MRREQUIRED</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#getNAME <em>NAME</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#isREQUIRED <em>REQUIRED</em>}</li>
+ *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#getREQUIREDIF <em>REQUIREDIF</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#isSHOW <em>SHOW</em>}</li>
  *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#getUrlPath <em>Url Path</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#getREQUIREDIF <em>REQUIREDIF</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#isMRREQUIRED <em>MRREQUIRED</em>}</li>
- *   <li>{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#getMODULEGROUP <em>MODULEGROUP</em>}</li>
  * </ul>
  * </p>
  *
@@ -340,6 +340,7 @@ public interface IMPORTType extends EObject {
 
     /**
      * Returns the value of the '<em><b>MRREQUIRED</b></em>' attribute.
+     * The default value is <code>"false"</code>.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>MRREQUIRED</em>' attribute isn't clear,
@@ -347,9 +348,11 @@ public interface IMPORTType extends EObject {
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>MRREQUIRED</em>' attribute.
+     * @see #isSetMRREQUIRED()
+     * @see #unsetMRREQUIRED()
      * @see #setMRREQUIRED(boolean)
      * @see org.talend.designer.core.model.utils.emf.component.ComponentPackage#getIMPORTType_MRREQUIRED()
-     * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean"
+     * @model default="false" unsettable="true" dataType="org.eclipse.emf.ecore.xml.type.Boolean"
      *        extendedMetaData="kind='attribute' name='MRREQUIRED' namespace='##targetNamespace'"
      * @generated
      */
@@ -360,10 +363,35 @@ public interface IMPORTType extends EObject {
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @param value the new value of the '<em>MRREQUIRED</em>' attribute.
+     * @see #isSetMRREQUIRED()
+     * @see #unsetMRREQUIRED()
      * @see #isMRREQUIRED()
      * @generated
      */
     void setMRREQUIRED(boolean value);
+
+    /**
+     * Unsets the value of the '{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#isMRREQUIRED <em>MRREQUIRED</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isSetMRREQUIRED()
+     * @see #isMRREQUIRED()
+     * @see #setMRREQUIRED(boolean)
+     * @generated
+     */
+    void unsetMRREQUIRED();
+
+    /**
+     * Returns whether the value of the '{@link org.talend.designer.core.model.utils.emf.component.IMPORTType#isMRREQUIRED <em>MRREQUIRED</em>}' attribute is set.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return whether the value of the '<em>MRREQUIRED</em>' attribute is set.
+     * @see #unsetMRREQUIRED()
+     * @see #isMRREQUIRED()
+     * @see #setMRREQUIRED(boolean)
+     * @generated
+     */
+    boolean isSetMRREQUIRED();
 
     /**
      * Returns the value of the '<em><b>MODULEGROUP</b></em>' attribute.
@@ -376,7 +404,8 @@ public interface IMPORTType extends EObject {
      * @return the value of the '<em>MODULEGROUP</em>' attribute.
      * @see #setMODULEGROUP(String)
      * @see org.talend.designer.core.model.utils.emf.component.ComponentPackage#getIMPORTType_MODULEGROUP()
-     * @model extendedMetaData="kind='attribute' name='MODULE_GROUP' namespace='##targetNamespace'"
+     * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+     *        extendedMetaData="kind='attribute' name='MODULE_GROUP' namespace='##targetNamespace'"
      * @generated
      */
     String getMODULEGROUP();
