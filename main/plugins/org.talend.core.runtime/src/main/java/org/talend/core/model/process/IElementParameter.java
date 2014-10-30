@@ -224,4 +224,8 @@ public interface IElementParameter {
     public boolean isRaw();
 
     public void setRaw(boolean raw);
+
+    public void setLog4JEnabled(boolean enable);
+
+    public boolean isLog4JEnabled();
 }

@@ -31,19 +31,21 @@ import org.talend.core.model.properties.Item;
  */
 public class ObjectElementParameter implements IElementParameter {
 
-    private String name;
+    private String   name;
 
-    private Object value;
+    private Object   value;
 
     private String[] listItemsDisplayCodeName;
 
-    private boolean contextMode;
+    private boolean  contextMode;
 
-    private RGB color;
+    private RGB      color;
 
-    private RGB backgroundColor;
+    private RGB      backgroundColor;
 
-    private boolean raw;
+    private boolean  raw;
+
+    private boolean  enable = true;
 
     /**
      * Constructs a new TextElementParameter.
@@ -1002,6 +1004,26 @@ public class ObjectElementParameter implements IElementParameter {
     @Override
     public void setRaw(boolean raw) {
         this.raw = raw;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.talend.core.model.process.IElementParameter#isLog4JEnabled()
+     */
+    @Override
+    public boolean isLog4JEnabled() {
+        return this.enable;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.talend.core.model.process.IElementParameter#setLog4JEnabled(boolean)
+     */
+    @Override
+    public void setLog4JEnabled(boolean enable) {
+        this.enable = enable;
     }
 
 }
