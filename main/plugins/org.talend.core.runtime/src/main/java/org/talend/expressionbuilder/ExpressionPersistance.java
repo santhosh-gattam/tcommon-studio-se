@@ -55,21 +55,21 @@ import org.talend.repository.model.RepositoryConstants;
  */
 public class ExpressionPersistance {
 
-    public static final String EXPRESSION_FOLDER_NAME = "ExpressionBuilder"; //$NON-NLS-1$
+    public static final String           EXPRESSION_FOLDER_NAME    = "ExpressionBuilder"; //$NON-NLS-1$
 
-    public static final String CONFIGURATION_FOLDER_NAME = "configuration"; //$NON-NLS-1$
+    public static final String           CONFIGURATION_FOLDER_NAME = "configuration";    //$NON-NLS-1$
 
-    private String ownerId;
+    private String                       ownerId;
 
     private static ExpressionPersistance expressionPersistance;
 
-    private String path;
+    private String                       path;
 
-    private ResourceSet resourceSet;
+    private ResourceSet                  resourceSet;
 
-    private EList<EObject> contents;
+    private EList<EObject>               contents;
 
-    private String rootFolderPath;
+    private String                       rootFolderPath;
 
     /**
      * yzhang ExpressionPersistance constructor comment.
@@ -190,9 +190,12 @@ public class ExpressionPersistance {
                     }
                 }
             }
+            this.contents.clear();
             this.contents.add(emfExpression);
+            resource.getContents().clear();
             resource.getContents().addAll(this.contents);
         } else {
+            resource.getContents().clear();
             resource.getContents().add(emfExpression);
         }
 
