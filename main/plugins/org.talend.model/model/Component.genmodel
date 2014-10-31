@@ -4,7 +4,7 @@
     templateDirectory="" modelName="component" editPluginClass="org.talend.designer.core.model.utils.emf.component.provider.componentEditPlugin"
     editorPluginClass="org.talend.designer.core.model.utils.emf.component.presentation.componentEditorPlugin"
     testSuiteClass="org.talend.designer.core.model.utils.emf.component.tests.componentAllTests"
-    importerID="org.eclipse.emf.importer.ecore" runtimeVersion="2.6" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    importerID="org.eclipse.emf.importer.ecore" runtimeVersion="2.6">
   <foreignModel>Component.ecore</foreignModel>
   <genPackages prefix="Component" basePackage="org.talend.designer.core.model.utils.emf"
       resource="XML" disposableProviderFactory="true" ecorePackage="Component.ecore#/">

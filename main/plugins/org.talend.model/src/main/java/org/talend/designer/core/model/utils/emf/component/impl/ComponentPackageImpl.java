@@ -325,7 +325,6 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
         isInited = true;
 
         // Initialize simple dependencies
-        EcorePackage.eINSTANCE.eClass();
         XMLTypePackage.eINSTANCE.eClass();
 
         // Create package meta-data objects
@@ -2769,7 +2768,6 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
 
         // Obtain other dependent packages
         XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
-        EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
         // Add supertypes to classes
 
@@ -2916,7 +2914,7 @@ public class ComponentPackageImpl extends EPackageImpl implements ComponentPacka
         initEAttribute(getIMPORTType_MRREQUIRED(), theXMLTypePackage.getBoolean(), "mRREQUIRED", "false", 0, 1, IMPORTType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getIMPORTType_NAME(), theXMLTypePackage.getString(), "nAME", null, 0, 1, IMPORTType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getIMPORTType_REQUIRED(), theXMLTypePackage.getBoolean(), "rEQUIRED", null, 0, 1, IMPORTType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getIMPORTType_REQUIREDIF(), theEcorePackage.getEString(), "rEQUIREDIF", null, 0, 1, IMPORTType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getIMPORTType_REQUIREDIF(), ecorePackage.getEString(), "rEQUIREDIF", null, 0, 1, IMPORTType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getIMPORTType_SHOW(), theXMLTypePackage.getBoolean(), "sHOW", "true", 0, 1, IMPORTType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getIMPORTType_UrlPath(), theXMLTypePackage.getString(), "urlPath", null, 0, 1, IMPORTType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
