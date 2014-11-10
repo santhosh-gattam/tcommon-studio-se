@@ -223,11 +223,16 @@ public class MetadataSchema {
         } else {
             metadataColumn.setOriginalDbColumnName(nodeValue);
         }
-        if (originalLength != null && !"".equals(originalLength.getNodeValue().toString())) { // hwang for //$NON-NLS-1$
-            metadataColumn.setOriginalLength(Integer.parseInt(originalLength.getNodeValue()));
+        if (originalLength.getNodeValue() != null) {
+            try {
+                metadataColumn.setOriginalLength(Integer.parseInt(originalLength.getNodeValue()));
+            } catch (final NumberFormatException e) {
+                metadataColumn.setOriginalLength(null);
+            }
         } else {
-            metadataColumn.setOriginalLength(0);
+            metadataColumn.setOriginalLength(null);
         }
+
         if (length.getNodeValue() != null) {
             try {
                 metadataColumn.setLength(Integer.parseInt(length.getNodeValue()));
@@ -790,11 +795,13 @@ public class MetadataSchema {
         }
         column.setAttributeNode(length);
 
-        if (metadataColumn.getOriginalLength() != null) {
-            Attr originalLength = document.createAttribute("originalLength"); //$NON-NLS-1$
+        Attr originalLength = document.createAttribute("originalLength"); //$NON-NLS-1$
+        if (metadataColumn.getOriginalLength() == null) {
+            originalLength.setNodeValue("-1"); //$NON-NLS-1$
+        } else {
             originalLength.setNodeValue(String.valueOf(metadataColumn.getOriginalLength()));
-            column.setAttributeNode(originalLength);
         }
+        column.setAttributeNode(originalLength);
 
         Attr precision = document.createAttribute("precision"); //$NON-NLS-1$
         if (metadataColumn.getPrecision() == null) {
