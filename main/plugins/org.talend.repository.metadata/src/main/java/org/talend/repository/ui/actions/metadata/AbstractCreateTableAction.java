@@ -69,6 +69,7 @@ import org.talend.core.model.properties.LDAPSchemaConnectionItem;
 import org.talend.core.model.properties.LdifFileConnectionItem;
 import org.talend.core.model.properties.PositionalFileConnectionItem;
 import org.talend.core.model.properties.RegExFileConnectionItem;
+import org.talend.core.model.properties.SAPConnectionItem;
 import org.talend.core.model.properties.SalesforceSchemaConnectionItem;
 import org.talend.core.model.properties.WSDLSchemaConnectionItem;
 import org.talend.core.model.properties.XmlFileConnectionItem;
@@ -78,15 +79,16 @@ import org.talend.core.model.repository.IRepositoryViewObject;
 import org.talend.core.model.repository.RepositoryContentManager;
 import org.talend.core.repository.model.ProxyRepositoryFactory;
 import org.talend.core.repository.ui.actions.metadata.AbstractCreateAction;
+import org.talend.core.service.ISAPProviderService;
 import org.talend.cwm.helper.ConnectionHelper;
 import org.talend.cwm.helper.PackageHelper;
 import org.talend.cwm.helper.TableHelper;
 import org.talend.metadata.managment.connection.manager.HiveConnectionManager;
 import org.talend.repository.RepositoryWorkUnit;
 import org.talend.repository.metadata.i18n.Messages;
+import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.model.IRepositoryNode.ENodeType;
 import org.talend.repository.model.IRepositoryNode.EProperties;
-import org.talend.repository.model.IProxyRepositoryFactory;
 import org.talend.repository.model.IRepositoryService;
 import org.talend.repository.model.RepositoryNode;
 import org.talend.repository.ui.utils.ConnectionContextHelper;
@@ -839,6 +841,44 @@ public abstract class AbstractCreateTableAction extends AbstractCreateAction {
 
             WizardDialog wizardDialog = new WizardDialog(Display.getCurrent().getActiveShell(), salesforceSchemaWizard);
             handleWizard(node, wizardDialog);
+        }
+    }
+
+    /**
+     * 
+     * DOC hwang Comment method "createSAPSchemaWizard".
+     * 
+     * @param selection
+     * @param forceReadOnly
+     */
+    public void createSAPSchemaWizard(RepositoryNode node, final boolean forceReadOnly) {
+        boolean creation = false;
+        if (node.getType() == ENodeType.REPOSITORY_ELEMENT) {
+            ERepositoryObjectType nodeType = (ERepositoryObjectType) node.getProperties(EProperties.CONTENT_TYPE);
+
+            SAPConnectionItem item = null;
+            if (nodeType == ERepositoryObjectType.METADATA_CON_TABLE) {
+                item = (SAPConnectionItem) node.getObject().getProperty().getItem();
+                creation = false;
+            } else if (nodeType == ERepositoryObjectType.METADATA_SALESFORCE_SCHEMA) {
+                item = (SAPConnectionItem) node.getObject().getProperty().getItem();
+                creation = true;
+            } else {
+                return;
+            }
+            initContextMode(item);
+
+            ISAPProviderService sapService = null;
+            if (GlobalServiceRegister.getDefault().isServiceRegistered(ISAPProviderService.class)) {
+                sapService = (ISAPProviderService) GlobalServiceRegister.getDefault().getService(ISAPProviderService.class);
+                if (sapService != null) {
+                    IWizard sapWizard = sapService.newWizard(PlatformUI.getWorkbench(), creation, node, getExistingNames());
+                    if (sapWizard != null) {
+                        WizardDialog wizardDialog = new WizardDialog(Display.getCurrent().getActiveShell(), sapWizard);
+                        handleWizard(node, wizardDialog);
+                    }
+                }
+            }
         }
     }
 
