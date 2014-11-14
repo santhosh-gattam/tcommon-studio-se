@@ -2555,7 +2555,12 @@ public class DatabaseForm extends AbstractForm {
                 StringBuffer retProposedSchema = new StringBuffer();
                 checkConnection(retProposedSchema);
                 if (0 < retProposedSchema.length()) {
-                    if (schemaText != null) {
+                    if (ManagerConnection.isSchemaFromSidOrDatabase(EDatabaseTypeName.getTypeFromDbType(dbTypeCombo
+                            .getItem(dbTypeCombo.getSelectionIndex())))) {
+                        if (sidOrDatabaseText != null) {
+                            sidOrDatabaseText.setText(retProposedSchema.toString());
+                        }
+                    } else if (schemaText != null) {
                         schemaText.setText(retProposedSchema.toString());
                     }
                 }

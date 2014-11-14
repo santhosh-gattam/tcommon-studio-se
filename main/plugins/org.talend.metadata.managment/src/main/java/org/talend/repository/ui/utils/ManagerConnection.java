@@ -259,7 +259,7 @@ public class ManagerConnection {
             // MOD xqliu 2012-01-05 TDQ-4162
             // get the real schema name
             String schemaName = schemaOracle;
-            if (EDatabaseTypeName.TERADATA.equals(type) || EDatabaseTypeName.IMPALA.equals(type)) {
+            if (isSchemaFromSidOrDatabase(type)) {
                 schemaName = sidOrDatabase;
             }
             // test the connection
@@ -271,6 +271,14 @@ public class ManagerConnection {
             log.error(Messages.getString("CommonWizard.exception") + "\n" + e.toString()); //$NON-NLS-1$ //$NON-NLS-2$
         }
         return isValide;
+    }
+
+    public static boolean isSchemaFromSidOrDatabase(EDatabaseTypeName inType) {
+        if (EDatabaseTypeName.TERADATA.equals(inType) || EDatabaseTypeName.IMPALA.equals(inType)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean check(IMetadataConnection metadataConnection, boolean... onlyIfNeeded) {
