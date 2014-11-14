@@ -860,7 +860,7 @@ public abstract class AbstractCreateTableAction extends AbstractCreateAction {
             if (nodeType == ERepositoryObjectType.METADATA_CON_TABLE) {
                 item = (SAPConnectionItem) node.getObject().getProperty().getItem();
                 creation = false;
-            } else if (nodeType == ERepositoryObjectType.METADATA_SALESFORCE_SCHEMA) {
+            } else if (nodeType == ERepositoryObjectType.METADATA_SAP_TABLE) {
                 item = (SAPConnectionItem) node.getObject().getProperty().getItem();
                 creation = true;
             } else {
