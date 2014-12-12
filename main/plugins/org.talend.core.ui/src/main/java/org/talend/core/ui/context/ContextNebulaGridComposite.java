@@ -53,6 +53,7 @@ import org.talend.core.model.metadata.types.ContextParameterJavaTypeManager;
 import org.talend.core.model.process.IContext;
 import org.talend.core.model.process.IContextManager;
 import org.talend.core.model.process.IContextParameter;
+import org.talend.core.model.properties.ContextItem;
 import org.talend.core.prefs.ITalendCorePrefConstants;
 import org.talend.core.ui.context.ContextTreeTable.ContextTreeNode;
 import org.talend.core.ui.context.model.ContextTabChildModel;
@@ -586,30 +587,10 @@ public class ContextNebulaGridComposite extends AbstractContextTabEditComposite 
                 }
             } else {
                 reInitializeUI();
-                if (contextsCombo.getItems().length > 0) {
-                    contextsCombo.removeAll();
-                }
-                if (modelManager.getContextManager() != null) {
-                    for (IContext context : modelManager.getContextManager().getListContext()) {
-                        if (!Arrays.asList(contextsCombo.getItems()).contains(context.getName())) {
-                            contextsCombo.add(context.getName());
-                        }
-                    }
 
-                    for (int i = 0; i < contextsCombo.getItemCount(); i++) {
-                        IContext defaultContext = modelManager.getContextManager().getDefaultContext();
-                        if (defaultContext.getName().equals(contextsCombo.getItem(i))) {
-                            contextsCombo.select(i);
-                            break;
-                        }
-                    }
-                }
+                initializeContextCombo();
 
-                int visibleItemCount = contextsCombo.getItemCount();
-                if (visibleItemCount > 20) {
-                    visibleItemCount = 20;
-                }
-                contextsCombo.setVisibleItemCount(visibleItemCount);
+                checkContextGroupSource();
 
                 // dispose the data table composite
                 disposeDataTable();
@@ -622,6 +603,79 @@ public class ContextNebulaGridComposite extends AbstractContextTabEditComposite 
 
                 setButtonEnableState();
             }
+        }
+    }
+
+    private void initializeContextCombo() {
+        IContextManager contextManager = getContextManager();
+        if (contextsCombo.getItems().length > 0) {
+            contextsCombo.removeAll();
+        }
+        if (contextManager != null) {
+            List<IContext> contexts = contextManager.getListContext();
+            for (IContext context : contexts) {
+                if (!Arrays.asList(contextsCombo.getItems()).contains(context.getName())) {
+                    contextsCombo.add(context.getName());
+                }
+            }
+
+            for (int i = 0; i < contextsCombo.getItemCount(); i++) {
+                IContext defaultContext = contextManager.getDefaultContext();
+                if (defaultContext.getName().equals(contextsCombo.getItem(i))) {
+                    contextsCombo.select(i);
+                    break;
+                }
+            }
+        }
+
+        int visibleItemCount = contextsCombo.getItemCount();
+        if (visibleItemCount > 20) {
+            visibleItemCount = 20;
+        }
+        contextsCombo.setVisibleItemCount(visibleItemCount);
+    }
+
+    private void checkContextGroupSource() {
+        IContextManager contextManager = getContextManager();
+        if (helper == null) {
+            return;
+        }
+        if (contextManager != null) {
+            List<IContext> contexts = contextManager.getListContext();
+            boolean needRefresh = false;
+            helper.initHelper(contextManager);
+            for (IContext context : contexts) {
+                for (IContextParameter param : context.getContextParameterList()) {
+                    if (!param.isBuiltIn()) {
+                        ContextItem item = helper.getContextItemById(param.getSource());
+                        if (item == null) { // source not found
+                            needRefresh = true;
+                            param.setSource(IContextParameter.BUILT_IN);
+                            propagateType(contextManager, param);
+                        }
+
+                    }
+                }
+            }
+            if (needRefresh) {
+                setModifiedFlag(contextManager);
+                modelManager.refresh();
+            }
+        }
+    }
+
+    private void setModifiedFlag(IContextManager contextManager) {
+        if (contextManager != null && contextManager instanceof JobContextManager) {
+            JobContextManager manager = (JobContextManager) contextManager;
+            manager.setModified(true);
+        }
+    }
+
+    private void propagateType(IContextManager contextManager, IContextParameter param) {
+        for (IContext context : contextManager.getListContext()) {
+            IContextParameter paramToModify = context.getContextParameter(param.getName());
+            paramToModify.setType(param.getType());
+            paramToModify.setComment(param.getComment());
         }
     }
 
