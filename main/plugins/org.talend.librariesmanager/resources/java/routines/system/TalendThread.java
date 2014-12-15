@@ -28,6 +28,8 @@ public class TalendThread extends Thread {
 
     public Exception exception = null;
 
+    public Error error = null;
+
     // this is a template for Iterate Parallel
     @Override
     public void run() {
