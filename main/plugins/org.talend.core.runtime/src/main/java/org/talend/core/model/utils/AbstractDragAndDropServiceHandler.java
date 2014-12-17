@@ -14,6 +14,11 @@ package org.talend.core.model.utils;
 
 import org.talend.core.model.metadata.IMetadataTable;
 import org.talend.core.model.metadata.builder.connection.Connection;
+import org.talend.core.model.properties.Item;
+import org.talend.core.model.properties.Property;
+import org.talend.core.model.repository.ERepositoryObjectType;
+import org.talend.core.model.repository.IRepositoryViewObject;
+import org.talend.repository.model.IRepositoryNode;
 
 /**
  * created by wchen on 2013-5-20 Detailled comment
@@ -31,5 +36,27 @@ public abstract class AbstractDragAndDropServiceHandler implements IDragAndDropS
     @Override
     public Object getComponentValue(Connection connection, String value, IMetadataTable table) {
         return getComponentValue(connection, value, table, null);
+    }
+
+    public IComponentName getCorrespondingComponentName(IRepositoryNode repositoryNode, ERepositoryObjectType type) {
+        Item item = getItemFromRepositoryNode(repositoryNode);
+        return getCorrespondingComponentName(item, type);
+    }
+
+    protected Item getItemFromRepositoryNode(IRepositoryNode repositoryNode) {
+        Item item = null;
+        if (repositoryNode == null) {
+            return item;
+        }
+        IRepositoryViewObject viewObject = repositoryNode.getObject();
+        if (viewObject == null) {
+            return item;
+        }
+        Property property = viewObject.getProperty();
+        if (property == null) {
+            return item;
+        }
+        item = property.getItem();
+        return item;
     }
 }

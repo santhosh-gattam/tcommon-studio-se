@@ -445,6 +445,8 @@ public class ERepositoryObjectType extends DynaEnum<ERepositoryObjectType> {
 
     public final static ERepositoryObjectType PROCESS_STORM = ERepositoryObjectType.valueOf("PROCESS_STORM");
 
+    public final static ERepositoryObjectType HDFS = ERepositoryObjectType.valueOf("HDFS");
+
     ERepositoryObjectType(String key, String folder, String type, boolean isStaticNode, int ordinal, String[] products,
             String[] userRight, boolean... isResouce) {
         super(key, type, isStaticNode, ordinal);
