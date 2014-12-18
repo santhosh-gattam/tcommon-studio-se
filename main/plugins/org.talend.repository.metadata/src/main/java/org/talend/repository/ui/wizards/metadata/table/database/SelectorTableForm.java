@@ -757,6 +757,7 @@ public class SelectorTableForm extends AbstractForm {
                                 } else {
                                     treeItem.setText(2, ""); //$NON-NLS-1$
                                     treeItem.setText(3, Messages.getString("SelectorTableForm.Pending")); //$NON-NLS-1$
+                                    refreshColumnData(tableNode, treeItem);
                                     countPending++;
                                     parentWizardPage.setPageComplete(false);
                                     refreshTable(treeItem, -1);
@@ -796,6 +797,8 @@ public class SelectorTableForm extends AbstractForm {
                     } else {
                         treeItem.setText(2, ""); //$NON-NLS-1$
                         treeItem.setText(3, Messages.getString("SelectorTableForm.Pending")); //$NON-NLS-1$
+                        refreshColumnData(tableNode, treeItem);
+
                         countPending++;
                         parentWizardPage.setPageComplete(false);
                         refreshTable(treeItem, -1);
@@ -883,6 +886,7 @@ public class SelectorTableForm extends AbstractForm {
                             refreshExistItem(existTable, item);
                         } else {
                             item.setText(3, Messages.getString("SelectorTableForm.Pending")); //$NON-NLS-1$
+                            refreshColumnData(tableNode, item);
                             countPending++;
                             parentWizardPage.setPageComplete(false);
                             refreshTable(item, -1);
@@ -1200,6 +1204,7 @@ public class SelectorTableForm extends AbstractForm {
 
             tableItem.setText(2, "" + metadataColumns.size()); //$NON-NLS-1$
             tableItem.setText(3, Messages.getString("SelectorTableForm.Success")); //$NON-NLS-1$
+            refreshColumnData((TableNode) tableItem.getData(), tableItem);
             countSuccess++;
 
             IProxyRepositoryFactory factory = ProxyRepositoryFactory.getInstance();
@@ -1609,6 +1614,7 @@ public class SelectorTableForm extends AbstractForm {
                         managerConnection.getMessageException());
 
             }
+            refreshColumnData(tableNode, treeItem);
             count++;
 
             updateStatus(IStatus.OK, null);
@@ -1709,6 +1715,7 @@ public class SelectorTableForm extends AbstractForm {
                                     managerConnection.getMessageException());
 
                         }
+                        refreshColumnData(tableNode, treeItem);
                         count++;
 
                         updateStatus(IStatus.OK, null);
@@ -1758,6 +1765,7 @@ public class SelectorTableForm extends AbstractForm {
                 item.setText(2, ""); //$NON-NLS-1$
                 item.setText(3, ""); //$NON-NLS-1$
             }
+            refreshColumnData(node, item);
             RetrieveColumnRunnable runnable = threadExecutor.getRunnable(item);
             if (runnable != null) {
                 runnable.setCanceled(true);
@@ -1857,7 +1865,8 @@ public class SelectorTableForm extends AbstractForm {
                         if (num != null) {
                             // get column num from previous result
                             item.setText(2, num.toString());
-                            item.setText(3, Messages.getString("SelectorTableForm.Success")); //$NON-NLS-1$   
+                            item.setText(3, Messages.getString("SelectorTableForm.Success")); //$NON-NLS-1$ 
+                            refreshColumnData(node, item);
                         } else {
                             // retrieve column num again
                             refreshTable(item, -1);
@@ -1891,6 +1900,7 @@ public class SelectorTableForm extends AbstractForm {
                         existItem.setChecked(false);
                     }
                     item.setText(3, Messages.getString("SelectorTableForm.Pending")); //$NON-NLS-1$
+                    refreshColumnData(existTableItem, item);
                     countPending++;
                     parentWizardPage.setPageComplete(false);
                     refreshTable(item, -1);
@@ -2491,5 +2501,20 @@ public class SelectorTableForm extends AbstractForm {
             allDisplayNodes.remove(contextItemNode);
         }
         return allDisplayNodes;
+    }
+
+    protected static void refreshColumnData(TableNode tableNode, TreeItem item) {
+        if (tableNode == null || item == null) {
+            return;
+        }
+        List<Object> columnDatas = tableNode.getColumnDataList();
+        if (columnDatas == null) {
+            return;
+        }
+        columnDatas.clear();
+        columnDatas.add(item.getText(0));
+        columnDatas.add(item.getText(1));
+        columnDatas.add(item.getText(2));
+        columnDatas.add(item.getText(3));
     }
 }

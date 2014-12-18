@@ -48,6 +48,8 @@ public class TableNode {
 
     private TableInfoParameters paras;
 
+    private List<Object> columnDataList;
+
     public static final int CATALOG = 1;
 
     public static final int SCHEMA = 2;
@@ -60,6 +62,7 @@ public class TableNode {
 
     public TableNode() {
         children = new ArrayList<TableNode>();
+        columnDataList = new ArrayList<Object>();
     }
 
     public String getValue() {
@@ -149,4 +152,9 @@ public class TableNode {
     public void setParas(TableInfoParameters paras) {
         this.paras = paras;
     }
+
+    public List<Object> getColumnDataList() {
+        return this.columnDataList;
+    }
+
 }

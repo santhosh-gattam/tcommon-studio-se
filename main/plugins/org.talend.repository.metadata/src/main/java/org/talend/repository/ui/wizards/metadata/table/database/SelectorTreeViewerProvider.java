@@ -257,6 +257,7 @@ public class SelectorTreeViewerProvider extends AbstractMetadataExtractorViewPro
     public String getColumnText(Object element, int columnIndex) {
         TableNode tableNode = (TableNode) element;
         int type = tableNode.getType();
+        List<Object> columnData = tableNode.getColumnDataList();
         switch (columnIndex) {
         case 0:
             String value = tableNode.getValue();
@@ -273,7 +274,13 @@ public class SelectorTreeViewerProvider extends AbstractMetadataExtractorViewPro
                 return tableNode.getItemType();
             }
         default:
-            return "";
+            if (columnData != null && columnIndex < columnData.size()) {
+                Object columnObj = columnData.get(columnIndex);
+                if (columnObj != null) {
+                    return columnObj.toString();
+                }
+            }
+            return ""; //$NON-NLS-1$
         }
     }
 
