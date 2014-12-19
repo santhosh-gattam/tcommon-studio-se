@@ -36,6 +36,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.talend.commons.exception.ExceptionHandler;
 import org.talend.commons.utils.workbench.extensions.ExtensionImplementationProvider;
@@ -367,11 +368,11 @@ public class ExtractMetaDataFromDataBase {
         return checkSchemaConnection(schema, connection, notCaseSensitive, dbType, null);
     }
 
-    public static boolean checkSchemaConnection(String schema, Connection connection, boolean notCaseSensitive, String dbType,
-            StringBuffer retPropsedSchema) throws SQLException {
+    public static boolean checkSchemaConnection(final String schema, Connection connection, boolean notCaseSensitive,
+            String dbType, final StringBuffer retPropsedSchema) throws SQLException {
         ExtractMetaDataUtils extractMeta = ExtractMetaDataUtils.getInstance();
         DatabaseMetaData dbMetaData = extractMeta.getDatabaseMetaData(connection, dbType);
-        String proposeSchema = null;
+        final StringBuffer proposeSchema = new StringBuffer();
         if (dbMetaData != null) {
             ResultSet rs = dbMetaData.getSchemas();
             while (rs.next()) {
@@ -389,21 +390,30 @@ public class ExtractMetaDataFromDataBase {
                             rs.close();
                             return (true);
                         } else {
-                            proposeSchema = schemaFromDB;
+                            proposeSchema.append(schemaFromDB);
                         }
                     }
                 }
             }
             rs.close();
         }
-        if (retPropsedSchema != null && proposeSchema != null) {
-            String title = Messages.getString("CheckConnection.CheckSchema.ProposeSchema.title"); //$NON-NLS-1$
-            String proposeMessage = Messages.getString("CheckConnection.CheckSchema.ProposeSchema.message", new Object[] { //$NON-NLS-1$
-                    schema, proposeSchema });
-            MessageDialog messageDialog = new MessageDialog(new Shell(), title, null, proposeMessage, MessageDialog.CONFIRM,
-                    new String[] { IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL }, 0);
-            if (messageDialog.open() == 0) {
-                retPropsedSchema.append(proposeSchema);
+        if (retPropsedSchema != null && 0 < proposeSchema.length()) {
+            final StringBuffer userSelectResult = new StringBuffer();
+            Display.getDefault().syncExec(new Runnable() {
+
+                public void run() {
+                    String title = Messages.getString("CheckConnection.CheckSchema.ProposeSchema.title"); //$NON-NLS-1$
+                    String proposeMessage = Messages.getString("CheckConnection.CheckSchema.ProposeSchema.message", new Object[] { //$NON-NLS-1$
+                            schema, proposeSchema });
+                    MessageDialog messageDialog = new MessageDialog(new Shell(), title, null, proposeMessage,
+                            MessageDialog.CONFIRM, new String[] { IDialogConstants.YES_LABEL, IDialogConstants.NO_LABEL }, 0);
+                    if (messageDialog.open() == 0) {
+                        retPropsedSchema.append(proposeSchema);
+                        userSelectResult.append("true"); //$NON-NLS-1$
+                    }
+                }
+            });
+            if (0 < userSelectResult.length()) {
                 return true;
             }
         }
