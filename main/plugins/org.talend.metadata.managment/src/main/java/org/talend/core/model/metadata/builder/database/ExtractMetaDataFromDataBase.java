@@ -57,6 +57,7 @@ import org.talend.core.repository.ConnectionStatus;
 import org.talend.core.repository.IDBMetadataProvider;
 import org.talend.cwm.relational.TdColumn;
 import org.talend.metadata.managment.connection.manager.HiveConnectionManager;
+import org.talend.repository.ui.utils.ManagerConnection;
 import org.talend.utils.sql.ConnectionUtils;
 import org.talend.utils.sql.metadata.constants.GetTable;
 
@@ -321,12 +322,10 @@ public class ExtractMetaDataFromDataBase {
                 }
             }
             if ((schema != null) && (schema.compareTo("") != 0)) { //$NON-NLS-1$
-                final String product = EDatabaseTypeName.getTypeFromDisplayName(dbType).getProduct();
-                final boolean equals = EDatabaseTypeName.ORACLEFORSID.getProduct().equals(product)
-                        || EDatabaseTypeName.TERADATA.getProduct().equals(product)
-                        || EDatabaseTypeName.VERTICA.getProduct().equals(product);
+                final boolean notCaseSensitive = !ManagerConnection.isSchemaCaseSensitive(EDatabaseTypeName
+                        .getTypeFromDisplayName(dbType));
                 // We have to check schema
-                if (!checkSchemaConnection(schema, connection, equals, dbType, retProposedSchema)) {
+                if (!checkSchemaConnection(schema, connection, notCaseSensitive, dbType, retProposedSchema)) {
                     connectionStatus.setMessageException(Messages.getString("ExtractMetaDataFromDataBase.SchemaNoPresent")); //$NON-NLS-1$
                     return connectionStatus;
                 }

@@ -280,10 +280,20 @@ public class ManagerConnection {
     }
 
     public static boolean isSchemaFromSidOrDatabase(EDatabaseTypeName inType) {
-        if (EDatabaseTypeName.TERADATA.equals(inType) || EDatabaseTypeName.IMPALA.equals(inType)) {
+        if (EDatabaseTypeName.TERADATA.equals(inType) || EDatabaseTypeName.IMPALA.equals(inType)
+                || EDatabaseTypeName.AS400.equals(inType)) {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public static boolean isSchemaCaseSensitive(EDatabaseTypeName inType) {
+        if (EDatabaseTypeName.ORACLEFORSID == inType || EDatabaseTypeName.TERADATA == inType
+                || EDatabaseTypeName.VERTICA == inType) {
+            return false;
+        } else {
+            return true;
         }
     }
 

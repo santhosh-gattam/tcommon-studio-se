@@ -907,9 +907,17 @@ public class SelectorTableForm extends AbstractForm {
         List<Catalog> catalogs = ConnectionHelper.getCatalogs(connection);
         if (catalogs.isEmpty()) {
             List<Schema> schemas = ConnectionHelper.getSchema(connection);
+            String specifiedSchema = null;
+            if (ManagerConnection.isSchemaFromSidOrDatabase(EDatabaseTypeName.getTypeFromDbType(connection.getDatabaseType()))) {
+                String sid = connection.getSID();
+                if (sid != null && sid.length() > 0) {
+                    specifiedSchema = sid;
+                }
+            }
             if (schemas.isEmpty()) {
                 return tableNodes;
             } else {
+                EDatabaseTypeName dbType = EDatabaseTypeName.getTypeFromDbType(connection.getDatabaseType());
                 for (Schema s : schemas) {
                     TableNode schemaNode = new TableNode();
                     schemaNode.setSchema(s);
@@ -919,7 +927,21 @@ public class SelectorTableForm extends AbstractForm {
                     schemaNode.setParas(tableInfoParameters);
                     // should hide the fake schema which used to store the synonyms for oracle
                     if (s.getName() != null && !s.getName().equals(MetadataConnectionUtils.FAKE_SCHEMA_SYNONYMS)) {
-                        tableNodes.add(schemaNode);
+                        boolean canAdd = true;
+                        if (specifiedSchema != null) {
+                            if (ManagerConnection.isSchemaCaseSensitive(dbType)) {
+                                if (!s.getName().equals(specifiedSchema)) {
+                                    canAdd = false;
+                                }
+                            } else {
+                                if (!s.getName().toLowerCase().equals(specifiedSchema.toLowerCase())) {
+                                    canAdd = false;
+                                }
+                            }
+                        }
+                        if (canAdd) {
+                            tableNodes.add(schemaNode);
+                        }
                     }
                 }
             }
